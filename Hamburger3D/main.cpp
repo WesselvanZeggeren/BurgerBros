@@ -119,9 +119,10 @@ void draw()
     
     bdm::burgerBunCrown(model);
     bdm::burgerBunHeel(model);
-    bdm::cheese(model, 0);
-    bdm::burgerPatty(model);
-    bdm::tomato(model);
+    //bdm::cheese(model, 0);
+    //bdm::burgerPatty(model);
+    //bdm::tomato(model);
 
-    bdm::souce(model, 2);
+    //bdm::souce(model, 2);
+    bdm::egg(model);
 }
