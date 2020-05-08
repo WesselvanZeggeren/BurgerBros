@@ -124,5 +124,6 @@ void draw()
     //bdm::tomato(model);
 
     //bdm::souce(model, 2);
-    bdm::egg(model);
+    //bdm::egg(model);
+    bdm::bacon(model);
 }
