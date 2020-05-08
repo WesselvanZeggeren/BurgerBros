@@ -19,8 +19,9 @@ Color patty = { 163.0,56.0,21.0, 1.0 };
 Color tomato_red = { 232.0,24.0,2.0, 1.0 };
 Color tomato_red_light = { 253, 60, 39, 1.0 };
 
-Color ketchup = { 232.0,24.0,2.0, 1.0 };
-Color mustard = { 232.0,24.0,2.0, 1.0 };
+Color ketchup = { 204.0,0,0, 1.0 };
+Color mustard = { 255, 219, 88, 1.0 };
+Color mayo = { 255,255,238 ,1 };
 
 void bdm::completeBurger(glm::mat4 model) {
 
@@ -86,10 +87,19 @@ void bdm::souce(glm::mat4 model, int type) {
     {
         souceColor = mustard;
     }
+    else if (type == 2) {
+        souceColor = mayo;
+    }
 
     shape::drawRect(0.4, 0.1, 0.4, souceColor.getVec4());
-    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0.6, 0, 0)));
-    shape::drawRect(0.1, 0.1, 0.1, souceColor.getVec4());
+    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0.2, 0, 0)));
+    shape::drawRect(0.1, 0.1, 0.2, souceColor.getVec4());
+    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0.2, 0, 0.1)));
+    shape::drawRect(0.3, 0.1, 0.1, souceColor.getVec4());
+    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(-0.2, 0, 0)));
+    shape::drawRect(0.1, 0.1, 0.2, souceColor.getVec4());
+    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(-0.2, 0, -0.1)));
+    shape::drawRect(0.3, 0.1, 0.1, souceColor.getVec4());
 }
 void bdm::dicedUnions(glm::mat4 model) {
 
