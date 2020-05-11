@@ -4,6 +4,12 @@
 #include "basicShapeDrawer.h"
 #include "BurgerDrawer.h"
 #include <glm/gtc/matrix_transform.hpp>
+
+#include <opencv2/opencv.hpp>
+#include "opencv2/imgproc/imgproc.hpp" 
+#include "opencv2/highgui/highgui.hpp"
+using namespace cv;
+
 using tigl::Vertex;
 
 #pragma comment(lib, "glfw3.lib")

@@ -29,7 +29,7 @@ Color egg_yelow = { 255,220,81 , 1};
 Color bacon_dark = { 157,59,33 , 1};
 Color bacon_light = { 137,0,0 , 1};
 
-Color diced_union
+//Color diced_union
 
 void bdm::completeBurger(glm::mat4 model) {
 
