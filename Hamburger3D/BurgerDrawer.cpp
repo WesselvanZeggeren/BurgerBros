@@ -29,6 +29,8 @@ Color egg_yelow = { 255,220,81 , 1};
 Color bacon_dark = { 157,59,33 , 1};
 Color bacon_light = { 137,0,0 , 1};
 
+Color diced_union
+
 void bdm::completeBurger(glm::mat4 model) {
 
 }
@@ -108,6 +110,9 @@ void bdm::souce(glm::mat4 model, int type) {
     shape::drawRect(0.3, 0.1, 0.1, souceColor.getVec4());
 }
 void bdm::dicedUnions(glm::mat4 model) {
+    model = glm::translate(model, glm::vec3(0, -1, 0));
+    tigl::shader->setModelMatrix(model);
+
 
 }
 
