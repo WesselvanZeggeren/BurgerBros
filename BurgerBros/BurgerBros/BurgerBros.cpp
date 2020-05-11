@@ -1,53 +1,130 @@
-// Laden en tonen van een afbeelding
-// uitleg: http://docs.opencv.org/doc/tutorials/introduction/display_image/display_image.html
-// Jan Oostindie, dd 22-1-2015
-
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv/cv.h>
-#include <iostream>
-#include <string>
-#include <opencv2/opencv.hpp>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "tigl.h"
+#include <glm/gtc/matrix_transform.hpp>
+using tigl::Vertex;
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
 #pragma comment(lib, "opengl32.lib")
 
-using namespace cv;
-using namespace std;
+GLFWwindow* window;
 
-int main(int argc, char** argv)
+void init();
+void update();
+void draw();
+
+int main(void)
 {
-	// Controle of er een argument aan het programma is meegegeven.
-	if (argc != 2)
-	{
-		cout << " Usage: display_image ImageToLoadAndDisplay" << endl;
-		return -1;
-	}
+    if (!glfwInit())
+        throw "Could not initialize glwf";
+    window = glfwCreateWindow(1400, 800, "Hello World", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        throw "Could not initialize glwf";
+    }
+    glfwMakeContextCurrent(window);
 
-	// Mat is een class voor objecten waarin een afbeelding kan worden opgeslagen.
-	Mat image;
+    tigl::init();
 
-	// Lees de afbeelding in en sla deze op in image. 
-	// De filenaam is het eerste argument dat meegegeven is bij aanroep van het programma.
-	image = imread(argv[1], CV_LOAD_IMAGE_COLOR);
+    init();
 
-	// Controleer of alles goed is gegaan
-	if (!image.data)
-	{
-		cout << "Could not open or find the image" << std::endl;
-		return -1;
-	}
+    while (!glfwWindowShouldClose(window))
+    {
+        update();
+        draw();
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 
-	// Laat de afbeelding zien in een apart window
-	namedWindow("Display window", WINDOW_AUTOSIZE);
-	imshow("Display window", image);
+    glfwTerminate();
 
-	// Wacht op een muiskklik in het window van de afbeelding
-	waitKey(0);
+    return 0;
+}
 
-	// Ruim alle aangemaakte windows weer op.
-	destroyAllWindows();
+void init()
+{
 
-	return 0;
+    glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+        {
+            if (key == GLFW_KEY_ESCAPE)
+                glfwSetWindowShouldClose(window, true);
+        });
+
+    glEnable(GL_DEPTH_TEST);
+}
+
+float angle = 0.0f;
+
+void update()
+{
+
+    angle += 0.0005f;
+}
+
+void draw()
+{
+
+    int width, heigth;
+    glfwGetWindowSize(window, &width, &heigth);
+
+    glViewport(0, 0, width, heigth);
+    glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glm::mat4 projection = glm::perspective(45.0f, (width / (float)heigth), .1f, 100.0f);
+    glm::mat4 view = glm::lookAt(glm::vec3(0, 3.5, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+
+    tigl::shader->setProjectionMatrix(projection);
+    tigl::shader->setViewMatrix(view);
+    tigl::shader->enableColor(true);
+
+    for (int x = -1; x <= 1; x += 1) {
+        for (int z = -10; z <= 0; z += 1) {
+
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, glm::vec3(x * 3, 0, z * 3));
+
+            if (x == -1 && z == 0) model = glm::rotate(model, angle, glm::vec3(1, 0, 0));
+            if (x == 0 && z == 0) model = glm::rotate(model, angle, glm::vec3(0, 1, 0));
+            if (x == 1 && z == 0) model = glm::rotate(model, angle, glm::vec3(0, 0, 1));
+
+            tigl::shader->setModelMatrix(model);
+
+            tigl::begin(GL_QUADS);
+
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, 1), glm::vec4(1, 0, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, -1, 1), glm::vec4(1, 0, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, 1, 1), glm::vec4(1, 0, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, 1), glm::vec4(1, 0, 0, 1)));
+
+            tigl::addVertex(Vertex::PC(glm::vec3(1, 1, 1), glm::vec4(0, 1, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, 1, -1), glm::vec4(0, 1, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, -1, -1), glm::vec4(0, 1, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, -1, 1), glm::vec4(0, 1, 0, 1)));
+
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, 1), glm::vec4(0, 0, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, -1), glm::vec4(0, 0, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, -1), glm::vec4(0, 0, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, 1), glm::vec4(0, 0, 1, 1)));
+
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, -1), glm::vec4(1, 0, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, -1, -1), glm::vec4(1, 0, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, 1, -1), glm::vec4(1, 0, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, -1), glm::vec4(1, 0, 1, 1)));
+
+            tigl::addVertex(Vertex::PC(glm::vec3(1, 1, 1), glm::vec4(1, 1, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, 1), glm::vec4(1, 1, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, -1), glm::vec4(1, 1, 0, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, 1, -1), glm::vec4(1, 1, 0, 1)));
+
+            tigl::addVertex(Vertex::PC(glm::vec3(1, -1, 1), glm::vec4(0, 1, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, 1), glm::vec4(0, 1, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, -1), glm::vec4(0, 1, 1, 1)));
+            tigl::addVertex(Vertex::PC(glm::vec3(1, -1, -1), glm::vec4(0, 1, 1, 1)));
+
+            tigl::end();
+        }
+    }
 }
