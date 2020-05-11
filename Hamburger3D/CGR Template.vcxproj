@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BunCrownModelComponent.cpp" />
     <ClCompile Include="CubeModelComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="basicShapeDrawer.cpp" />
@@ -170,9 +171,11 @@
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
+    <ClCompile Include="VertexShapeMaker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicShapeDrawer.h" />
+    <ClInclude Include="BunCorwnModelComponent.h" />
     <ClInclude Include="BurgerDrawer.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="Component.h" />
@@ -181,6 +184,7 @@
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
+    <ClInclude Include="VertexShapeMaker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

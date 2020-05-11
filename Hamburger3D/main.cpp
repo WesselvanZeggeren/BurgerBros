@@ -60,31 +60,11 @@ void init()
 {
 	glEnable(GL_DEPTH_TEST);
 
-	/*for (int x = -10; x < 10; x += 2) {
-		GameObject* o = new GameObject();
-		o->position = glm::vec3(x, 0, 0);
-		o->rotation.y = x*.25f;
-		o->addComponent(new CubeComponent(1));
-		o->addComponent(new SpinComponent(1));
-		objects.push_back(o);
-	}
-
-
-	movingObject = new GameObject();
-	movingObject->position = glm::vec3(0, 1, 3);
-	movingObject->addComponent(new CubeComponent(1));
-	movingObject->addComponent(new MoveToComponent());
-	movingObject->getComponent<MoveToComponent>()->target = movingObject->position;
-	movingObject->addComponent(new TimerJumper());
-	objects.push_back(movingObject);
-	*/
-
 	GameObject* test = new GameObject();
 	test->position = glm::vec3(0, 0, 0);
 	test->rotation.y = 3 * .25f;
 	test->addComponent(new CubeModelComponent(1));
 	test->addComponent(new SpinComponent(1));
-
 	objects.push_back(test);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)

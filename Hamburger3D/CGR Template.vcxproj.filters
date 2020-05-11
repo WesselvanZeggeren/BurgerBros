@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Drawing Files">
       <UniqueIdentifier>{4881912a-b3c7-478b-ae84-3399b0ea968a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{1b33d0d9-b5cf-4afb-b714-43227a0ea9a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +78,12 @@
     <ClCompile Include="CubeModelComponent.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
+    <ClCompile Include="BunCrownModelComponent.cpp">
+      <Filter>Components\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShapeMaker.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicShapeDrawer.h">
@@ -103,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="CubeModelComponent.h">
       <Filter>Header Files\Component\Model\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="BunCorwnModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShapeMaker.h">
+      <Filter>Source Files\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

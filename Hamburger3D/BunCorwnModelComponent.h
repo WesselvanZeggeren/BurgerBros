@@ -6,12 +6,12 @@ using tigl::Vertex;
 
 #include <vector>
 
-class CubeModelComponent : public ModelComponent
+class BunVrownModelComponent : public ModelComponent
 {
 	std::vector<Vertex> verts;
 public:
-	CubeModelComponent(float size);
-	~CubeModelComponent();
+	BunVrownModelComponent();
+	~BunVrownModelComponent();
 
 
 	virtual void draw() override;
