@@ -120,6 +120,12 @@
     <ClCompile Include="LetaceModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
+    <ClCompile Include="Burger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BurgerIngredient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicShapeDrawer.h">

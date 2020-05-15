@@ -163,6 +163,8 @@
     <ClCompile Include="BaconModelComponent.cpp" />
     <ClCompile Include="BunCrownModelComponent.cpp" />
     <ClCompile Include="BunHeelModelComponent.cpp" />
+    <ClCompile Include="Burger.cpp" />
+    <ClCompile Include="BurgerIngredient.cpp" />
     <ClCompile Include="CheeseModelComponent.cpp" />
     <ClCompile Include="CubeModelComponent.cpp" />
     <ClCompile Include="CucumberModelComponent.cpp" />

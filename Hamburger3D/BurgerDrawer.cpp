@@ -7,7 +7,7 @@
 #include "color.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-
+/*
 Color bread = { 198.0, 137.0, 88.0, 1.0 };
 
 Color chedar = {255.0, 166.0, 0.0, 1.0 };
@@ -71,14 +71,14 @@ void bdm::cheese(glm::mat4 model, int type) {
     tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0, -1, 0)));
     if (type == 0) {
         shape::drawRect(2.1, 0.1, 2.1, chedar.getVec4());
-    } 
+    }
     else if(type == 1)
     {
         shape::drawRect(2.1, 0.1, 2.1, emmet.getVec4());
     }
     else if(type == 2)
     {
-        shape::drawRect(2.1, 0.1, 2.1, mat_chedar.getVec4());
+        shape::drawRect(2.1, 0.1, 2.1,mat_chedar.getVec4());
     }
 }
 void bdm::letace(glm::mat4 model) {
@@ -134,7 +134,7 @@ void bdm::bacon(glm::mat4 model)
         {
             shape::drawRect(2.5, 0.05, 0.125, bacon_light.getVec4());
         }
-        
+
     }
     model = glm::translate(model, glm::vec3(0, 0, -0.5));
     model = glm::rotate(model, 90.0f, glm::vec3(0, 1, 0));
@@ -164,3 +164,7 @@ void bdm::egg(glm::mat4 model)
     tigl::shader->setModelMatrix(glm::rotate(glm::translate(model, glm::vec3(0.3, 0.2, 0.3)), glm::radians(25.0f), glm::vec3(0, 1, 0)));
     shape::drawRect(0.8, 0.2, 0.8, egg_yelow.getVec4());
 }
+
+
+
+*/

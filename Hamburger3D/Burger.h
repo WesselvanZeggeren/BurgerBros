@@ -14,7 +14,7 @@
 #include "TomatoModelComponent.h"
 #include "UnionModelComponent.h"
 
-class Burger {
+class Burger{
 private:
 
 	std::list<GameObject*> ingredients;
@@ -24,5 +24,11 @@ public:
 	~Burger();
 
 
+	void addIngriedient(BurgerIngredient* ingredient);
+	void clearBurger();
+	double getBurgerModelHeight();
+
+	void update(float elapsedTime);
+	void draw();
 
 };

@@ -1,9 +1,13 @@
 #include "BunCorwnModelComponent.h"
-#include "ShapeMaker.h"
+
+
+
 
 BunCrownModelComponent::BunCrownModelComponent()
 {
-    model.setColor(bcl::bread);
+    Color bread = { 198.0, 137.0, 88.0, 1.0 };
+
+    model.setColor(bread);
     model.moveBrush(0, (0.75 / 2.0), 0);
     model.drawRectangle(2, 0.75, 2);
     model.moveBrush(0, 0.6, 0);
@@ -23,5 +27,5 @@ void BunCrownModelComponent::draw()
 
 double BunCrownModelComponent::getIngredientHeight()
 {
-    return 0.0;
+    return 1.225;
 }

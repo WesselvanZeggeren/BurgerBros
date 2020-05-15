@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ModelComponent.h"
+#include "BurgerIngredient.h"
 #include "tigl.h"
 using tigl::Vertex;
 
@@ -14,5 +14,5 @@ public:
 
 
 	virtual void draw() override;
-	virtual double getIngredientHeight() override;
+	double getIngredientHeight() override;
 };

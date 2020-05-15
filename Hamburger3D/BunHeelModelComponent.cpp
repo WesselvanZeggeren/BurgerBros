@@ -1,9 +1,13 @@
 #include "BunHeelModelComponent.h"
 
+
+
+
 BunHeelModelComponent::BunHeelModelComponent()
 {
+	Color bread = { 198.0, 137.0, 88.0, 1.0 };
 	model.moveBrush(0, 0.25, 0);
-	model.setColor({ 198.0, 137.0, 88.0, 1.0 });
+	model.setColor(bread);
 	model.drawRectangle(2, 0.5, 2);
 
 }
@@ -19,5 +23,5 @@ void BunHeelModelComponent::draw()
 
 double BunHeelModelComponent::getIngredientHeight()
 {
-	return 0.0;
+	return 0.5;
 }

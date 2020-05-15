@@ -5,6 +5,7 @@
 using tigl::Vertex;
 
 #include "GameObject.h"
+#include "Burger.h"
 //#include "PlayerComponent.h"
 #include "CubeModelComponent.h"
 //#include "MoveToComponent.h"
@@ -56,6 +57,11 @@ int main(void)
 
 std::list<GameObject*> objects;
 double lastFrameTime = 0;
+Burger burger;
+
+float x = 0, y = 0, z = 0;
+bool doWireFrame = false;
+int wCooldown = 0;
 
 void init()
 {
@@ -66,13 +72,45 @@ void init()
 	test->rotation.y = 3 * .25f;
 	//test->addComponent(new CubeModelComponent(1));
 	test->addComponent(new SpinComponent(1));
-    test->addComponent(new BunCrownModelComponent());
+    //test->addComponent(new BunCrownModelComponent());
 	objects.push_back(test);
+
+    burger = Burger();
+    burger.addIngriedient(new BunCrownModelComponent());
+    burger.addIngriedient(new BunCrownModelComponent());
+    burger.addIngriedient(new BunHeelModelComponent());
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		if (key == GLFW_KEY_ESCAPE)
 			glfwSetWindowShouldClose(window, true);
+        if (key == GLFW_KEY_ESCAPE)
+            glfwSetWindowShouldClose(window, true);
+        if (key == GLFW_KEY_LEFT) {
+            x -= 0.1;
+        }
+        if (key == GLFW_KEY_RIGHT) {
+            x += 0.1;
+        }
+        if (key == GLFW_KEY_UP) {
+            y += 0.1;
+        }
+        if (key == GLFW_KEY_DOWN) {
+            y -= 0.1;
+        }
+        if (key == GLFW_KEY_W && wCooldown <= 0) {
+            if (!doWireFrame) {
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                doWireFrame = true;
+            }
+            else
+            {
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+                doWireFrame = false;
+            }
+            wCooldown = 500;
+        }
+
 	});
 }
 
@@ -86,6 +124,9 @@ void update()
 	for (auto& o : objects)
 		o->update(deltaTime);
 
+    burger.update(deltaTime);
+    wCooldown--;
+
 }
 
 void draw()
@@ -96,10 +137,11 @@ void draw()
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
+    glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
 
 	tigl::shader->setProjectionMatrix(projection);
-	tigl::shader->setViewMatrix(glm::lookAt(glm::vec3(0, 10, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)));
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
+    tigl::shader->setViewMatrix(view);
 
 	tigl::shader->enableColor(true);
 	
@@ -114,6 +156,8 @@ void draw()
 	*/
 	for (auto& o : objects)
 		o->draw();
+
+    burger.draw();
 }
 
 

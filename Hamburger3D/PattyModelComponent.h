@@ -13,5 +13,5 @@ public:
 	~PattyModelComponent();
 
 	virtual void draw() override;
-	virtual double getIngredientHeight() override;
+	double getIngredientHeight() override;
 };
