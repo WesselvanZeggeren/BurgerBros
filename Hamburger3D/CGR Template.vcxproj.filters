@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Util">
       <UniqueIdentifier>{1b33d0d9-b5cf-4afb-b714-43227a0ea9a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Model\Burger">
+      <UniqueIdentifier>{ad8632c1-6e95-47c6-aed9-5e3976efb02a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,14 +78,47 @@
     <ClCompile Include="Component.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="CubeModelComponent.cpp">
-      <Filter>Components\Model</Filter>
+    <ClCompile Include="ShapeMaker.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="LetaceModelComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaconModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
     </ClCompile>
     <ClCompile Include="BunCrownModelComponent.cpp">
-      <Filter>Components\Model</Filter>
+      <Filter>Components\Model\Burger</Filter>
     </ClCompile>
-    <ClCompile Include="VertexShapeMaker.cpp">
-      <Filter>Source Files\Util</Filter>
+    <ClCompile Include="BunHeelModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="CheeseModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="CucumberModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="EggModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="PattyModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="PickleModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="SouceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="TomatoModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="UnionModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeModelComponent.cpp">
+      <Filter>Components\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,11 +149,44 @@
     <ClInclude Include="CubeModelComponent.h">
       <Filter>Header Files\Component\Model\Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="ShapeMaker.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="PattyModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="LetaceModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="CheeseModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="SouceModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="TomatoModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="UnionModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="EggModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="CucumberModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="PickleModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="BunHeelModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
     <ClInclude Include="BunCorwnModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
-    <ClInclude Include="VertexShapeMaker.h">
-      <Filter>Source Files\Util</Filter>
+    <ClInclude Include="BaconModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

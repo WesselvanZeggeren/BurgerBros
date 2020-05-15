@@ -160,31 +160,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaconModelComponent.cpp" />
     <ClCompile Include="BunCrownModelComponent.cpp" />
+    <ClCompile Include="BunHeelModelComponent.cpp" />
+    <ClCompile Include="CheeseModelComponent.cpp" />
     <ClCompile Include="CubeModelComponent.cpp" />
+    <ClCompile Include="CucumberModelComponent.cpp" />
+    <ClCompile Include="EggModelComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="basicShapeDrawer.cpp" />
     <ClCompile Include="BurgerDrawer.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="LetaceModelComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelComponent.cpp" />
+    <ClCompile Include="PattyModelComponent.cpp" />
+    <ClCompile Include="PickleModelComponent.cpp" />
+    <ClCompile Include="SouceModelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
-    <ClCompile Include="VertexShapeMaker.cpp" />
+    <ClCompile Include="ShapeMaker.cpp" />
+    <ClCompile Include="TomatoModelComponent.cpp" />
+    <ClCompile Include="UnionModelComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaconModelComponent.h" />
     <ClInclude Include="basicShapeDrawer.h" />
     <ClInclude Include="BunCorwnModelComponent.h" />
+    <ClInclude Include="BunHeelModelComponent.h" />
     <ClInclude Include="BurgerDrawer.h" />
+    <ClInclude Include="CheeseModelComponent.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="CubeModelComponent.h" />
+    <ClInclude Include="CucumberModelComponent.h" />
+    <ClInclude Include="EggModelComponent.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="LetaceModelComponent.h" />
     <ClInclude Include="ModelComponent.h" />
+    <ClInclude Include="PattyModelComponent.h" />
+    <ClInclude Include="PickleModelComponent.h" />
+    <ClInclude Include="SouceModelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
-    <ClInclude Include="VertexShapeMaker.h" />
+    <ClInclude Include="ShapeMaker.h" />
+    <ClInclude Include="TomatoModelComponent.h" />
+    <ClInclude Include="UnionModelComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

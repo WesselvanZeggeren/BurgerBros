@@ -9,6 +9,7 @@ using tigl::Vertex;
 #include "CubeModelComponent.h"
 //#include "MoveToComponent.h"
 #include "SpinComponent.h"
+#include "BunCorwnModelComponent.h"
 //#include "TimerJumper.h"
 //#include "EnemyComponent.h"
 
@@ -63,8 +64,9 @@ void init()
 	GameObject* test = new GameObject();
 	test->position = glm::vec3(0, 0, 0);
 	test->rotation.y = 3 * .25f;
-	test->addComponent(new CubeModelComponent(1));
+	//test->addComponent(new CubeModelComponent(1));
 	test->addComponent(new SpinComponent(1));
+    test->addComponent(new BunCrownModelComponent());
 	objects.push_back(test);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)

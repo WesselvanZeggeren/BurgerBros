@@ -1,10 +1,27 @@
 #pragma once
 
-using tigl::Vertex;
+ #include "tigl.h"
+#include "color.h"
 
-class shapeMaker {
+using tigl::Vertex;
+using namespace std;
+
+
+class ShapeMaker {
 private:
-	std::vector<Vertex>
+	std::vector<Vertex> vertacies;
+	glm::vec3 brushPos;
+	glm::vec4 activeColor;
+
 public:
-	std
+	ShapeMaker();
+	~ShapeMaker();
+	void drawRectangle(double x, double y, double z);
+	void setColor(Color color);
+	void moveBrush(double x, double y, double z);
+	void clearPosition();
+	void clearShapes();
+	void clearColor();
+	std::vector<Vertex> getVertacies();
+			
 };

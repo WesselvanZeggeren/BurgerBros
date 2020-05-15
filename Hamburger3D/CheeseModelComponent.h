@@ -6,12 +6,11 @@ using tigl::Vertex;
 
 #include <vector>
 
-class BunCrownModelComponent : public ModelComponent
+class CheeseModelComponent : public ModelComponent
 {
 public:
-	BunCrownModelComponent();
-	~BunCrownModelComponent();
-
+	CheeseModelComponent();
+	~CheeseModelComponent();
 
 	virtual void draw() override;
 };

@@ -1,23 +1,24 @@
 #include "BunCorwnModelComponent.h"
+#include "ShapeMaker.h"
 
-BunVrownModelComponent::BunVrownModelComponent()
+Color bunColor = { 198.0, 137.0, 88.0, 1.0 };
+
+BunCrownModelComponent::BunCrownModelComponent()
+{
+    model.setColor(bunColor);
+    model.moveBrush(0, (0.75 / 2.0), 0);
+    model.drawRectangle(2, 0.75, 2);
+    model.moveBrush(0, 0.6, 0);
+    model.drawRectangle(1.5, 0.5, 1.5);
+}
+
+
+BunCrownModelComponent::~BunCrownModelComponent()
 {
 
 }
 
-
-BunVrownModelComponent::~BunVrownModelComponent()
+void BunCrownModelComponent::draw()
 {
-    verts.push_back(Vertex::PC(position, color));
-
-
-    tigl::shader->setModelMatrix(model);
-    shape::drawRect(2, 0.75, 2, bread.getVec4());
-    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0, 0.6, 0)));
-    shape::drawRect(1.5, 0.5, 1.5, bread.getVec4());
-}
-
-void BunVrownModelComponent::draw()
-{
-	tigl::drawVertices(GL_QUADS, verts);
+	tigl::drawVertices(GL_QUADS, model.getVertacies());
 }
