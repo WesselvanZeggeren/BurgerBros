@@ -98,6 +98,7 @@ void draw()
 
     tigl::shader->enableTexture(true);
     tigl::shader->enableColor(true);
+    tigl::shader->enableAlphaTest(true);
 
     tigl::begin(GL_QUADS);
     tigl::addVertex(Vertex::PT(glm::vec3(-1, -1, 0), glm::vec2(0, 0)));
@@ -105,6 +106,8 @@ void draw()
     tigl::addVertex(Vertex::PT(glm::vec3(1, 1, 0), glm::vec2(1, -1)));
     tigl::addVertex(Vertex::PT(glm::vec3(-1, 1, 0), glm::vec2(0, -1)));
     tigl::end();
+
+    glDisable(GL_TEXTURE_2D);
 
 }
 
