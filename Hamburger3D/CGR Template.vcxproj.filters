@@ -111,13 +111,13 @@
     <ClCompile Include="CubeModelComponent.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
-    <ClCompile Include="LetaceModelComponent.cpp">
-      <Filter>Components\Model\Burger</Filter>
-    </ClCompile>
     <ClCompile Include="OnionModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
     <ClCompile Include="SauceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="LettuceModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
   </ItemGroup>
@@ -150,9 +150,6 @@
       <Filter>Source Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="PattyModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
-    <ClInclude Include="LetaceModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
     <ClInclude Include="CheeseModelComponent.h">
@@ -192,6 +189,9 @@
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
     <ClInclude Include="SauceModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="LettuceModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
   </ItemGroup>
