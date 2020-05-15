@@ -12,7 +12,7 @@ void LettuceModelComponent::draw()
 {
 }
 
-double LetaceModelComponent::getIngredientHeight()
+double LettuceModelComponent::getIngredientHeight()
 {
 	return 0.0;
 }

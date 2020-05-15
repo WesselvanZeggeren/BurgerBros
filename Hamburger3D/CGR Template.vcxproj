@@ -205,6 +205,7 @@
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="PattyModelComponent.h" />
     <ClInclude Include="PickleModelComponent.h" />
+    <ClInclude Include="RotateItemComponent.h" />
     <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />

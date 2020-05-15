@@ -76,9 +76,13 @@ void init()
 	objects.push_back(test);
 
     burger = Burger();
+    burger.addIngriedient(new SauceModelComponent(2));
+    burger.addIngriedient(new PattyModelComponent());
+    burger.addIngriedient(new CheeseModelComponent(0));
+    burger.addIngriedient(new EggModelComponent());
+    burger.addIngriedient(new BaconModelComponent());
     burger.addIngriedient(new BunCrownModelComponent());
-    burger.addIngriedient(new BunCrownModelComponent());
-    burger.addIngriedient(new BunHeelModelComponent());
+    
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{

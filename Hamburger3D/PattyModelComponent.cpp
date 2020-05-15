@@ -1,13 +1,14 @@
 #include "PattyModelComponent.h"
 
-Color patty = { 163.0,56.0,21.0, 1.0 };
+
 PattyModelComponent::PattyModelComponent()
 {
-    model.setColor(pattyColor);
+    Color patty = { 163.0,56.0,21.0, 1.0 };
+    model.setColor(patty);
     model.moveBrush(0, (0.5 / 2.0), 0);
     model.drawRectangle(2.3, 0.5, 1.8);
     //model.rotate(model, glm::radians(90.0f), glm::vec3(0, 1, 0));
-    model.drawRectangle(2.3, 0.5, 1.8);
+    model.drawRectangle(1.8, 0.5, 2.3);
 
     //model = glm::translate(model, glm::vec3(0, -1.5, 0));
     //tigl::shader->setModelMatrix(model);
@@ -28,5 +29,5 @@ void PattyModelComponent::draw()
 
 double PattyModelComponent::getIngredientHeight()
 {
-    return 0.0;
+    return 0.5;
 }

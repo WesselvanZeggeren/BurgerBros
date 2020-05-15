@@ -200,5 +200,8 @@
     <ClInclude Include="LettuceModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
+    <ClInclude Include="RotateItemComponent.h">
+      <Filter>Header Files\Component\Movement</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

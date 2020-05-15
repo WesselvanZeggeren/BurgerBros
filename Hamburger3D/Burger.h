@@ -7,12 +7,12 @@
 #include "CheeseModelComponent.h"
 #include "CubeModelComponent.h"
 #include "EggModelComponent.h"
-#include "LetaceModelComponent.h"
+#include "LettuceModelComponent.h"
 #include "PattyModelComponent.h"
 #include "PickleModelComponent.h"
-#include "SouceModelComponent.h"
+#include "SauceModelComponent.h"
 #include "TomatoModelComponent.h"
-#include "UnionModelComponent.h"
+#include "LettuceModelComponent.h"
 
 class Burger{
 private:

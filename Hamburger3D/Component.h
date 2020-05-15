@@ -4,14 +4,16 @@ class GameObject;
 
 class Component
 {
-protected:
+public:
 	GameObject* gameObject;
 public:
+
+
 	Component();
 	~Component();
 
 	virtual void update(float elapsedTime) {};
 
-	inline void setGameObject(GameObject* gameObject) { this->gameObject = gameObject; }
+	inline void setGameObject(GameObject* gameObject) { this->gameObject = gameObject;}
 };
 
