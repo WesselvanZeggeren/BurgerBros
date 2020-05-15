@@ -10,5 +10,5 @@ public:
 	~ModelComponent();
 	virtual void draw() = 0;
 protected:
-	ShapeMaker model;
+	ModelMaker model;
 };

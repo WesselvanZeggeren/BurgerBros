@@ -1,16 +1,17 @@
 #pragma once
 
-#include "ModelComponent.h"
+#include "BurgerIngredient.h"
 #include "tigl.h"
 using tigl::Vertex;
 
 #include <vector>
 
-class PickleModelComponent : public ModelComponent
+class PickleModelComponent : public BurgerIngradient
 {
 public:
 	PickleModelComponent();
 	~PickleModelComponent();
 
 	virtual void draw() override;
+	virtual double getIngredientHeight() override;
 };

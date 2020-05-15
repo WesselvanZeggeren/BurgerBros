@@ -1,6 +1,6 @@
 #include "CheeseModelComponent.h"
 
-CheeseModelComponent::CheeseModelComponent()
+CheeseModelComponent::CheeseModelComponent(int type)
 {
     tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0, -1, 0)));
     if (type == 0) {
@@ -12,8 +12,10 @@ CheeseModelComponent::CheeseModelComponent()
     }
     else if (type == 2)
     {
-        shape::drawRect(2.1, 0.1, 2.1, mat_chedar.getVec4());
+        model.setColor(bcl::mat_chedar);
     }
+    model.moveBrush(0, 0.05, 0);
+    model.drawRectangle(2.1, 0.1, 2.1);
 }
 
 CheeseModelComponent::~CheeseModelComponent()

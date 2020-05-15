@@ -1,16 +1,17 @@
 #pragma once
 
-#include "ModelComponent.h"
+#include "BurgerIngredient.h"
 #include "tigl.h"
 using tigl::Vertex;
 
 #include <vector>
 
-class SouceModelComponent : public ModelComponent
+class SouceModelComponent : public BurgerIngradient
 {
 public:
 	SouceModelComponent();
 	~SouceModelComponent();
 
 	virtual void draw() override;
+	virtual double getIngredientHeight() override;
 };

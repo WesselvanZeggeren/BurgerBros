@@ -7,15 +7,15 @@ using tigl::Vertex;
 using namespace std;
 
 
-class ShapeMaker {
+class ModelMaker {
 private:
 	std::vector<Vertex> vertacies;
 	glm::vec3 brushPos;
 	glm::vec4 activeColor;
 
 public:
-	ShapeMaker();
-	~ShapeMaker();
+	ModelMaker();
+	~ModelMaker();
 	void drawRectangle(double x, double y, double z);
 	void setColor(Color color);
 	void moveBrush(double x, double y, double z);

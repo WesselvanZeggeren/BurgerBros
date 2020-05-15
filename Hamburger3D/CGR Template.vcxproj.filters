@@ -81,9 +81,6 @@
     <ClCompile Include="ShapeMaker.cpp">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
-    <ClCompile Include="LetaceModelComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaconModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
@@ -120,6 +117,9 @@
     <ClCompile Include="CubeModelComponent.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
+    <ClCompile Include="LetaceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicShapeDrawer.h">
@@ -135,9 +135,6 @@
       <Filter>Header Files\Drawing Files</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
     <ClInclude Include="ModelComponent.h">
@@ -186,6 +183,15 @@
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
     <ClInclude Include="BaconModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Burger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BurgerIngredient.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
   </ItemGroup>

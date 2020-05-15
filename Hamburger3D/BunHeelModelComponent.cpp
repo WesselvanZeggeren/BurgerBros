@@ -16,3 +16,8 @@ void BunHeelModelComponent::draw()
 {
 	tigl::drawVertices(GL_QUADS, model.getVertacies());
 }
+
+double BunHeelModelComponent::getIngredientHeight()
+{
+	return 0.0;
+}

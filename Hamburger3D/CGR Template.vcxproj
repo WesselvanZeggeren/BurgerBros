@@ -189,7 +189,9 @@
     <ClInclude Include="basicShapeDrawer.h" />
     <ClInclude Include="BunCorwnModelComponent.h" />
     <ClInclude Include="BunHeelModelComponent.h" />
+    <ClInclude Include="Burger.h" />
     <ClInclude Include="BurgerDrawer.h" />
+    <ClInclude Include="BurgerIngredient.h" />
     <ClInclude Include="CheeseModelComponent.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="Component.h" />

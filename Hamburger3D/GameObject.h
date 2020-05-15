@@ -4,9 +4,6 @@
 #include <glm/glm.hpp>
 
 
-#include <list>
-#include <glm/glm.hpp>
-
 class Component;
 class ModelComponent;
 
