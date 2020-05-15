@@ -1,13 +1,13 @@
-// Laden en tonen van een afbeelding
-// uitleg: http://docs.opencv.org/doc/tutorials/introduction/display_image/display_image.html
-// Jan Oostindie, dd 22-1-2015
-
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv/cv.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "tigl.h"
 #include <iostream>
-#include <string>
+#include <glm/gtc/matrix_transform.hpp>
+using tigl::Vertex;
+
 #include <opencv2/opencv.hpp>
+#include "opencv2/imgproc/imgproc.hpp" 
+#include "opencv2/highgui/highgui.hpp"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
@@ -16,38 +16,131 @@
 using namespace cv;
 using namespace std;
 
-int main(int argc, char** argv)
+GLFWwindow* window;
+VideoCapture cap(0);
+GLuint textureId = 0;
+Mat image, frame;
+
+void init();
+void update();
+void draw();
+void BindCVMat2GLTexture(cv::Mat& image);
+void getFrame();
+
+
+int main(void)
 {
-	// Controle of er een argument aan het programma is meegegeven.
-	if (argc != 2)
-	{
-		cout << " Usage: display_image ImageToLoadAndDisplay" << endl;
-		return -1;
-	}
+    double width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
+    double height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
 
-	// Mat is een class voor objecten waarin een afbeelding kan worden opgeslagen.
-	Mat image;
+    if (!glfwInit())
+        throw "Could not initialize glwf";
+    window = glfwCreateWindow(width, height, "Hello World", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        throw "Could not initialize glwf";
+    }
+    glfwMakeContextCurrent(window);
 
-	// Lees de afbeelding in en sla deze op in image. 
-	// De filenaam is het eerste argument dat meegegeven is bij aanroep van het programma.
-	image = imread(argv[1], CV_LOAD_IMAGE_COLOR);
 
-	// Controleer of alles goed is gegaan
-	if (!image.data)
-	{
-		cout << "Could not open or find the image" << std::endl;
-		return -1;
-	}
+    tigl::init();
 
-	// Laat de afbeelding zien in een apart window
-	namedWindow("Display window", WINDOW_AUTOSIZE);
-	imshow("Display window", image);
+    init();
 
-	// Wacht op een muiskklik in het window van de afbeelding
-	waitKey(0);
+    while (!glfwWindowShouldClose(window))
+    {
+        update();
+        draw();
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 
-	// Ruim alle aangemaakte windows weer op.
-	destroyAllWindows();
+    glfwTerminate();
 
-	return 0;
+
+    return 0;
+}
+
+
+void init()
+{
+    glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+        {
+            if (key == GLFW_KEY_ESCAPE)
+                glfwSetWindowShouldClose(window, true);
+        });
+
+    if (!cap.isOpened())
+    {
+        cout << "Cannot open the video cam" << endl;
+    } 
+    else
+    {
+        getFrame();
+    }
+}
+
+
+void update()
+{
+    getFrame();
+}
+
+void draw()
+{
+    BindCVMat2GLTexture(frame);
+
+    glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glEnable(GL_DEPTH_TEST);
+
+    tigl::shader->enableTexture(true);
+    tigl::shader->enableColor(true);
+
+    tigl::begin(GL_QUADS);
+    tigl::addVertex(Vertex::PT(glm::vec3(-1, -1, 0), glm::vec2(0, 0)));
+    tigl::addVertex(Vertex::PT(glm::vec3(1, -1, 0), glm::vec2(1, 0)));
+    tigl::addVertex(Vertex::PT(glm::vec3(1, 1, 0), glm::vec2(1, -1)));
+    tigl::addVertex(Vertex::PT(glm::vec3(-1, 1, 0), glm::vec2(0, -1)));
+    tigl::end();
+
+}
+
+void BindCVMat2GLTexture(cv::Mat& image)
+{
+    glGenTextures(1, &textureId);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D,
+        0,
+        GL_RGB,
+        image.cols,
+        image.rows,
+        0,
+        GL_RGB,
+        GL_UNSIGNED_BYTE,
+        image.data);
+}
+
+void getFrame()
+{
+    bool bSuccess = cap.read(image);
+
+    if (!bSuccess)
+    {
+        cout << "Cannot read a frame from video stream" << endl;
+    }
+    else
+    {
+        flip(image, image, 3);
+        cvtColor(image, frame, CV_BGR2RGB);
+    }
+
+
+
 }
