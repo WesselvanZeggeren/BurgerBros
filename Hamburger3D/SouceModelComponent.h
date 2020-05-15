@@ -9,7 +9,7 @@ using tigl::Vertex;
 class SouceModelComponent : public BurgerIngredient
 {
 public:
-	SouceModelComponent();
+	SouceModelComponent(int);
 	~SouceModelComponent();
 
 	virtual void draw() override;
