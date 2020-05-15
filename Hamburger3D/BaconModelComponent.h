@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ModelComponent.h"
+#include "BurgerIngredient.h"
 #include "tigl.h"
 using tigl::Vertex;
 
