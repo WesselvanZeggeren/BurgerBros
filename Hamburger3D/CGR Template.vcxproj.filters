@@ -105,19 +105,19 @@
     <ClCompile Include="PickleModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
-    <ClCompile Include="SouceModelComponent.cpp">
-      <Filter>Components\Model\Burger</Filter>
-    </ClCompile>
     <ClCompile Include="TomatoModelComponent.cpp">
-      <Filter>Components\Model\Burger</Filter>
-    </ClCompile>
-    <ClCompile Include="UnionModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
     <ClCompile Include="CubeModelComponent.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
     <ClCompile Include="LetaceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="OnionModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="SauceModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
   </ItemGroup>

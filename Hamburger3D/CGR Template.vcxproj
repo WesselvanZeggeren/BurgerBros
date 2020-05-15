@@ -177,12 +177,12 @@
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="PattyModelComponent.cpp" />
     <ClCompile Include="PickleModelComponent.cpp" />
-    <ClCompile Include="SouceModelComponent.cpp" />
+    <ClCompile Include="SauceModelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
     <ClCompile Include="ShapeMaker.cpp" />
     <ClCompile Include="TomatoModelComponent.cpp" />
-    <ClCompile Include="UnionModelComponent.cpp" />
+    <ClCompile Include="OnionModelComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaconModelComponent.h" />
