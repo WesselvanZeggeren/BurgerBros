@@ -1,18 +1,27 @@
 #include "CheeseModelComponent.h"
 
-
-
-
-
 CheeseModelComponent::CheeseModelComponent(int type)
 {
     Color chedar = { 255.0, 166.0, 0.0, 1.0 };
     Color emmet = { 255.0, 239.0, 193.0, 1.0 };
     Color mat_chedar = { 247.0 ,213.0 ,143.0, 1.0 };
-    /*
-        tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0, -1, 0)));
+    switch (type) {
+    case 0:
+        model.setColor(cheddarColor);
+        break;
+    case 1:
+        model.setColor(emmetColor);       
+        break;
+    case 2:
+        model.setColor(matCheddarColor);
+        break;
+    }
+
+    model.drawRectangle(2.1, 0.1, 2.1);
+
+    /**tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0, -1, 0)));
     if (type == 0) {
-        shape::drawRect(2.1, 0.1, 2.1, chedar.getVec4());
+        shape::drawRect(2.1, 0.1, 2.1, cheddar.getVec4());
     }
     else if (type == 1)
     {

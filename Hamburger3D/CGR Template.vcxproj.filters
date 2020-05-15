@@ -105,19 +105,19 @@
     <ClCompile Include="PickleModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
-    <ClCompile Include="SouceModelComponent.cpp">
-      <Filter>Components\Model\Burger</Filter>
-    </ClCompile>
     <ClCompile Include="TomatoModelComponent.cpp">
-      <Filter>Components\Model\Burger</Filter>
-    </ClCompile>
-    <ClCompile Include="UnionModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
     <ClCompile Include="CubeModelComponent.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
-    <ClCompile Include="LetaceModelComponent.cpp">
+    <ClCompile Include="OnionModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="SauceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="LettuceModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
     <ClCompile Include="Burger.cpp">
@@ -158,19 +158,10 @@
     <ClInclude Include="PattyModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
-    <ClInclude Include="LetaceModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
     <ClInclude Include="CheeseModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
-    <ClInclude Include="SouceModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
     <ClInclude Include="TomatoModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
-    <ClInclude Include="UnionModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
     <ClInclude Include="EggModelComponent.h">
@@ -198,6 +189,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BurgerIngredient.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="OnionModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="SauceModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="LettuceModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
   </ItemGroup>

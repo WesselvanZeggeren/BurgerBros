@@ -174,17 +174,17 @@
     <ClCompile Include="BurgerDrawer.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="LetaceModelComponent.cpp" />
+    <ClCompile Include="LettuceModelComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="PattyModelComponent.cpp" />
     <ClCompile Include="PickleModelComponent.cpp" />
-    <ClCompile Include="SouceModelComponent.cpp" />
+    <ClCompile Include="SauceModelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
     <ClCompile Include="ShapeMaker.cpp" />
     <ClCompile Include="TomatoModelComponent.cpp" />
-    <ClCompile Include="UnionModelComponent.cpp" />
+    <ClCompile Include="OnionModelComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaconModelComponent.h" />
@@ -201,16 +201,16 @@
     <ClInclude Include="CucumberModelComponent.h" />
     <ClInclude Include="EggModelComponent.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="LetaceModelComponent.h" />
+    <ClInclude Include="LettuceModelComponent.h" />
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="PattyModelComponent.h" />
     <ClInclude Include="PickleModelComponent.h" />
-    <ClInclude Include="SouceModelComponent.h" />
+    <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
     <ClInclude Include="ShapeMaker.h" />
     <ClInclude Include="TomatoModelComponent.h" />
-    <ClInclude Include="UnionModelComponent.h" />
+    <ClInclude Include="OnionModelComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
