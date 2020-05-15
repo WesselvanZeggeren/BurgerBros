@@ -6,11 +6,11 @@ using tigl::Vertex;
 
 #include <vector>
 
-class SouceModelComponent : public BurgerIngredient
+class SauceModelComponent : public BurgerIngredient
 {
 public:
-	SouceModelComponent(int);
-	~SouceModelComponent();
+	SauceModelComponent(int);
+	~SauceModelComponent();
 
 	virtual void draw() override;
 	virtual double getIngredientHeight() override;

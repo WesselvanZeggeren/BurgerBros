@@ -158,13 +158,7 @@
     <ClInclude Include="CheeseModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
-    <ClInclude Include="SouceModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
     <ClInclude Include="TomatoModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
-    <ClInclude Include="UnionModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
     <ClInclude Include="EggModelComponent.h">
@@ -192,6 +186,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BurgerIngredient.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="OnionModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="SauceModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,11 @@
-#include "SouceModelComponent.h"
+#include "SauceModelComponent.h"
 
 
 Color ketchup = { 204.0,0,0, 1.0 };
 Color mustard = { 255, 219, 88, 1.0 };
 Color mayo = { 255,255,238 ,1 };
 
-SouceModelComponent::SouceModelComponent(int type)
+SauceModelComponent::SauceModelComponent(int type)
 {
     model.moveBrush(0, 1, 0);
 
@@ -59,11 +59,11 @@ SouceModelComponent::SouceModelComponent(int type)
     */
 }
 
-SouceModelComponent::~SouceModelComponent()
+SauceModelComponent::~SauceModelComponent()
 {
 }
 
-void SouceModelComponent::draw()
+void SauceModelComponent::draw()
 {
 	tigl::drawVertices(GL_QUADS, model.getVertacies());
 }

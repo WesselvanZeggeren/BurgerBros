@@ -203,12 +203,12 @@
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="PattyModelComponent.h" />
     <ClInclude Include="PickleModelComponent.h" />
-    <ClInclude Include="SouceModelComponent.h" />
+    <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
     <ClInclude Include="ShapeMaker.h" />
     <ClInclude Include="TomatoModelComponent.h" />
-    <ClInclude Include="UnionModelComponent.h" />
+    <ClInclude Include="OnionModelComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

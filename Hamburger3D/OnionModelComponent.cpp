@@ -1,14 +1,14 @@
-#include "UnionModelComponent.h"
+#include "OnionModelComponent.h"
 
-UnionModelComponent::UnionModelComponent()
+OnionModelComponent::OnionModelComponent()
 {
 }
 
-UnionModelComponent::~UnionModelComponent()
+OnionModelComponent::~OnionModelComponent()
 {
 }
 
-void UnionModelComponent::draw()
+void OnionModelComponent::draw()
 {
 	tigl::drawVertices(GL_QUADS, model.getVertacies());
 }
