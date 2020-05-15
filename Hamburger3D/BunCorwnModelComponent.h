@@ -6,7 +6,7 @@ using tigl::Vertex;
 
 #include <vector>
 
-class BunCrownModelComponent : public BurgerIngradient
+class BunCrownModelComponent : public BurgerIngredient
 {
 public:
 	BunCrownModelComponent();

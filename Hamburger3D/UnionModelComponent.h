@@ -6,7 +6,7 @@ using tigl::Vertex;
 
 #include <vector>
 
-class UnionModelComponent : public BurgerIngradient
+class UnionModelComponent : public BurgerIngredient
 {
 public:
 	UnionModelComponent();

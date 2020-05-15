@@ -6,7 +6,7 @@ using tigl::Vertex;
 
 #include <vector>
 
-class EggModelComponent : public BurgerIngradient
+class EggModelComponent : public BurgerIngredient
 {
 public:
 	EggModelComponent();

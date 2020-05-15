@@ -6,7 +6,7 @@ using tigl::Vertex;
 
 #include <vector>
 
-class SouceModelComponent : public BurgerIngradient
+class SouceModelComponent : public BurgerIngredient
 {
 public:
 	SouceModelComponent();

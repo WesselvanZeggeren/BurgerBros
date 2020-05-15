@@ -6,7 +6,7 @@ using tigl::Vertex;
 
 #include <vector>
 
-class LetaceModelComponent : public BurgerIngradient
+class LetaceModelComponent : public BurgerIngredient
 {
 public:
 	LetaceModelComponent();

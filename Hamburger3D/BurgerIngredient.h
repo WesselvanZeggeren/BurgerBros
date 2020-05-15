@@ -2,7 +2,7 @@
 
 #include "ModelComponent.h"
 
-class BurgerIngradient : public ModelComponent {
+class BurgerIngredient : public ModelComponent {
 public:
 	virtual double getIngredientHeight();
 };

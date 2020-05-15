@@ -6,7 +6,7 @@ using tigl::Vertex;
 
 #include <vector>
 
-class PickleModelComponent : public BurgerIngradient
+class PickleModelComponent : public BurgerIngredient
 {
 public:
 	PickleModelComponent();
