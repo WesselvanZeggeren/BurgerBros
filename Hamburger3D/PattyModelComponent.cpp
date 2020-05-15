@@ -1,6 +1,6 @@
 #include "PattyModelComponent.h"
 
-   Color patty = { 163.0,56.0,21.0, 1.0 };
+Color pattyColor = { 163.0,56.0,21.0, 1.0 };
 
 PattyModelComponent::PattyModelComponent()
 {
