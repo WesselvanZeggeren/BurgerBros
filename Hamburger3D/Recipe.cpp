@@ -10,7 +10,7 @@ Recipe::~Recipe()
 
 }
 
-void Recipe::generateRecipe(int maxAmountIngredients = 10)
+void Recipe::generateRecipe(int maxAmountIngredients)
 {
 
 	ingredients.clear();

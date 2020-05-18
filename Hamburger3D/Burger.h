@@ -14,7 +14,9 @@
 #include "TomatoModelComponent.h"
 #include "LettuceModelComponent.h"
 
-class Burger{
+class Burger 
+{
+
 private:
 
 	std::list<GameObject*> ingredients;
@@ -30,5 +32,4 @@ public:
 
 	void update(float elapsedTime);
 	void draw();
-
 };

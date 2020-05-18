@@ -126,6 +126,9 @@
     <ClCompile Include="BurgerIngredient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicShapeDrawer.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="RotateItemComponent.h">
       <Filter>Header Files\Component\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

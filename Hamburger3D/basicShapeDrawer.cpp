@@ -3,7 +3,9 @@
 using tigl::Vertex;
 
 
-void shape::drawTriangle() {
+void shape::drawTriangle() 
+{
+
     tigl::begin(GL_TRIANGLES);
     tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, -1), glm::vec4(0, 0, 0, 1)));
     tigl::addVertex(Vertex::PC(glm::vec3(1, -1, -1), glm::vec4(1, 0, 0, 1)));
@@ -24,7 +26,9 @@ void shape::drawTriangle() {
     tigl::end();
 }
 
-void shape::drawSquare() {
+void shape::drawSquare() 
+{
+
     tigl::begin(GL_QUADS);
     tigl::addVertex(Vertex::PC(glm::vec3(-1, -1, -1), glm::vec4(0, 0, 0, 1)));
     tigl::addVertex(Vertex::PC(glm::vec3(-1, 1, -1), glm::vec4(0, 0, 0, 1)));
@@ -58,7 +62,9 @@ void shape::drawSquare() {
     tigl::end();
 }
 
-void shape::drawDiamond() {
+void shape::drawDiamond() 
+{
+
     tigl::begin(GL_TRIANGLE_FAN);
     tigl::addVertex(Vertex::PC(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec4(1, 1, 1, 1)));
     tigl::addVertex(Vertex::PC(glm::vec3(1.0f, 0.5f, 0.0f), glm::vec4(1, 0, 0, 1)));
@@ -109,7 +115,9 @@ void shape::drawDiamond() {
 }
 
 //W.I.P Not neccecary & doesnt work
-void shape::drawCilinder(double x, double y, double z, glm::vec4 color, float smoothnes) {
+void shape::drawCilinder(double x, double y, double z, glm::vec4 color, float smoothnes) 
+{
+
     float fineness = 360.0f / 4.0f;
     fineness /= smoothnes;
 
@@ -149,7 +157,9 @@ void shape::drawCilinder(double x, double y, double z, glm::vec4 color, float sm
 }
 
 //W.I.P XYZ controll doesnt work
-void shape::drawCircle(double x, double y, double z, glm::vec4 color, float smoothnes) {
+void shape::drawCircle(double x, double y, double z, glm::vec4 color, float smoothnes) 
+{
+
     float fineness = 360.0f / 4.0f;
     fineness /= smoothnes;
 
@@ -166,7 +176,9 @@ void shape::drawCircle(double x, double y, double z, glm::vec4 color, float smoo
     tigl::end();
 }
 
-void shape::drawRect(double x, double y, double z, glm::vec4 color) {
+void shape::drawRect(double x, double y, double z, glm::vec4 color) 
+{
+
     tigl::begin(GL_QUADS);
     tigl::addVertex(Vertex::PC(glm::vec3(-(x / 2), -(y / 2), -(z / 2)), color));
     tigl::addVertex(Vertex::PC(glm::vec3(-(x / 2), (y / 2), -(z / 2)), color));
@@ -203,6 +215,7 @@ void shape::drawRect(double x, double y, double z, glm::vec4 color) {
 //W.I.P XYZ controll doesnt work
 void shape::drawTube(double x, double y, double z, glm::vec4 color, float smoothnes)
 {
+
     float fineness = 360.0f / 4.0f;
     fineness /= smoothnes;
 
@@ -210,18 +223,22 @@ void shape::drawTube(double x, double y, double z, glm::vec4 color, float smooth
 
     tigl::begin(GL_TRIANGLE_STRIP);
 
-    for (float i = 0; i < 365; i += fineness) {
+    for (float i = 0; i < 365; i += fineness) 
+    {
+
         tigl::addVertex(Vertex::PC(glm::vec3(
             glm::cos(i * PI / 180.0f),
             -y / 2,
             glm::sin(i * PI / 180.0f)),
             color));
+
         tigl::addVertex(Vertex::PC(glm::vec3(
             glm::cos(i * PI / 180.0f),
             y / 2,
             glm::sin(i * PI / 180.0f)),
             color));
     }
+
     tigl::end();
 }
 
