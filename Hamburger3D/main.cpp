@@ -161,8 +161,8 @@ void draw()
 
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
-	glm::mat4 projection = glm::perspective(glm::radians(45.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
-    glm::mat4 view = glm::lookAt(glm::vec3(0, 1, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
+	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
+    glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
 
 	tigl::shader->setProjectionMatrix(projection);
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
