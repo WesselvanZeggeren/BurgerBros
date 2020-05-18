@@ -1,6 +1,34 @@
 #include "CheeseModelComponent.h"
 
+CheeseModelComponent::CheeseModelComponent() {
+    CheeseModelComponent(type);
+}
+
 CheeseModelComponent::CheeseModelComponent(int type)
+{
+    setCheeseType(type);
+
+    model.moveBrush(0, 0.05, 0);
+    model.drawRectangle(2.1, 0.1, 2.1);
+
+    
+}
+
+CheeseModelComponent::~CheeseModelComponent()
+{
+}
+
+void CheeseModelComponent::draw()
+{
+	tigl::drawVertices(GL_QUADS, model.getVertacies());
+}
+
+double CheeseModelComponent::getIngredientHeight()
+{
+    return 0.1;
+}
+
+void CheeseModelComponent::setCheeseType(int type)
 {
     Color chedar = { 255.0, 166.0, 0.0, 1.0 };
     Color emmet = { 255.0, 239.0, 193.0, 1.0 };
@@ -17,20 +45,6 @@ CheeseModelComponent::CheeseModelComponent(int type)
         model.setColor(mat_chedar);
         break;
     }
-    model.moveBrush(0, 0.05, 0);
-    model.drawRectangle(2.1, 0.1, 2.1);
 }
 
-CheeseModelComponent::~CheeseModelComponent()
-{
-}
 
-void CheeseModelComponent::draw()
-{
-	tigl::drawVertices(GL_QUADS, model.getVertacies());
-}
-
-double CheeseModelComponent::getIngredientHeight()
-{
-    return 0.1;
-}

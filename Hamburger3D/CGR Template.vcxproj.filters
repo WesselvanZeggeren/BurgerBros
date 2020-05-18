@@ -164,9 +164,6 @@
     <ClInclude Include="BunHeelModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
-    <ClInclude Include="BunCorwnModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
     <ClInclude Include="BaconModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
@@ -186,6 +183,9 @@
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
     <ClInclude Include="LettuceModelComponent.h">
+      <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="BunCrownModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
     </ClInclude>
   </ItemGroup>

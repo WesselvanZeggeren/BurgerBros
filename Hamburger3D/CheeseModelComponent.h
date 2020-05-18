@@ -9,9 +9,11 @@ using tigl::Vertex;
 class CheeseModelComponent : public BurgerIngredient
 {
 public:
+	CheeseModelComponent();
 	CheeseModelComponent(int type);
 	~CheeseModelComponent();
 
 	virtual void draw() override;
 	double getIngredientHeight() override;
+	void setCheeseType(int type);
 };
