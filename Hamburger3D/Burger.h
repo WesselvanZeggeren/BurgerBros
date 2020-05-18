@@ -7,6 +7,7 @@
 #include "CheeseModelComponent.h"
 #include "CubeModelComponent.h"
 #include "EggModelComponent.h"
+#include "CucumberModelComponent.h"
 #include "LettuceModelComponent.h"
 #include "PattyModelComponent.h"
 #include "PickleModelComponent.h"

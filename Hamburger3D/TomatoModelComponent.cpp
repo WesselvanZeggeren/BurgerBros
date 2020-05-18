@@ -38,5 +38,5 @@ void TomatoModelComponent::draw()
 
 double TomatoModelComponent::getIngredientHeight()
 {
-    return 0.0;
+    return 0.5;
 }
