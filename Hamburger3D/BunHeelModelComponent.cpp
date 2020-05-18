@@ -1,7 +1,6 @@
 #include "BunHeelModelComponent.h"
 
-
-
+const std::string ingredientName = "Bun heel";
 
 BunHeelModelComponent::BunHeelModelComponent()
 {
@@ -24,4 +23,9 @@ void BunHeelModelComponent::draw()
 double BunHeelModelComponent::getIngredientHeight()
 {
 	return 0.5;
+}
+
+std::string getIngredientName() 
+{
+	return ingredientName;
 }

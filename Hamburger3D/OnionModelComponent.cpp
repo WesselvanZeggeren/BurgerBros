@@ -1,5 +1,7 @@
 #include "OnionModelComponent.h"
 
+const std::string ingredientName = "Onion";
+
 OnionModelComponent::OnionModelComponent()
 {
 }
@@ -16,4 +18,9 @@ void OnionModelComponent::draw()
 double OnionModelComponent::getIngredientHeight()
 {
 	return 0.0;
+}
+
+std::string getIngredientName()
+{
+	return ingredientName;
 }

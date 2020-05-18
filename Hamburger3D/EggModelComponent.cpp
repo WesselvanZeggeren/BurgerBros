@@ -1,5 +1,7 @@
 #include "EggModelComponent.h"
 
+const std::string ingredientName = "Egg";
+
 EggModelComponent::EggModelComponent()
 {
     Color egg_white = { 255, 245, 195 , 1 };
@@ -39,4 +41,9 @@ void EggModelComponent::draw()
 double EggModelComponent::getIngredientHeight()
 {
     return 0.5;
+}
+
+std::string getIngredientName()
+{   
+    return ingredientName;
 }

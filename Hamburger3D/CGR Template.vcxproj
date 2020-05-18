@@ -190,7 +190,7 @@
   <ItemGroup>
     <ClInclude Include="BaconModelComponent.h" />
     <ClInclude Include="basicShapeDrawer.h" />
-    <ClInclude Include="BunCorwnModelComponent.h" />
+    <ClInclude Include="BunCrownModelComponent.h" />
     <ClInclude Include="BunHeelModelComponent.h" />
     <ClInclude Include="Burger.h" />
     <ClInclude Include="BurgerDrawer.h" />

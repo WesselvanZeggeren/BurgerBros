@@ -1,18 +1,20 @@
 #include "CheeseModelComponent.h"
 
+const std::string ingredientName;
+
 CheeseModelComponent::CheeseModelComponent(int type)
 {
-    Color chedar = { 255.0, 166.0, 0.0, 1.0 };
+    Color cheddar = { 255.0, 166.0, 0.0, 1.0 };
     Color emmet = { 255.0, 239.0, 193.0, 1.0 };
-    Color mat_chedar = { 247.0 ,213.0 ,143.0, 1.0 };
+    Color matCheddar = { 247.0 ,213.0 ,143.0, 1.0 };
 
     model.moveBrush(0, 0.5, 0);
 
     switch (type) {
 
-        case 0: model.setColor(chedar); break;
-        case 1: model.setColor(emmet); break;
-        case 2: model.setColor(mat_chedar); break;
+        case 0: model.setColor(cheddar); ingredientName = "Cheddar"; break;
+        case 1: model.setColor(emmet); ingredientName = "Emmet"; break;
+        case 2: model.setColor(matCheddar); ingredientName = "Mat cheddar"; break;
     }
 
     model.drawRectangle(2.1, 0.1, 2.1);
@@ -30,4 +32,9 @@ void CheeseModelComponent::draw()
 double CheeseModelComponent::getIngredientHeight()
 {
     return 0.1;
+}
+
+std::string getIngredientName() 
+{
+    return ingredientName;
 }

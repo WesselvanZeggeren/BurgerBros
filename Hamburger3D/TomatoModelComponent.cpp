@@ -1,7 +1,6 @@
 #include "TomatoModelComponent.h"
 
-
-
+const std::string ingredientName = "Tomato";
 
 TomatoModelComponent::TomatoModelComponent()
 {
@@ -39,4 +38,9 @@ void TomatoModelComponent::draw()
 double TomatoModelComponent::getIngredientHeight()
 {
     return 0.0;
+}
+
+std::string getIngredientName()
+{
+    return ingredientName;
 }

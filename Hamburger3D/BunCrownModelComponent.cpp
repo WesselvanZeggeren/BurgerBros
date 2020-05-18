@@ -1,7 +1,6 @@
-#include "BunCorwnModelComponent.h"
+#include "BunCrownModelComponent.h"
 
-
-
+const std::string ingredientName = "Bun crown";
 
 BunCrownModelComponent::BunCrownModelComponent()
 {
@@ -28,4 +27,9 @@ void BunCrownModelComponent::draw()
 double BunCrownModelComponent::getIngredientHeight()
 {
     return 1.225;
+}
+
+std::string getIngredientName() 
+{
+    return ingredientName;
 }

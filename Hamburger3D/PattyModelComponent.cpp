@@ -1,5 +1,6 @@
 #include "PattyModelComponent.h"
 
+const std::string ingredientName = "Patty";
 
 PattyModelComponent::PattyModelComponent()
 {
@@ -30,4 +31,9 @@ void PattyModelComponent::draw()
 double PattyModelComponent::getIngredientHeight()
 {
     return 0.5;
+}
+
+std::string getIngredientName()
+{   
+    return ingredientName;
 }

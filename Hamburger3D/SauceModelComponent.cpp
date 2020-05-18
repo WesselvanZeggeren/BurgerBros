@@ -1,7 +1,6 @@
 #include "SauceModelComponent.h"
 
-
-
+const std::string ingredientName;
 
 SauceModelComponent::SauceModelComponent(int type)
 {
@@ -14,12 +13,15 @@ SauceModelComponent::SauceModelComponent(int type)
     switch (type) {
     case 0:
         model.setColor(ketchup);
+        ingredientName = "Ketchup";
         break;
     case 1:
         model.setColor(mustard);
+        ingredientName = "Mustard";
         break;
     case 2:
         model.setColor(mayo);
+        ingredientName = "Mayo";
         break;
     }
 

@@ -26,7 +26,14 @@ void draw();
 
 int main(void)
 {
+    BaconModelComponent bacon;
 
+    while (1) {
+        std::cout << bacon.getIngredientName << "\n";
+    }
+
+
+    /*
 	if (!glfwInit())
 		throw "Could not initialize glwf";
 
@@ -56,6 +63,7 @@ int main(void)
 
 
 	return 0;
+    */
 }
 
 
@@ -134,7 +142,6 @@ void update()
 
     burger.update(deltaTime);
     wCooldown--;
-
 }
 
 void draw()
