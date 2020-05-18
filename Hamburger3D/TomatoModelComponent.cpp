@@ -1,8 +1,5 @@
 #include "TomatoModelComponent.h"
 
-
-
-
 TomatoModelComponent::TomatoModelComponent()
 {
     Color tomato_red = { 232.0,24.0,2.0, 1.0 };

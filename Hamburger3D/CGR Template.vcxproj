@@ -170,8 +170,6 @@
     <ClCompile Include="CucumberModelComponent.cpp" />
     <ClCompile Include="EggModelComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="basicShapeDrawer.cpp" />
-    <ClCompile Include="BurgerDrawer.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="LettuceModelComponent.cpp" />
@@ -188,11 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaconModelComponent.h" />
-    <ClInclude Include="basicShapeDrawer.h" />
     <ClInclude Include="BunCorwnModelComponent.h" />
     <ClInclude Include="BunHeelModelComponent.h" />
     <ClInclude Include="Burger.h" />
-    <ClInclude Include="BurgerDrawer.h" />
     <ClInclude Include="BurgerIngredient.h" />
     <ClInclude Include="CheeseModelComponent.h" />
     <ClInclude Include="color.h" />
@@ -205,7 +201,6 @@
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="PattyModelComponent.h" />
     <ClInclude Include="PickleModelComponent.h" />
-    <ClInclude Include="RotateItemComponent.h" />
     <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />

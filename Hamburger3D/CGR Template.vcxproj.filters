@@ -54,13 +54,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BurgerDrawer.cpp">
-      <Filter>Source Files\Drawing Files</Filter>
-    </ClCompile>
     <ClCompile Include="color.cpp">
-      <Filter>Source Files\Drawing Files</Filter>
-    </ClCompile>
-    <ClCompile Include="basicShapeDrawer.cpp">
       <Filter>Source Files\Drawing Files</Filter>
     </ClCompile>
     <ClCompile Include="tigl.cpp">
@@ -128,12 +122,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basicShapeDrawer.h">
-      <Filter>Header Files\Drawing Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BurgerDrawer.h">
-      <Filter>Header Files\Drawing Files</Filter>
-    </ClInclude>
     <ClInclude Include="color.h">
       <Filter>Header Files\Drawing Files</Filter>
     </ClInclude>
@@ -199,9 +187,6 @@
     </ClInclude>
     <ClInclude Include="LettuceModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
-    </ClInclude>
-    <ClInclude Include="RotateItemComponent.h">
-      <Filter>Header Files\Component\Movement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
