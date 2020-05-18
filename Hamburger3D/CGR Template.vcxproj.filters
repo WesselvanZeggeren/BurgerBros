@@ -25,9 +25,6 @@
     <Filter Include="Header Files\Component\Model">
       <UniqueIdentifier>{5eb31bb9-bf6c-4710-aad5-d668a1619434}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Component\Model\Bruger">
-      <UniqueIdentifier>{a29f7cc3-992d-44ed-ba4a-508d324d9f26}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Component\Model\Shapes">
       <UniqueIdentifier>{311be2dd-654f-47e9-b06b-deba73ece0ff}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="Components\Model\Burger">
       <UniqueIdentifier>{ad8632c1-6e95-47c6-aed9-5e3976efb02a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Component\Model\Burger">
+      <UniqueIdentifier>{a29f7cc3-992d-44ed-ba4a-508d324d9f26}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -150,28 +150,28 @@
       <Filter>Source Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="PattyModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="CheeseModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="TomatoModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="EggModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="CucumberModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="PickleModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="BunHeelModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="BaconModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
@@ -180,24 +180,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BurgerIngredient.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="OnionModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="SauceModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="LettuceModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="BunCrownModelComponent.h">
-      <Filter>Header Files\Component\Model\Bruger</Filter>
+      <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
     <ClInclude Include="SauceBottle.h">
       <Filter>Header Files\Component\Model</Filter>
     </ClInclude>
     <ClInclude Include="Recipe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateItemComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

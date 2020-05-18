@@ -33,4 +33,6 @@ public:
 
 	void update(float elapsedTime);
 	void draw();
+	glm::vec3 getRotation();
+	void setRotation(glm::vec3 rotation);
 };

@@ -58,3 +58,17 @@ void Burger::draw()
 	for (auto& o : ingredients)
 		o->draw();
 }
+
+glm::vec3 Burger::getRotation()
+{
+	for (auto& heel : ingredients) {
+		return heel->rotation;
+	}
+
+}
+
+void Burger::setRotation(glm::vec3 rotation)
+{
+	for (auto& o : ingredients)
+		o->rotation = rotation;
+}

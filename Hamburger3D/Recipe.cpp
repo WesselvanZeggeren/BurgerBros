@@ -40,14 +40,14 @@ std::vector<BurgerIngredient*> Recipe::getBaseIngredientList()
 	baseList.push_back(new BunHeelModelComponent());
 	baseList.push_back(new CheeseModelComponent(1));
 	baseList.push_back(new CheeseModelComponent(2));
-	baseList.push_back(new CheeseModelComponent(3));
+	baseList.push_back(new CheeseModelComponent(0));
 	baseList.push_back(new EggModelComponent());
 	baseList.push_back(new LettuceModelComponent());
 	baseList.push_back(new PattyModelComponent());
 	baseList.push_back(new PickleModelComponent());
 	baseList.push_back(new SauceModelComponent(1));
 	baseList.push_back(new SauceModelComponent(2));
-	baseList.push_back(new SauceModelComponent(3));
+	baseList.push_back(new SauceModelComponent(0));
 	baseList.push_back(new TomatoModelComponent());
 
 	return baseList;

@@ -77,14 +77,13 @@ void init()
     bottle->position = glm::vec3(0, 0, 0);
     bottle->rotation.y = 3 * .25f;
     bottle->addComponent(new SauceBottle(2));
-    //bottle->addComponent(new CubeModelComponent(1));
     bottle->addComponent(new SpinComponent(1));
-    objects.push_back(bottle);
+    //objects.push_back(bottle);
 
     recipe.generateRecipe(10);
     burger = recipe.convertToBurger();
-
-    burger = Burger();
+    /*
+        burger = Burger();
     burger.addIngriedient(new SauceModelComponent(2));
     burger.addIngriedient(new PattyModelComponent());
     burger.addIngriedient(new CucumberModelComponent());
@@ -94,6 +93,8 @@ void init()
     burger.addIngriedient(new EggModelComponent());
     burger.addIngriedient(new BaconModelComponent());
     burger.addIngriedient(new BunCrownModelComponent());
+    */
+
     
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -116,8 +117,10 @@ void init()
             y -= 0.1;
         }
         if (key == GLFW_KEY_R) {
+            glm::vec3 rotation = burger.getRotation();
             recipe.generateRecipe(10);
             burger = recipe.convertToBurger();
+            burger.setRotation(rotation);
         }
         if (key == GLFW_KEY_W && wCooldown <= 0) {
             if (!doWireFrame) {
@@ -179,5 +182,5 @@ void draw()
 	for (auto& o : objects)
 		o->draw();
 
-    //burger.draw();
+    burger.draw();
 }
