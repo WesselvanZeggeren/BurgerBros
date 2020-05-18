@@ -177,6 +177,7 @@
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="PattyModelComponent.cpp" />
     <ClCompile Include="PickleModelComponent.cpp" />
+    <ClCompile Include="SauceBottle.cpp" />
     <ClCompile Include="SauceModelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="PattyModelComponent.h" />
     <ClInclude Include="PickleModelComponent.h" />
     <ClInclude Include="SauceModelComponent.h" />
+    <ClInclude Include="SauceBottle.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
     <ClInclude Include="ShapeMaker.h" />

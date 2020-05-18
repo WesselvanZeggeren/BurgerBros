@@ -120,6 +120,9 @@
     <ClCompile Include="BurgerIngredient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SauceBottle.cpp">
+      <Filter>Components\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="BunCrownModelComponent.h">
       <Filter>Header Files\Component\Model\Bruger</Filter>
+    </ClInclude>
+    <ClInclude Include="SauceBottle.h">
+      <Filter>Header Files\Component\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

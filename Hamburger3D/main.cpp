@@ -6,6 +6,7 @@ using tigl::Vertex;
 
 #include "GameObject.h"
 #include "Burger.h"
+#include "SauceBottle.h"
 
 #include "CubeModelComponent.h"
 #include "SpinComponent.h"
@@ -63,6 +64,15 @@ int wCooldown = 0;
 void init()
 {
 	glEnable(GL_DEPTH_TEST);
+
+    GameObject* bottle = new GameObject();
+    bottle->position = glm::vec3(0, 0, 0);
+    bottle->rotation.y = 3 * .25f;
+    bottle->addComponent(new SauceBottle(2));
+    //bottle->addComponent(new CubeModelComponent(1));
+    bottle->addComponent(new SpinComponent(1));
+    objects.push_back(bottle);
+
 
     burger = Burger();
     burger.addIngriedient(new SauceModelComponent(2));
@@ -143,5 +153,5 @@ void draw()
 	for (auto& o : objects)
 		o->draw();
 
-    burger.draw();
+    //burger.draw();
 }
