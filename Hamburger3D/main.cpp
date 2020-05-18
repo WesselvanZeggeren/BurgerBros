@@ -78,7 +78,10 @@ void init()
     burger = Burger();
     burger.addIngriedient(new SauceModelComponent(2));
     burger.addIngriedient(new PattyModelComponent());
+    burger.addIngriedient(new CucumberModelComponent());
     burger.addIngriedient(new CheeseModelComponent(0));
+    burger.addIngriedient(new LettuceModelComponent());
+    burger.addIngriedient(new TomatoModelComponent());
     burger.addIngriedient(new EggModelComponent());
     burger.addIngriedient(new BaconModelComponent());
     burger.addIngriedient(new BunCrownModelComponent());
