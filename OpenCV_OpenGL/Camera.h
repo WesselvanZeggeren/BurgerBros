@@ -14,4 +14,5 @@ class Camera {
 		int SetUpCamera(int cameraNumber);
 		void GetContour(int, void* );
 		void SnapShot();
+		void GetExtreme(std::vector<Point> cnt, Mat image);
 };

@@ -46,6 +46,7 @@ int Camera::SetUpCamera(int cameraNumber)
 		}
 
 		imshow("MyVideo", frame);
+		GetContour(60, 0);
 
 		SnapShot();
 
@@ -73,6 +74,35 @@ void Camera::SnapShot()
 	}
 }
 
+void Camera::GetExtreme(vector<Point> cnt, Mat image)
+{
+	// compare x axis
+	auto val = std::minmax_element(cnt.begin(), cnt.end(), [](Point const& a, Point const& b) {
+		return a.x < b.x;
+		});
+
+	std::cout << " leftMost [ " << val.first->x << ", " << val.first->y << " ]" << std::endl;
+	std::cout << " RightMost [ " << val.second->x << ", " << val.second->y << " ]" << std::endl;
+	Point left = Point(val.first->x, val.first->y);
+	Point right = Point(val.second->x, val.second->y);
+	circle(image, left, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
+	circle(image, right, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
+
+	// compare y axis
+	val = std::minmax_element(cnt.begin(), cnt.end(), [](Point const& a, Point const& b) {
+		return a.y < b.y;
+		});
+
+	std::cout << " TopMost [ " << val.first->x << ", " << val.first->y << " ]" << std::endl;
+	std::cout << " BottomMost [ " << val.second->x << ", " << val.second->y << " ]" << std::endl;
+	Point top = Point(val.first->x, val.first->y);
+	Point bottom = Point(val.second->x, val.second->y);
+	circle(image, top, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
+	circle(image, bottom, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
+	imshow("Points", image);
+
+}
+
 
 void Camera::GetContour(int threshold, void* )
 {
@@ -89,7 +119,16 @@ void Camera::GetContour(int threshold, void* )
 		Scalar color = Scalar(rng.uniform(255, 255), rng.uniform(255, 255), rng.uniform(255, 255));
 		drawContours(drawing, contours, i, color, 2, 8, hierarchy, 0, Point());
 	}
-
 	namedWindow("Contours", CV_WINDOW_AUTOSIZE);
 	imshow("Contours", drawing);
+	vector<Point> cnt;
+	for (int i = 0; i < contours.size(); i++)
+	{
+		for (int j = 0; j < contours[i].size();j++) // run until j < contours[i].size();
+		{
+			Point point = contours[i][j];
+			cnt.push_back(point);
+		}
+	}
+	GetExtreme(cnt, contourOutput);
 }
