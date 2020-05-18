@@ -2,6 +2,9 @@
 
 #include <vector>
 #include <random>
+#include <time.h>
+#include <stdio.h> 
+#include <stdlib.h>
 #include "Burger.h"
 #include "BurgerIngredient.h"
 
@@ -16,7 +19,7 @@ public:
 	Recipe();
 	~Recipe();
 
-	void generateRecipe(int maxAmountIngredients = 10);
+	void generateRecipe(int maxAmountIngredients = 15);
 	void print();
 	
 	Burger convertToBurger();

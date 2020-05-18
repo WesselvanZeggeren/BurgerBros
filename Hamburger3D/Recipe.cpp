@@ -13,16 +13,15 @@ Recipe::~Recipe()
 void Recipe::generateRecipe(int maxAmountIngredients)
 {
 
-	ingredients.clear();
-	ingredients.push_back(new BunHeelModelComponent());
-
 	std::vector<BurgerIngredient*> baseList = getBaseIngredientList();
-
+	srand(time(0));
 	int amountOfIngredients = (rand() % maxAmountIngredients) + 1;
+
+	ingredients.clear();
 
 	for (int i = 0; i < amountOfIngredients; i++)
 		ingredients.push_back(baseList[(rand() % baseList.size())]);
-
+	
 	ingredients.push_back(new BunCrownModelComponent());
 }
 

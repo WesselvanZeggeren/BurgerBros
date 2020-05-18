@@ -6,6 +6,7 @@ using tigl::Vertex;
 
 #include "GameObject.h"
 #include "Burger.h"
+#include "Recipe.h"
 //#include "PlayerComponent.h"
 #include "CubeModelComponent.h"
 //#include "MoveToComponent.h"
@@ -61,6 +62,8 @@ int main(void)
 
 std::list<GameObject*> objects;
 double lastFrameTime = 0;
+
+Recipe recipe;
 Burger burger;
 
 float x = 0, y = 0, z = 0;
@@ -79,17 +82,12 @@ void init()
     //test->addComponent(new BunCrownModelComponent());
 	objects.push_back(test);
 
-    burger = Burger();
-    burger.addIngriedient(new SauceModelComponent(2));
-    burger.addIngriedient(new PattyModelComponent());
-    burger.addIngriedient(new CheeseModelComponent(0));
-    burger.addIngriedient(new EggModelComponent());
-    burger.addIngriedient(new BaconModelComponent());
-    burger.addIngriedient(new BunCrownModelComponent());
-    
+    recipe.generateRecipe(10);
+    burger = recipe.convertToBurger();
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
+
 		if (key == GLFW_KEY_ESCAPE)
 			glfwSetWindowShouldClose(window, true);
         if (key == GLFW_KEY_ESCAPE)
@@ -105,6 +103,10 @@ void init()
         }
         if (key == GLFW_KEY_DOWN) {
             y -= 0.1;
+        }
+        if (key == GLFW_KEY_R) {
+            recipe.generateRecipe(10);
+            burger = recipe.convertToBurger();
         }
         if (key == GLFW_KEY_W && wCooldown <= 0) {
             if (!doWireFrame) {
