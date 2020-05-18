@@ -1,4 +1,4 @@
-#include "BunCorwnModelComponent.h"
+#include "BunCrownModelComponent.h"
 
 BunCrownModelComponent::BunCrownModelComponent()
 {

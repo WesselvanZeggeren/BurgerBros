@@ -9,7 +9,7 @@ using tigl::Vertex;
 
 #include "CubeModelComponent.h"
 #include "SpinComponent.h"
-#include "BunCorwnModelComponent.h"
+#include "BunCrownModelComponent.h"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
