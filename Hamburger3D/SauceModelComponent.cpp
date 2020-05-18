@@ -32,33 +32,6 @@ SauceModelComponent::SauceModelComponent(int type)
     model.drawRectangle(0.1, 0.1, 0.2);
     model.moveBrush(-0.2, 0, -0.1);
     model.drawRectangle(0.3, 0.1, 0.1);
-
-    /**
-    model = glm::translate(model, glm::vec3(0, 1, 0));
-    tigl::shader->setModelMatrix(model);
-    Color sauceColor = { 0,0,0,0 };
-    if (type == 0) {
-        sauceColor = ketchup;
-    }
-    else if (type == 1)
-    {
-        sauceColor = mustard;
-    }
-    else if (type == 2)
-    {
-        sauceColor = mayo;
-    }
-
-    shape::drawRect(0.4, 0.1, 0.4, souceColor.getVec4());
-    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0.2, 0, 0)));
-    shape::drawRect(0.1, 0.1, 0.2, souceColor.getVec4());
-    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(0.2, 0, 0.1)));
-    shape::drawRect(0.3, 0.1, 0.1, souceColor.getVec4());
-    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(-0.2, 0, 0)));
-    shape::drawRect(0.1, 0.1, 0.2, souceColor.getVec4());
-    tigl::shader->setModelMatrix(glm::translate(model, glm::vec3(-0.2, 0, -0.1)));
-    shape::drawRect(0.3, 0.1, 0.1, souceColor.getVec4());
-    */
 }
 
 SauceModelComponent::~SauceModelComponent()

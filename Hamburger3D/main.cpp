@@ -71,18 +71,18 @@ void init()
 	test->position = glm::vec3(0, 0, 0);
 	test->rotation.y = 3 * .25f;
 	//test->addComponent(new CubeModelComponent(1));
-	test->addComponent(new SpinComponent(1));
+	//test->addComponent(new SpinComponent(1));
     //test->addComponent(new BunCrownModelComponent());
 	objects.push_back(test);
 
     burger = Burger();
-    burger.addIngriedient(new SauceModelComponent(2));
-    burger.addIngriedient(new PattyModelComponent());
-    burger.addIngriedient(new CucumberModelComponent());
-    burger.addIngriedient(new CheeseModelComponent(0));
-    burger.addIngriedient(new LettuceModelComponent());
-    burger.addIngriedient(new TomatoModelComponent());
-    burger.addIngriedient(new EggModelComponent());
+    //burger.addIngriedient(new SauceModelComponent(2));
+    //burger.addIngriedient(new PattyModelComponent());
+    //burger.addIngriedient(new CucumberModelComponent());
+    //burger.addIngriedient(new CheeseModelComponent(0));
+    //burger.addIngriedient(new LettuceModelComponent());
+    //burger.addIngriedient(new TomatoModelComponent());
+    //burger.addIngriedient(new EggModelComponent());
     burger.addIngriedient(new BaconModelComponent());
     burger.addIngriedient(new BunCrownModelComponent());
     
@@ -143,8 +143,8 @@ void draw()
 
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
-	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
-    glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
+	glm::mat4 projection = glm::perspective(glm::radians(45.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
+    glm::mat4 view = glm::lookAt(glm::vec3(0, 1, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
 
 	tigl::shader->setProjectionMatrix(projection);
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));

@@ -1,8 +1,5 @@
 #include "BunCorwnModelComponent.h"
 
-
-
-
 BunCrownModelComponent::BunCrownModelComponent()
 {
     Color bread = { 198.0, 137.0, 88.0, 1.0 };
