@@ -4,7 +4,9 @@
 #include "tigl.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace shape {
+namespace shape 
+{
+
 	void drawTriangle();
 	void drawSquare();
 	void drawDiamond();
@@ -14,7 +16,8 @@ namespace shape {
 	void drawCilinder(double x, double y, double z, glm::vec4 color, float smoothnes);
 }
 
-namespace transform {
+namespace transform 
+{
 
 }
 

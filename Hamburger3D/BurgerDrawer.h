@@ -6,7 +6,9 @@
 #include "BurgerDrawer.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace bdm {
+namespace bdm 
+{
+
 	void completeBurger(glm::mat4 model);
 
 	void burgerBunCrown(glm::mat4 model);

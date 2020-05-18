@@ -13,21 +13,24 @@ GameObject::~GameObject()
 
 void GameObject::addComponent(Component* component)
 {
+	
 	component->setGameObject(this);
 	components.push_back(component);
-
+	
 	if (!modelComponent)
 		modelComponent = dynamic_cast<ModelComponent*>(component);
 }
 
 std::list<Component*> GameObject::getComponents()
 {
+	
 	return components;
 }
 
 
 void GameObject::draw(const glm::mat4& parentMatrix)
 {
+
 	if (!modelComponent)
 		return;
 
@@ -44,6 +47,7 @@ void GameObject::draw(const glm::mat4& parentMatrix)
 
 void GameObject::update(float elapsedTime)
 {
+
 	for (auto& c : components)
 		c->update(elapsedTime);
 }

@@ -4,10 +4,9 @@ class GameObject;
 
 class Component
 {
+
 public:
 	GameObject* gameObject;
-public:
-
 
 	Component();
 	~Component();
