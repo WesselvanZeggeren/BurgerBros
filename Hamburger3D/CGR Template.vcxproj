@@ -116,7 +116,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\glfw-3.3.2\$(Platform);$(SolutionDir)lib\glew-2.1.0\lib\Release\$(Platform);C:\opencv\build\x64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -177,6 +177,7 @@
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="PattyModelComponent.cpp" />
     <ClCompile Include="PickleModelComponent.cpp" />
+    <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="SauceBottle.cpp" />
     <ClCompile Include="SauceModelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
@@ -202,6 +203,8 @@
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="PattyModelComponent.h" />
     <ClInclude Include="PickleModelComponent.h" />
+    <ClInclude Include="Recipe.h" />
+    <ClInclude Include="RotateItemComponent.h" />
     <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SauceBottle.h" />
     <ClInclude Include="SpinComponent.h" />

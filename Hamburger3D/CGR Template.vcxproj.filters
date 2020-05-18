@@ -123,6 +123,9 @@
     <ClCompile Include="SauceBottle.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color.h">
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="SauceBottle.h">
       <Filter>Header Files\Component\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

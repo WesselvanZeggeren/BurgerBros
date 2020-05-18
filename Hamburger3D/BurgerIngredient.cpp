@@ -2,9 +2,11 @@
 
 void BurgerIngredient::draw()
 {
+
 }
 
 double BurgerIngredient::getIngredientHeight()
 {
+	
 	return 0.0;
 }

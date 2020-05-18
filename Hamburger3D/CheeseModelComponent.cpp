@@ -35,15 +35,10 @@ void CheeseModelComponent::setCheeseType(int type)
     Color mat_chedar = { 247.0 ,213.0 ,143.0, 1.0 };
 
     switch (type) {
-    case 0:
-        model.setColor(chedar);
-        break;
-    case 1:
-        model.setColor(emmet);
-        break;
-    case 2:
-        model.setColor(mat_chedar);
-        break;
+
+        case 0: model.setColor(chedar); break;
+        case 1: model.setColor(emmet); break;
+        case 2: model.setColor(mat_chedar); break;
     }
 }
 

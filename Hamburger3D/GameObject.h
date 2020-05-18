@@ -3,15 +3,16 @@
 #include <list>
 #include <glm/glm.hpp>
 
-
 class Component;
 class ModelComponent;
 
 class GameObject
 {
+	
 	ModelComponent* modelComponent = nullptr;
 
 	std::list<Component*> components;
+
 public:
 	GameObject();
 	~GameObject();

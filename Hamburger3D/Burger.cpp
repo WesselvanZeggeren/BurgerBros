@@ -5,15 +5,18 @@
 
 Burger::Burger()
 {
+	
 	addIngriedient(new BunHeelModelComponent());
 }
 
 Burger::~Burger()
 {
+
 }
 
 void Burger::addIngriedient(BurgerIngredient* ingredient)
 {
+
 	GameObject* ingredientObject = new GameObject();
 	ingredientObject->addComponent(ingredient);
 	ingredientObject->addComponent(new SpinComponent(1));
@@ -30,21 +33,28 @@ void Burger::clearBurger()
 
 double Burger::getBurgerModelHeight()
 {
+	
 	double height = 0;
-	for (GameObject* go : ingredients) {
+	
+	for (GameObject* go : ingredients) 
+	{
+
 		height += go->getComponent<BurgerIngredient>()->getIngredientHeight();
 	}
+
 	return height;
 }
 
 void Burger::update(float elapsedTime)
 {
+
 	for (auto& o : ingredients)
 		o->update(elapsedTime);
 }
 
 void Burger::draw()
 {
+
 	for (auto& o : ingredients)
 		o->draw();
 }

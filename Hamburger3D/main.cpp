@@ -6,6 +6,8 @@ using tigl::Vertex;
 
 #include "GameObject.h"
 #include "Burger.h"
+#include "Recipe.h"
+//#include "PlayerComponent.h"
 #include "SauceBottle.h"
 
 #include "CubeModelComponent.h"
@@ -24,15 +26,19 @@ void draw();
 
 int main(void)
 {
+
 	if (!glfwInit())
 		throw "Could not initialize glwf";
+
 	window = glfwCreateWindow(1400, 800, "Hello World", NULL, NULL);
-	if (!window)
+	
+    if (!window)
 	{
 		glfwTerminate();
 		throw "Could not initialize glwf";
 	}
-	glfwMakeContextCurrent(window);
+	
+    glfwMakeContextCurrent(window);
 
 	tigl::init();
 
@@ -55,6 +61,8 @@ int main(void)
 
 std::list<GameObject*> objects;
 double lastFrameTime = 0;
+
+Recipe recipe;
 Burger burger;
 
 float x = 0, y = 0, z = 0;
@@ -73,6 +81,8 @@ void init()
     bottle->addComponent(new SpinComponent(1));
     objects.push_back(bottle);
 
+    recipe.generateRecipe(10);
+    burger = recipe.convertToBurger();
 
     burger = Burger();
     burger.addIngriedient(new SauceModelComponent(2));
@@ -88,6 +98,7 @@ void init()
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
+
 		if (key == GLFW_KEY_ESCAPE)
 			glfwSetWindowShouldClose(window, true);
         if (key == GLFW_KEY_ESCAPE)
@@ -103,6 +114,10 @@ void init()
         }
         if (key == GLFW_KEY_DOWN) {
             y -= 0.1;
+        }
+        if (key == GLFW_KEY_R) {
+            recipe.generateRecipe(10);
+            burger = recipe.convertToBurger();
         }
         if (key == GLFW_KEY_W && wCooldown <= 0) {
             if (!doWireFrame) {
@@ -137,6 +152,7 @@ void update()
 
 void draw()
 {
+
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -150,6 +166,16 @@ void draw()
     tigl::shader->setViewMatrix(view);
 
 	tigl::shader->enableColor(true);
+	
+	/*	
+	//temporary draw floor
+	tigl::begin(GL_QUADS);
+	tigl::addVertex(Vertex::PC(glm::vec3(-50, 0, -50), glm::vec4(1, 0, 0, 1)));
+	tigl::addVertex(Vertex::PC(glm::vec3(-50, 0, 50), glm::vec4(0, 1, 0, 1)));
+	tigl::addVertex(Vertex::PC(glm::vec3(50, 0, 50), glm::vec4(0, 0, 1, 1)));
+	tigl::addVertex(Vertex::PC(glm::vec3(50, 0, -50), glm::vec4(0, 0, 1, 1)));
+	tigl::end();
+	*/
 	for (auto& o : objects)
 		o->draw();
 
