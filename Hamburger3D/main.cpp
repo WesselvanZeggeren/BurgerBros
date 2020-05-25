@@ -116,6 +116,9 @@ void init()
         if (key == GLFW_KEY_DOWN) {
             y -= 0.1;
         }
+        if (key == GLFW_KEY_P) {
+            burger.startAnimation();
+        }
         if (key == GLFW_KEY_R) {
             glm::vec3 rotation = burger.getRotation();
             recipe.generateRecipe(10);

@@ -3,11 +3,14 @@
 #include "SpinComponent.h"
 #include <typeinfo>
 
+double factor = 1;
+
 Burger::Burger()
 {
-	
 	addIngriedient(new BunHeelModelComponent());
 }
+
+
 
 Burger::~Burger()
 {
@@ -38,7 +41,6 @@ double Burger::getBurgerModelHeight()
 	
 	for (GameObject* go : ingredients) 
 	{
-
 		height += go->getComponent<BurgerIngredient>()->getIngredientHeight();
 	}
 
@@ -47,6 +49,13 @@ double Burger::getBurgerModelHeight()
 
 void Burger::update(float elapsedTime)
 {
+	if (factor > 1) {
+		factor -= elapsedTime;
+		rebuildBurgerYPos();
+	}
+	else {
+		factor = 1;
+	}
 
 	for (auto& o : ingredients)
 		o->update(elapsedTime);
@@ -71,4 +80,19 @@ void Burger::setRotation(glm::vec3 rotation)
 {
 	for (auto& o : ingredients)
 		o->rotation = rotation;
+}
+
+void Burger::rebuildBurgerYPos()
+{
+	double burgerheight = 0;
+	for (auto& ingredient : ingredients) {
+		double ingredientHeight = ingredient->getComponent<BurgerIngredient>()->getIngredientHeight();
+		ingredient->position.y = (ingredientHeight * factor) + burgerheight;
+		burgerheight += ingredientHeight * factor;
+	}
+}
+
+void Burger::startAnimation()
+{
+	factor = 10;
 }
