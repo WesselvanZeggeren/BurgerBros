@@ -212,16 +212,9 @@ void draw()
 
     glDisable(GL_TEXTURE_2D);
 
-	
-	/*	
-	//temporary draw floor
-	tigl::begin(GL_QUADS);
-	tigl::addVertex(Vertex::PC(glm::vec3(-50, 0, -50), glm::vec4(1, 0, 0, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(-50, 0, 50), glm::vec4(0, 1, 0, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(50, 0, 50), glm::vec4(0, 0, 1, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(50, 0, -50), glm::vec4(0, 0, 1, 1)));
-	tigl::end();
-	*/
+    tigl::shader->enableTexture(false);
+    tigl::shader->enableAlphaTest(false);
+
 	for (auto& o : objects)
 		o->draw();
 
