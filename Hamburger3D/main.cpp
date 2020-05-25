@@ -2,8 +2,7 @@
 #include <GLFW/glfw3.h>
 #include "tigl.h"
 #include <glm/gtc/matrix_transform.hpp>
-using tigl::Vertex;
-using namespace cv;
+
 
 #include <opencv2/opencv.hpp>
 #include "opencv2/imgproc/imgproc.hpp" 
@@ -23,26 +22,41 @@ using namespace cv;
 #pragma comment(lib, "glew32s.lib")
 #pragma comment(lib, "opengl32.lib")
 
+using tigl::Vertex;
+using namespace cv;
+
 GLFWwindow* window;
+VideoCapture cap(0);
+GLuint textureId = 0;
+Mat image, frame;
 
 void init();
 void update();
 void draw();
 
+void BindCVMat2GLTexture(cv::Mat& image);
+void getFrame();
+
 int main(void)
 {
+    // Controle of de camera wordt herkend.
+    if (!cap.isOpened())
+    {
+        cout << "Cannot open the video cam" << endl;
+        return -1;
+    }
 
-	if (!glfwInit())
-		throw "Could not initialize glwf";
+    double width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
+    double height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
 
-	window = glfwCreateWindow(1400, 800, "Hello World", NULL, NULL);
-	
+    if (!glfwInit())
+        throw "Could not initialize glwf";
+    window = glfwCreateWindow(width * 2, height * 2, "Hello World", NULL, NULL);
     if (!window)
-	{
-		glfwTerminate();
-		throw "Could not initialize glwf";
-	}
-	
+    {
+        glfwTerminate();
+        throw "Could not initialize glwf";
+    }
     glfwMakeContextCurrent(window);
 
 	tigl::init();
@@ -141,6 +155,15 @@ void init()
         }
 
 	});
+
+    if (!cap.isOpened())
+    {
+        cout << "Cannot open the video cam" << endl;
+    }
+    else
+    {
+        getFrame();
+    }
 }
 
 
@@ -155,14 +178,21 @@ void update()
 
     burger.update(deltaTime);
     wCooldown--;
-
+    getFrame();
 }
 
 void draw()
 {
+    BindCVMat2GLTexture(frame);
 
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glEnable(GL_DEPTH_TEST);
+    tigl::shader->enableTexture(true);
+    tigl::shader->enableColor(true);
+    tigl::shader->enableAlphaTest(true);
+
 
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
@@ -173,7 +203,15 @@ void draw()
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
     tigl::shader->setViewMatrix(view);
 
-	tigl::shader->enableColor(true);
+    tigl::begin(GL_QUADS);
+    tigl::addVertex(Vertex::PT(glm::vec3(-1, -1, 0), glm::vec2(0, 0)));
+    tigl::addVertex(Vertex::PT(glm::vec3(1, -1, 0), glm::vec2(1, 0)));
+    tigl::addVertex(Vertex::PT(glm::vec3(1, 1, 0), glm::vec2(1, -1)));
+    tigl::addVertex(Vertex::PT(glm::vec3(-1, 1, 0), glm::vec2(0, -1)));
+    tigl::end();
+
+    glDisable(GL_TEXTURE_2D);
+
 	
 	/*	
 	//temporary draw floor
@@ -188,4 +226,42 @@ void draw()
 		o->draw();
 
     burger.draw();
+}
+
+
+void BindCVMat2GLTexture(cv::Mat& image)
+{
+    glGenTextures(1, &textureId);
+    glBindTexture(GL_TEXTURE_2D, textureId);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D,
+        0,
+        GL_RGB,
+        image.cols,
+        image.rows,
+        0,
+        GL_RGB,
+        GL_UNSIGNED_BYTE,
+        image.data);
+}
+
+void getFrame()
+{
+    bool bSuccess = cap.read(image);
+
+    if (!bSuccess)
+    {
+        cout << "Cannot read a frame from video stream" << endl;
+    }
+    else
+    {
+        flip(image, image, 3);
+        cvtColor(image, frame, CV_BGR2RGB);
+    }
+
+
+
 }
