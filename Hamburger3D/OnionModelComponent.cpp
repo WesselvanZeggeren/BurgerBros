@@ -20,7 +20,7 @@ double OnionModelComponent::getIngredientHeight()
 	return 0.0;
 }
 
-std::string getIngredientName()
+std::string OnionModelComponent::getIngredientName()
 {
 	return ingredientName;
 }

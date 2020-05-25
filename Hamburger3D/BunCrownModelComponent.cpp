@@ -29,7 +29,9 @@ double BunCrownModelComponent::getIngredientHeight()
     return 1.225;
 }
 
-std::string getIngredientName() 
+std::string BunCrownModelComponent::getIngredientName()
 {
     return ingredientName;
 }
+
+

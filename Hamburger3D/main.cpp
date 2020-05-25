@@ -10,7 +10,7 @@ using tigl::Vertex;
 #include "CubeModelComponent.h"
 //#include "MoveToComponent.h"
 #include "SpinComponent.h"
-#include "BunCorwnModelComponent.h"
+#include "BunCrownModelComponent.h"
 //#include "TimerJumper.h"
 //#include "EnemyComponent.h"
 
@@ -28,9 +28,10 @@ int main(void)
 {
     BaconModelComponent bacon;
 
-    while (1) {
+    /*while (1) {
         std::cout << bacon.getIngredientName << "\n";
-    }
+    }*/
+    
 
 
     /*

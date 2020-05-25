@@ -34,7 +34,7 @@ double CheeseModelComponent::getIngredientHeight()
     return 0.1;
 }
 
-std::string getIngredientName() 
+std::string CheeseModelComponent::getIngredientName()
 {
     return ingredientName;
 }

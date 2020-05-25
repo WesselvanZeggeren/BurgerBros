@@ -33,7 +33,7 @@ double PattyModelComponent::getIngredientHeight()
     return 0.5;
 }
 
-std::string getIngredientName()
-{   
+std::string PattyModelComponent::getIngredientName()
+{
     return ingredientName;
 }

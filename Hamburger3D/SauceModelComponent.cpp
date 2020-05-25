@@ -2,6 +2,7 @@
 
 const std::string ingredientName;
 
+
 SauceModelComponent::SauceModelComponent(int type)
 {
     Color ketchup = { 204.0,0,0, 1.0 };
@@ -75,4 +76,9 @@ void SauceModelComponent::draw()
 double SauceModelComponent::getIngredientHeight()
 {
     return 0.1;
+}
+
+std::string SauceModelComponent::getIngredientName()
+{
+    return ingredientName;
 }

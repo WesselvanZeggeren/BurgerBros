@@ -2,7 +2,7 @@
 
 #include <list>
 #include "BaconModelComponent.h"
-#include "BunCorwnModelComponent.h"
+#include "BunCrownModelComponent.h"
 #include "BunHeelModelComponent.h"
 #include "CheeseModelComponent.h"
 #include "CubeModelComponent.h"
