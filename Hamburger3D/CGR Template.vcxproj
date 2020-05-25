@@ -180,6 +180,7 @@
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="SauceBottle.cpp" />
     <ClCompile Include="SauceModelComponent.cpp" />
+    <ClCompile Include="ScreenMOdelComponent.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
     <ClCompile Include="ShapeMaker.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="RotateItemComponent.h" />
     <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SauceBottle.h" />
+    <ClInclude Include="ScreenMOdelComponent.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
     <ClInclude Include="ShapeMaker.h" />

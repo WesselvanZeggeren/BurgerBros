@@ -3,7 +3,6 @@
 #include "tigl.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-
 #include <opencv2/opencv.hpp>
 #include "opencv2/imgproc/imgproc.hpp" 
 #include "opencv2/highgui/highgui.hpp"
@@ -11,12 +10,12 @@
 #include "GameObject.h"
 #include "Burger.h"
 #include "Recipe.h"
-//#include "PlayerComponent.h"
 #include "SauceBottle.h"
 
 #include "CubeModelComponent.h"
 #include "SpinComponent.h"
 #include "BunCrownModelComponent.h"
+#include "ScreenMOdelComponent.h"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
@@ -81,6 +80,7 @@ int main(void)
 std::list<GameObject*> objects;
 double lastFrameTime = 0;
 
+GameObject* screen;
 Recipe recipe;
 Burger burger;
 
@@ -91,6 +91,12 @@ int wCooldown = 0;
 void init()
 {
 	glEnable(GL_DEPTH_TEST);
+
+    screen = new GameObject();
+    screen->addComponent(new ScreenMOdelComponent());
+    screen->position = glm::vec3(0, 0, 0);
+    screen->rotation.x = glm::radians(-26.565f);
+    objects.push_back(screen);
 
     GameObject* bottle = new GameObject();
     bottle->position = glm::vec3(0, 0, 0);
@@ -177,6 +183,7 @@ void update()
 		o->update(deltaTime);
 
     burger.update(deltaTime);
+    screen->update(deltaTime);
     wCooldown--;
     getFrame();
 }
@@ -188,32 +195,14 @@ void draw()
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glEnable(GL_DEPTH_TEST);
-    tigl::shader->enableTexture(true);
-    tigl::shader->enableColor(true);
-    tigl::shader->enableAlphaTest(true);
-
-
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
-	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(45.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
     glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
 
 	tigl::shader->setProjectionMatrix(projection);
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
     tigl::shader->setViewMatrix(view);
-
-    tigl::begin(GL_QUADS);
-    tigl::addVertex(Vertex::PT(glm::vec3(-1, -1, 0), glm::vec2(0, 0)));
-    tigl::addVertex(Vertex::PT(glm::vec3(1, -1, 0), glm::vec2(1, 0)));
-    tigl::addVertex(Vertex::PT(glm::vec3(1, 1, 0), glm::vec2(1, -1)));
-    tigl::addVertex(Vertex::PT(glm::vec3(-1, 1, 0), glm::vec2(0, -1)));
-    tigl::end();
-
-    glDisable(GL_TEXTURE_2D);
-
-    tigl::shader->enableTexture(false);
-    tigl::shader->enableAlphaTest(false);
 
 	for (auto& o : objects)
 		o->draw();

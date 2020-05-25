@@ -126,6 +126,9 @@
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenMOdelComponent.cpp">
+      <Filter>Components\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="RotateItemComponent.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenMOdelComponent.h">
+      <Filter>Header Files\Component\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
