@@ -27,13 +27,6 @@ void draw();
 
 int main(void)
 {
-    BaconModelComponent bacon;
-    
-   
-    std::cout << bacon.getIngredientName() << "\n";
- 
-    
-    /*
 	if (!glfwInit())
 		throw "Could not initialize glwf";
 
@@ -63,7 +56,7 @@ int main(void)
 
 
 	return 0;
-    */
+   
 }
 
 
@@ -112,8 +105,10 @@ void init()
             y -= 0.1;
         }
         if (key == GLFW_KEY_R) {
+            std::cout << "New burger" <<'\n';
             recipe.generateRecipe(10);
             burger = recipe.convertToBurger();
+            recipe.print(100,100,0);
         }
         if (key == GLFW_KEY_W && wCooldown <= 0) {
             if (!doWireFrame) {
@@ -176,6 +171,10 @@ void draw()
 		o->draw();
 
     burger.draw();
+
+    recipe.print(100,100,0);
+
+
 }
 
 

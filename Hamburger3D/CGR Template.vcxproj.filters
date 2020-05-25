@@ -209,5 +209,8 @@
     <ClInclude Include="BunCrownModelComponent.h">
       <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
+    <ClInclude Include="gltext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

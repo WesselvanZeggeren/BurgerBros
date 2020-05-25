@@ -3,6 +3,9 @@
 #include "SpinComponent.h"
 #include <typeinfo>
 
+#define GLT_IMPLEMENTATION
+#include "gltext.h"
+
 Burger::Burger()
 {
 	
@@ -54,7 +57,6 @@ void Burger::update(float elapsedTime)
 
 void Burger::draw()
 {
-
 	for (auto& o : ingredients)
 		o->draw();
 }

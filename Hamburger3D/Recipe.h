@@ -20,7 +20,7 @@ public:
 	~Recipe();
 
 	void generateRecipe(int maxAmountIngredients = 15);
-	void print();
+	void print(double x, double y, double z);
 	
 	Burger convertToBurger();
 };
