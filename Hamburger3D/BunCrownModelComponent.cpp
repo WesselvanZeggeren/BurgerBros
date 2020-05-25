@@ -1,10 +1,12 @@
 #include "BunCrownModelComponent.h"
 
-const std::string ingredientName = "Bun crown";
+const std::string ingredientName;
 
 BunCrownModelComponent::BunCrownModelComponent()
 {
     Color bread = { 198.0, 137.0, 88.0, 1.0 };
+
+    ingredientName = "Bun crown";
 
     model.setColor(bread);
     model.moveBrush(0, (0.75 / 2.0), 0);

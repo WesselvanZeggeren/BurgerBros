@@ -1,10 +1,12 @@
 #include "PattyModelComponent.h"
 
-const std::string ingredientName = "Patty";
+const std::string ingredientName;
 
 PattyModelComponent::PattyModelComponent()
 {
     Color patty = { 163.0,56.0,21.0, 1.0 };
+    ingredientName = "Patty";
+
     model.setColor(patty);
     model.moveBrush(0, (0.5 / 2.0), 0);
     model.drawRectangle(2.3, 0.5, 1.8);

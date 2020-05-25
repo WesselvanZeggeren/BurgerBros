@@ -1,11 +1,13 @@
 #include "EggModelComponent.h"
 
-const std::string ingredientName = "Egg";
+const std::string ingredientName;
 
 EggModelComponent::EggModelComponent()
 {
     Color egg_white = { 255, 245, 195 , 1 };
     Color egg_yelow = { 255,220,81 , 1 };
+
+    ingredientName = "Egg";
     
     model.setColor(egg_white);
     model.moveBrush(0, 0.2 , 0);

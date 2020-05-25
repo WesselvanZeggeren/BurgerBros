@@ -1,9 +1,10 @@
 #include "CucumberModelComponent.h"
 
-const std::string ingredientName = "Cucumber";
+const std::string ingredientName;
 
 CucumberModelComponent::~CucumberModelComponent()
 {
+	ingredientName = "Cucumber";
 }
 
 CucumberModelComponent::CucumberModelComponent()

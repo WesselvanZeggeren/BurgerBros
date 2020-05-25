@@ -1,9 +1,10 @@
 #include "OnionModelComponent.h"
 
-const std::string ingredientName = "Onion";
+const std::string ingredientName;
 
 OnionModelComponent::OnionModelComponent()
 {
+	ingredientName = "Onion";
 }
 
 OnionModelComponent::~OnionModelComponent()

@@ -1,11 +1,13 @@
 #include "BaconModelComponent.h"
 
-const std::string ingredientName = "Bacon";
+const std::string ingredientName;
 
 BaconModelComponent::BaconModelComponent()
 {
     Color bacon_dark = { 157,59,33 , 1 };
     Color bacon_light = { 137,0,0 , 1 };
+
+    ingredientName = "Bacon";
 
     model.moveBrush(0, 0.025, 0.1);
     //model.rotate(model, 45.0f, glm::vec3(0, 1, 0));

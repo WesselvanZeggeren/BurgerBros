@@ -27,13 +27,11 @@ void draw();
 int main(void)
 {
     BaconModelComponent bacon;
-
-    /*while (1) {
-        std::cout << bacon.getIngredientName << "\n";
-    }*/
     
-
-
+   
+    std::cout << bacon.getIngredientName() << "\n";
+ 
+    
     /*
 	if (!glfwInit())
 		throw "Could not initialize glwf";

@@ -1,9 +1,10 @@
 #include "PickleModelComponent.h"
 
-const std::string ingredientName = "Pickle";
+const std::string ingredientName;
 
 PickleModelComponent::PickleModelComponent()
 {
+	ingredientName = "Pickle";
 }
 
 PickleModelComponent::~PickleModelComponent()
