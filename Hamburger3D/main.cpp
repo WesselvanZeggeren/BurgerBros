@@ -3,6 +3,11 @@
 #include "tigl.h"
 #include <glm/gtc/matrix_transform.hpp>
 using tigl::Vertex;
+using namespace cv;
+
+#include <opencv2/opencv.hpp>
+#include "opencv2/imgproc/imgproc.hpp" 
+#include "opencv2/highgui/highgui.hpp"
 
 #include "GameObject.h"
 #include "Burger.h"
