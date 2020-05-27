@@ -15,4 +15,6 @@ class Camera {
 		void GetContour(int, void* );
 		void SnapShot();
 		void GetExtreme(std::vector<Point> cnt, Mat image);
+		Point GetCenter(int lowHue, int highHue);
+		void AttachIngredient();
 };

@@ -8,7 +8,7 @@
 	
 VideoCapture cap;
 
-Mat frame, src_gray; 
+Mat frame, src_gray, imgThresholded;
 
 int maxThresh = 255;
 
@@ -31,13 +31,11 @@ int Camera::SetUpCamera(int cameraNumber)
 	double height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
 	cout << "Frame size : " << width << " x " << height << endl;
 
-	namedWindow("MyVideo", CV_WINDOW_AUTOSIZE);
 
 	while (1)
 	{
 
 		bool bSuccess = cap.read(frame);
-		flip(frame, frame, 3);
 
 		if (!bSuccess)
 		{
@@ -45,10 +43,10 @@ int Camera::SetUpCamera(int cameraNumber)
 			break;
 		}
 
-		imshow("MyVideo", frame);
-		GetContour(60, 0);
+		//GetContour(60, 0);
 
-		SnapShot();
+		//SnapShot();
+		cout << GetCenter(75, 130) << endl;
 
 		if (waitKey(1) == 27)
 		{
@@ -100,6 +98,64 @@ void Camera::GetExtreme(vector<Point> cnt, Mat image)
 	circle(image, top, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
 	circle(image, bottom, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
 	imshow("Points", image);
+
+}
+
+Point Camera::GetCenter(int lowHue, int highHue)
+{
+	int iLastX = -1;
+	int iLastY = -1;
+
+	int lowSat = 150;
+	int highSat = 255;
+
+	int lowVal = 60;
+	int highVal = 255;
+
+	Mat imgHSV;
+
+	cvtColor(frame, imgHSV, COLOR_BGR2HSV);
+
+	inRange(imgHSV, Scalar(lowHue, lowSat, lowVal), Scalar(highHue, highSat, highVal), imgThresholded);
+
+
+	erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
+	dilate(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
+
+	dilate(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
+	erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
+
+	Moments oMoments = moments(imgThresholded);
+	double dM01 = oMoments.m01;
+	double dM10 = oMoments.m10;
+	double dArea = oMoments.m00;
+	Point center;
+
+	if (dArea > 10000)
+	{
+		int posX = dM10 / dArea;
+		int posY = dM01 / dArea;
+
+		if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
+		{
+			center = Point(posX, posY);
+			cout << Point(posX, posY) << endl;
+			circle(frame, center, 10, Scalar(0, 0, 255), 1);
+
+		}
+
+		iLastX = posX;
+		iLastY = posY;
+	}
+
+	imshow("Thresholded Image", imgThresholded);
+	imshow("Original", frame);
+
+	return center;
+}
+
+void Camera::AttachIngredient()
+{
 
 }
 
