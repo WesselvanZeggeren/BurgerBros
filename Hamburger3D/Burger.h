@@ -35,4 +35,5 @@ public:
 	void draw();
 	glm::vec3 getRotation();
 	void setRotation(glm::vec3 rotation);
+	void setPosition(glm::vec3 position);
 };

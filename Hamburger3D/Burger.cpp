@@ -34,7 +34,7 @@ void Burger::clearBurger()
 double Burger::getBurgerModelHeight()
 {
 	
-	double height = 0;
+	double height = ingredients.front()->position.y;
 	
 	for (GameObject* go : ingredients) 
 	{
@@ -71,4 +71,10 @@ void Burger::setRotation(glm::vec3 rotation)
 {
 	for (auto& o : ingredients)
 		o->rotation = rotation;
+}
+
+void Burger::setPosition(glm::vec3 position)
+{
+	for (auto& o : ingredients)
+		o->position = position;
 }
