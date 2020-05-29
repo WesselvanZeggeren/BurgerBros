@@ -2,8 +2,8 @@
 #include "GameObject.h"
 #include "SpinComponent.h"
 #include <typeinfo>
+#include <iostream>
 
-double factor = 1;
 
 Burger::Burger()
 {
@@ -55,6 +55,7 @@ void Burger::update(float elapsedTime)
 	}
 	else {
 		factor = 1;
+		rebuildBurgerYPos();
 	}
 
 	for (auto& o : ingredients)
@@ -87,7 +88,7 @@ void Burger::rebuildBurgerYPos()
 	double burgerheight = 0;
 	for (auto& ingredient : ingredients) {
 		double ingredientHeight = ingredient->getComponent<BurgerIngredient>()->getIngredientHeight();
-		ingredient->position.y = (ingredientHeight * factor) + burgerheight;
+		ingredient->position.y = burgerheight;
 		burgerheight += ingredientHeight * factor;
 	}
 }

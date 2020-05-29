@@ -21,6 +21,7 @@ class Burger
 private:
 
 	std::list<GameObject*> ingredients;
+	double factor = 1;
 
 public:
 	Burger();
