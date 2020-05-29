@@ -25,10 +25,6 @@ void Recipe::generateRecipe(int maxAmountIngredients)
 	ingredients.push_back(new BunCrownModelComponent());
 }
 
-void Recipe::print(double x, double y, double z)
-{	
-}
-
 std::vector<BurgerIngredient*> Recipe::getBaseIngredientList()
 {
 
@@ -37,28 +33,42 @@ std::vector<BurgerIngredient*> Recipe::getBaseIngredientList()
 	baseList.push_back(new BaconModelComponent());
 	baseList.push_back(new BunHeelModelComponent());
 	baseList.push_back(new CheeseModelComponent(1));
-	baseList.push_back(new CheeseModelComponent(2));
-	baseList.push_back(new CheeseModelComponent(3));
+	//baseList.push_back(new CheeseModelComponent(2));
+	//baseList.push_back(new CheeseModelComponent(3));
 	baseList.push_back(new EggModelComponent());
 	baseList.push_back(new LettuceModelComponent());
 	baseList.push_back(new PattyModelComponent());
-	baseList.push_back(new PickleModelComponent());
+	//baseList.push_back(new PickleModelComponent());
 	baseList.push_back(new SauceModelComponent(1));
 	baseList.push_back(new SauceModelComponent(2));
 	baseList.push_back(new SauceModelComponent(3));
-	baseList.push_back(new TomatoModelComponent());
+	//baseList.push_back(new TomatoModelComponent());
 
 	return baseList;
 }
 
 Burger Recipe::convertToBurger()
 {
-
 	Burger burger;
 
-	for (int i = 0; i < ingredients.size(); i++)
+	for (int i = 0; i < ingredients.size(); i++) {
+		std::cout << ingredients[i]->getIngredientName() << "\n";
 		burger.addIngriedient(ingredients[i]);
+	}
 
 	return burger;
+}
+
+Burger Recipe::convertToRecipeModel()
+{ 
+	Burger recipeBurger;
+
+	for (int i = 0; i < ingredients.size(); i++) {
+		std::cout << ingredients[i]->getIngredientName() << "\n";
+		recipeBurger.addIngredientToRecipe(ingredients[i]);
+	}
+		
+
+	return recipeBurger;
 }
 

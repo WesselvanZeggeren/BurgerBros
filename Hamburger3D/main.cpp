@@ -107,8 +107,8 @@ void init()
         if (key == GLFW_KEY_R) {
             std::cout << "New burger" <<'\n';
             recipe.generateRecipe(10);
-            burger = recipe.convertToBurger();
-            recipe.print(100,100,0);
+            burger = recipe.convertToRecipeModel();
+            
         }
         if (key == GLFW_KEY_W && wCooldown <= 0) {
             if (!doWireFrame) {
@@ -170,6 +170,7 @@ void draw()
 	for (auto& o : objects)
 		o->draw();
 
+  
     burger.draw();
 
     //recipe.print(100,100,0);

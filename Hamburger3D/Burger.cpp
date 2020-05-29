@@ -24,6 +24,15 @@ void Burger::addIngriedient(BurgerIngredient* ingredient)
 	ingredients.push_back(ingredientObject);
 }
 
+void Burger::addIngredientToRecipe(BurgerIngredient* ingredient)
+{
+	GameObject* ingredientObject = new GameObject();
+	ingredientObject->addComponent(ingredient);
+	ingredientObject->addComponent(new SpinComponent(1));
+	ingredientObject->position.y += getBurgerModelRecipeHeight();
+	ingredients.push_back(ingredientObject);
+}
+
 void Burger::clearBurger()
 {
 	ingredients.clear();
@@ -40,6 +49,18 @@ double Burger::getBurgerModelHeight()
 	{
 
 		height += go->getComponent<BurgerIngredient>()->getIngredientHeight();
+	}
+
+	return height;
+}
+
+double Burger::getBurgerModelRecipeHeight()
+{
+	double height = 0;
+
+	for (GameObject* go : ingredients)
+	{
+		height += go->getComponent<BurgerIngredient>()->getIngredientRecipeHeight();
 	}
 
 	return height;

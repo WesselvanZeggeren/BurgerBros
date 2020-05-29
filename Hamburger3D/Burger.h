@@ -20,6 +20,7 @@ class Burger
 private:
 
 	std::list<GameObject*> ingredients;
+	std::list<GameObject*> recipeIngredients;
 
 public:
 	Burger();
@@ -27,8 +28,10 @@ public:
 
 
 	void addIngriedient(BurgerIngredient* ingredient);
+	void addIngredientToRecipe(BurgerIngredient* ingredient);
 	void clearBurger();
 	double getBurgerModelHeight();
+	double getBurgerModelRecipeHeight();
 
 	void update(float elapsedTime);
 	void draw();

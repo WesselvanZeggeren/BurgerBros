@@ -35,6 +35,11 @@ double PattyModelComponent::getIngredientHeight()
     return 0.5;
 }
 
+double PattyModelComponent::getIngredientRecipeHeight()
+{
+    return 1.0;
+}
+
 std::string PattyModelComponent::getIngredientName()
 {
     return ingredientName;

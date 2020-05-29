@@ -28,6 +28,11 @@ double BunHeelModelComponent::getIngredientHeight()
 	return 0.5;
 }
 
+double BunHeelModelComponent::getIngredientRecipeHeight()
+{
+	return 1.0;
+}
+
 std::string BunHeelModelComponent::getIngredientName()
 {
 	return ingredientName;

@@ -78,6 +78,11 @@ double SauceModelComponent::getIngredientHeight()
     return 0.1;
 }
 
+double SauceModelComponent::getIngredientRecipeHeight()
+{
+    return 0.6;
+}
+
 std::string SauceModelComponent::getIngredientName()
 {
     return ingredientName;
