@@ -3,9 +3,6 @@
 #include "SpinComponent.h"
 #include <typeinfo>
 
-#define GLT_IMPLEMENTATION
-#include "gltext.h"
-
 Burger::Burger()
 {
 	

@@ -23,4 +23,5 @@ public:
 	void print(double x, double y, double z);
 	
 	Burger convertToBurger();
+	Burger convertToRecipeModel();
 };

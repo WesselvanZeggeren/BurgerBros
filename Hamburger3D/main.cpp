@@ -172,7 +172,7 @@ void draw()
 
     burger.draw();
 
-    recipe.print(100,100,0);
+    //recipe.print(100,100,0);
 
 
 }

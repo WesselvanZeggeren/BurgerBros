@@ -202,7 +202,6 @@
     <ClInclude Include="CucumberModelComponent.h" />
     <ClInclude Include="EggModelComponent.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="gltext.h" />
     <ClInclude Include="LettuceModelComponent.h" />
     <ClInclude Include="ModelComponent.h" />
     <ClInclude Include="PattyModelComponent.h" />

@@ -11,5 +11,6 @@ protected:
 public:
 	virtual void draw() override;
 	virtual double getIngredientHeight();
+	virtual double getIngredientRecipeHeight();
 	virtual std::string getIngredientName();
 };
