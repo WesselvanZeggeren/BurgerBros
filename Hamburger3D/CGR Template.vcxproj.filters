@@ -129,6 +129,9 @@
     <ClCompile Include="ScreenMOdelComponent.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
+    <ClCompile Include="RecepeDisplayWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="ScreenMOdelComponent.h">
       <Filter>Header Files\Component\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="RecepeDisplayWrapper.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

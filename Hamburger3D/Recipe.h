@@ -11,7 +11,7 @@
 class Recipe
 {
 
-private:
+protected:
 	std::vector<BurgerIngredient*> ingredients;
 	std::vector<BurgerIngredient*> getBaseIngredientList();
 
@@ -20,7 +20,7 @@ public:
 	~Recipe();
 
 	void generateRecipe(int maxAmountIngredients = 15);
-	void print();
+	virtual void print();
 	
 	Burger convertToBurger();
 };
