@@ -1,6 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "tigl.h"
+#include "FpCamera.h"
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 using tigl::Vertex;
@@ -16,6 +17,7 @@ using tigl::Vertex;
 using namespace cv;
 using namespace std;
 
+FpCam* camera;
 GLFWwindow* window;
 VideoCapture cap(0);
 GLuint textureId = 0;
@@ -71,6 +73,8 @@ void init()
                 glfwSetWindowShouldClose(window, true);
         });
 
+    camera = new FpCam(window);
+
     if (!cap.isOpened())
     {
         cout << "Cannot open the video cam" << endl;
@@ -85,6 +89,7 @@ void init()
 void update()
 {
     getFrame();
+    camera->update(window);
 }
 
 void draw()
@@ -96,18 +101,40 @@ void draw()
 
     glEnable(GL_DEPTH_TEST);
 
+    int viewport[4];
+    glGetIntegerv(GL_VIEWPORT, viewport);
+    glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 100.0f);
+
+    tigl::shader->setProjectionMatrix(projection);
+    tigl::shader->setViewMatrix(camera->getMatrix());
+    tigl::shader->setModelMatrix(glm::mat4(1.0f));
+
     tigl::shader->enableTexture(true);
     tigl::shader->enableColor(true);
     tigl::shader->enableAlphaTest(true);
 
+    int y = -1;
+
     tigl::begin(GL_QUADS);
-    tigl::addVertex(Vertex::PT(glm::vec3(-1, -1, 0), glm::vec2(0, 0)));
-    tigl::addVertex(Vertex::PT(glm::vec3(1, -1, 0), glm::vec2(1, 0)));
-    tigl::addVertex(Vertex::PT(glm::vec3(1, 1, 0), glm::vec2(1, -1)));
-    tigl::addVertex(Vertex::PT(glm::vec3(-1, 1, 0), glm::vec2(0, -1)));
-    tigl::end();
+    tigl::addVertex(Vertex::PT(glm::vec3(0, 1, -3), glm::vec2(-1, 0)));
+    tigl::addVertex(Vertex::PT(glm::vec3(0, -1, -3), glm::vec2(0, 0)));
+    tigl::addVertex(Vertex::PT(glm::vec3(2, -1, 0), glm::vec2(0, 1)));
+    tigl::addVertex(Vertex::PT(glm::vec3(2, 1, 0), glm::vec2(-1, 0)));
 
     glDisable(GL_TEXTURE_2D);
+
+    tigl::addVertex(Vertex::PC(glm::vec3(0, y, -3),  glm::vec4(1,1,1,1)));
+    tigl::addVertex(Vertex::PC(glm::vec3(2, y, 0),  glm::vec4(1, 1, 1, 1)));
+    tigl::addVertex(Vertex::PC(glm::vec3(0, y, 3),  glm::vec4(1, 1, 1, 1)));
+    tigl::addVertex(Vertex::PC(glm::vec3(-2,y, 0), glm::vec4(1, 1, 1, 1)));
+
+    tigl::addVertex(Vertex::P(glm::vec3(0, 1, -3)));
+    tigl::addVertex(Vertex::P(glm::vec3(0, -1, -3)));
+    tigl::addVertex(Vertex::P(glm::vec3(-2, -1, -0)));
+    tigl::addVertex(Vertex::P(glm::vec3(-2, 1, -0)));
+
+    tigl::end();
+
 
 }
 

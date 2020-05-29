@@ -21,9 +21,15 @@
     <ClCompile Include="tigl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FpCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tigl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FpCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
