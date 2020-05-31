@@ -64,7 +64,6 @@ void Burger::update(float elapsedTime)
 
 void Burger::draw()
 {
-
 	for (auto& o : ingredients)
 		o->draw();
 }
@@ -74,13 +73,18 @@ glm::vec3 Burger::getRotation()
 	for (auto& heel : ingredients) {
 		return heel->rotation;
 	}
-
 }
 
 void Burger::setRotation(glm::vec3 rotation)
 {
 	for (auto& o : ingredients)
 		o->rotation = rotation;
+}
+
+void Burger::setPosition(glm::vec3 position)
+{
+	for (auto& o : ingredients)
+		o->position = position;
 }
 
 void Burger::rebuildBurgerYPos()
@@ -95,5 +99,5 @@ void Burger::rebuildBurgerYPos()
 
 void Burger::startAnimation()
 {
-	factor = 10;
+	factor = 7;
 }

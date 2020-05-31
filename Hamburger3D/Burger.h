@@ -17,11 +17,12 @@
 
 class Burger 
 {
+public:
+	double factor = 1;
 
 private:
 
 	std::list<GameObject*> ingredients;
-	double factor = 1;
 
 public:
 	Burger();
@@ -38,4 +39,5 @@ public:
 	void setRotation(glm::vec3 rotation);
 	void rebuildBurgerYPos();
 	void startAnimation();
+	void setPosition(glm::vec3 position);
 };
