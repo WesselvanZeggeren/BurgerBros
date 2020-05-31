@@ -8,11 +8,12 @@ using tigl::Vertex;
 
 class ScreenMOdelComponent : public ModelComponent
 {
+
 	std::vector<Vertex> verts;
+
 public:
 	ScreenMOdelComponent();
 	~ScreenMOdelComponent();
-
 
 	virtual void draw() override;
 };

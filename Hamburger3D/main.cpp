@@ -35,9 +35,11 @@ void draw();
 
 void BindCVMat2GLTexture(cv::Mat& image);
 void getFrame();
+void placeIngredients(double x, double y, double z, int amountInRow, double offset = 1);
 
 int main(void)
 {
+
     // Controle of de camera wordt herkend.
     if (!cap.isOpened())
     {
@@ -50,12 +52,15 @@ int main(void)
 
     if (!glfwInit())
         throw "Could not initialize glwf";
+
     window = glfwCreateWindow(width * 2, height * 2, "Hello World", NULL, NULL);
+    
     if (!window)
     {
         glfwTerminate();
         throw "Could not initialize glwf";
     }
+
     glfwMakeContextCurrent(window);
 
 	tigl::init();
@@ -72,10 +77,8 @@ int main(void)
 
 	glfwTerminate();
 
-
 	return 0;
 }
-
 
 std::list<GameObject*> objects;
 double lastFrameTime = 0;
@@ -90,12 +93,12 @@ int wCooldown = 0;
 
 void init()
 {
+
 	glEnable(GL_DEPTH_TEST);
 
     screen = new GameObject();
     screen->addComponent(new ScreenMOdelComponent());
     screen->position = glm::vec3(0, 0, 0);
-    screen->rotation.x = glm::radians(-26.565f);
     objects.push_back(screen);
 
     GameObject* bottle = new GameObject();
@@ -103,78 +106,61 @@ void init()
     bottle->rotation.y = 3 * .25f;
     bottle->addComponent(new SauceBottle(2));
     bottle->addComponent(new SpinComponent(1));
-    //objects.push_back(bottle);
 
     recipe.generateRecipe(10);
     burger = recipe.convertToBurger();
-    /*
-        burger = Burger();
-    burger.addIngriedient(new SauceModelComponent(2));
-    burger.addIngriedient(new PattyModelComponent());
-    burger.addIngriedient(new CucumberModelComponent());
-    burger.addIngriedient(new CheeseModelComponent(0));
-    burger.addIngriedient(new LettuceModelComponent());
-    burger.addIngriedient(new TomatoModelComponent());
-    burger.addIngriedient(new EggModelComponent());
-    burger.addIngriedient(new BaconModelComponent());
-    burger.addIngriedient(new BunCrownModelComponent());
-    */
 
-    
+    placeIngredients(-12, 6, -15, 4);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 
-		if (key == GLFW_KEY_ESCAPE)
-			glfwSetWindowShouldClose(window, true);
-        if (key == GLFW_KEY_ESCAPE)
-            glfwSetWindowShouldClose(window, true);
-        if (key == GLFW_KEY_LEFT) {
-            x -= 0.1;
-        }
-        if (key == GLFW_KEY_RIGHT) {
-            x += 0.1;
-        }
-        if (key == GLFW_KEY_UP) {
-            y += 0.1;
-        }
-        if (key == GLFW_KEY_DOWN) {
-            y -= 0.1;
-        }
-        if (key == GLFW_KEY_R) {
-            glm::vec3 rotation = burger.getRotation();
-            recipe.generateRecipe(10);
-            burger = recipe.convertToBurger();
-            burger.setRotation(rotation);
-        }
-        if (key == GLFW_KEY_W && wCooldown <= 0) {
-            if (!doWireFrame) {
-                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-                doWireFrame = true;
-            }
-            else
-            {
-                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-                doWireFrame = false;
-            }
-            wCooldown = 500;
-        }
+        switch (key)
+        {
+             
+            case GLFW_KEY_ESCAPE: glfwSetWindowShouldClose(window, true); break;
 
+            case GLFW_KEY_LEFT:  x -= 0.1; break;
+            case GLFW_KEY_RIGHT: x += 0.1; break;
+            case GLFW_KEY_UP:    y += 0.1; break;
+            case GLFW_KEY_DOWN:  y -= 0.1; break;
+
+            case GLFW_KEY_R:
+                glm::vec3 rotation = burger.getRotation();
+                recipe.generateRecipe(10);
+                burger = recipe.convertToBurger();
+                burger.setRotation(rotation);
+                break;
+
+            case GLFW_KEY_W:
+                if (!doWireFrame && wCooldown <= 0)
+                {
+
+                    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+                    doWireFrame = true;
+                }
+                else if (wCooldown <= 0)
+                {
+
+                    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+                    doWireFrame = false;
+                }
+
+                wCooldown = 500;
+                break;
+        }
 	});
 
     if (!cap.isOpened())
-    {
         cout << "Cannot open the video cam" << endl;
-    }
     else
-    {
         getFrame();
-    }
 }
 
 
 void update()
 {
+
 	double currentFrameTime = glfwGetTime();
 	double deltaTime = currentFrameTime - lastFrameTime;
 	lastFrameTime = currentFrameTime;
@@ -185,11 +171,13 @@ void update()
     burger.update(deltaTime);
     screen->update(deltaTime);
     wCooldown--;
+    
     getFrame();
 }
 
 void draw()
 {
+
     BindCVMat2GLTexture(frame);
 
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
@@ -198,7 +186,7 @@ void draw()
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), viewport[2] / (float)viewport[3], 0.01f, 1000.0f);
-    glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
+    glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 10), glm::vec3(x, y, z), glm::vec3(0, 1, 0));
 
 	tigl::shader->setProjectionMatrix(projection);
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
@@ -207,12 +195,13 @@ void draw()
 	for (auto& o : objects)
 		o->draw();
 
-    burger.draw();
+    //burger.draw();
 }
 
 
 void BindCVMat2GLTexture(cv::Mat& image)
 {
+
     glGenTextures(1, &textureId);
     glBindTexture(GL_TEXTURE_2D, textureId);
 
@@ -232,6 +221,7 @@ void BindCVMat2GLTexture(cv::Mat& image)
 
 void getFrame()
 {
+
     bool bSuccess = cap.read(image);
 
     if (!bSuccess)
@@ -243,7 +233,26 @@ void getFrame()
         flip(image, image, 3);
         cvtColor(image, frame, CV_BGR2RGB);
     }
+}
 
+void placeIngredients(double x, double y, double z, int amountInRow, double offset)
+{
 
+    std::vector<BurgerIngredient*> ingredients = Recipe::getBaseIngredientList(true);
 
+    double distance = std::abs((x * 2) / (amountInRow - 1));
+
+    for (int i = 0; i < ingredients.size(); i++)
+    {
+
+        double newX = x + (distance * (i % amountInRow)) + offset;
+        double newY = y - (3 * std::floor(i / amountInRow));
+
+        GameObject* ingredient = new GameObject();
+        ingredient->addComponent(ingredients[i]);
+        ingredient->position = glm::vec3(newX, newY, z);
+        ingredient->rotation.y = 3 * .25f;
+
+        objects.push_back(ingredient);
+    }
 }
