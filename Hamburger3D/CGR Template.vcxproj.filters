@@ -135,6 +135,9 @@
     <ClCompile Include="SimpleTrashBin.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
+    <ClCompile Include="SimpleConveorBelt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="SimpleTrashBin.h">
       <Filter>Header Files\Component\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleConveorBelt.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -52,7 +52,3 @@ void SimpleTrashBin::draw()
 {
 	tigl::drawVertices(GL_QUADS, model.getVertacies());
 }
-
-void SimpleTrashBin::setSauseType(int type)
-{
-}

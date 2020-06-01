@@ -181,6 +181,7 @@
     <ClCompile Include="SauceBottle.cpp" />
     <ClCompile Include="SauceModelComponent.cpp" />
     <ClCompile Include="ScreenMOdelComponent.cpp" />
+    <ClCompile Include="SimpleConveorBelt.cpp" />
     <ClCompile Include="SimpleTrashBin.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SauceBottle.h" />
     <ClInclude Include="ScreenMOdelComponent.h" />
+    <ClInclude Include="SimpleConveorBelt.h" />
     <ClInclude Include="SimpleTrashBin.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />

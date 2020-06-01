@@ -13,6 +13,7 @@
 #include "SauceBottle.h"
 
 #include "SimpleTrashBin.h"
+#include "SimpleConveorBelt.h"
 
 #include "CubeModelComponent.h"
 #include "SpinComponent.h"
@@ -123,7 +124,14 @@ void init()
     bin->rotation.y = 3 * .25f;
     bin->addComponent(new SimpleTrashBin());
     bin->addComponent(new SpinComponent(1));
-    objects.push_back(bin);
+    //objects.push_back(bin);
+
+    GameObject* conveor = new GameObject();
+    conveor->position = glm::vec3(0, 0, 0);
+    conveor->rotation.y = 3 * .25f;
+    conveor->addComponent(new SimpleConveorBelt());
+    conveor->addComponent(new SpinComponent(1));
+    objects.push_back(conveor);
 
 
     recipe.generateRecipe(10);

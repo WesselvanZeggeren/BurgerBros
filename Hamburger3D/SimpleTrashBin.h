@@ -7,6 +7,6 @@ public:
 	~SimpleTrashBin();
 
 	virtual void draw() override;
-	void setSauseType(int type);
+
 };
 
