@@ -95,11 +95,11 @@ void init()
 {
 	glEnable(GL_DEPTH_TEST);
 
-    //tigl::shader->enableLighting(true);
+    tigl::shader->enableLighting(true);
     tigl::shader->setLightCount(1);
 
     tigl::shader->setLightDirectional(0, false);
-    tigl::shader->setLightPosition(0, glm::vec3(1, 2, 3));
+    tigl::shader->setLightPosition(0, glm::vec3(1, 6, 9));
     tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
     tigl::shader->setLightDiffuse(0, glm::vec3(0.8f, 0.8f, 0.8f));
     tigl::shader->setLightSpecular(0, glm::vec3(0, 0, 0));
@@ -131,7 +131,7 @@ void init()
     conveor->rotation.y = 3 * .25f;
     conveor->addComponent(new SimpleConveorBelt());
     conveor->addComponent(new SpinComponent(1));
-    objects.push_back(conveor);
+    //objects.push_back(conveor);
 
 
     recipe.generateRecipe(10);
@@ -186,7 +186,7 @@ void init()
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
                 doWireFrame = false;
             }
-            wCooldown = 500;
+            wCooldown = 50;
         }
 
 	});
@@ -236,7 +236,7 @@ void draw()
 	for (auto& o : objects)
 		o->draw();
 
-    //burger.draw();
+    burger.draw();
 }
 
 

@@ -10,7 +10,8 @@ ModelMaker::~ModelMaker()
 
 void ModelMaker::drawRectangle(double x, double y, double z)
 {
-
+	//normal shading
+	/*
 	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(0, 0, -1)));
 	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(0, 0, -1)));
 	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(0, 0, -1)));
@@ -40,6 +41,40 @@ void ModelMaker::drawRectangle(double x, double y, double z)
 	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(0, 1, 0)));
 	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(0, 1, 0)));
 	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(0, 1, 0)));
+	*/
+
+
+	//smooth shading
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(-1, -1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(-1, 1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(1, 1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(1, -1, -1)));
+
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(-1, -1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(-1, 1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(1, 1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, -(y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(1, -1, 1)));
+
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(1, -1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(1, 1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(1, 1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, -(y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(1, -1, 1)));
+
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(-1, -1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(-1, -1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, -(y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(1, -1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(1, -1, -1)));
+
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(-1, -1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(-1, 1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(-1, 1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, -(y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(-1, -1, 1)));
+
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(-1, 1, -1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3(-(x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(-1, 1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, (z / 2) + brushPos.z), activeColor, glm::vec3(1, 1, 1)));
+	vertacies.push_back(Vertex::PCN(glm::vec3((x / 2) + brushPos.x, (y / 2) + brushPos.y, -(z / 2) + brushPos.z), activeColor, glm::vec3(1, 1, -1)));
+
 }
 
 void ModelMaker::setColor(Color activeColor)
