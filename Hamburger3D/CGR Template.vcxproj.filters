@@ -49,6 +49,18 @@
     <Filter Include="Header Files\Component\Model\Burger">
       <UniqueIdentifier>{a29f7cc3-992d-44ed-ba4a-508d324d9f26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{3470ab99-9e88-45d7-8b74-87b145e422e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{6ed6360d-31e7-4e03-af0d-e789200d0154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vision">
+      <UniqueIdentifier>{e8142d0f-a2b2-4ee6-ae2a-bfc446fcba89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Vision">
+      <UniqueIdentifier>{728d349c-9cc2-4018-86a1-29be27cc5d59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="tigl.cpp">
       <Filter>Source Files\Drawing Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ModelComponent.cpp">
       <Filter>Components\Model</Filter>
@@ -114,20 +123,29 @@
     <ClCompile Include="LettuceModelComponent.cpp">
       <Filter>Components\Model\Burger</Filter>
     </ClCompile>
-    <ClCompile Include="Burger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BurgerIngredient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SauceBottle.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
-    <ClCompile Include="Recipe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenMOdelComponent.cpp">
       <Filter>Components\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Burger.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="BurgerIngredient.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Vision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,12 +194,6 @@
     <ClInclude Include="BaconModelComponent.h">
       <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Burger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BurgerIngredient.h">
       <Filter>Header Files\Component\Model\Burger</Filter>
     </ClInclude>
@@ -200,14 +212,26 @@
     <ClInclude Include="SauceBottle.h">
       <Filter>Header Files\Component\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Recipe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RotateItemComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenMOdelComponent.h">
       <Filter>Header Files\Component\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Burger.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateItemComponent.h">
+      <Filter>Header Files\Component\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Vision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -110,13 +110,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\glm;$(SolutionDir)lib\glew-2.1.0\include;$(SolutionDir)lib\glfw-3.3.2\include;C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\glm;$(SolutionDir)lib\glew-2.1.0\include;$(SolutionDir)lib\glfw-3.3.2\include;C:\Users\wessel\Desktop\Avans\Periode-2.4\Computer-vision\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\glfw-3.3.2\$(Platform);$(SolutionDir)lib\glew-2.1.0\lib\Release\$(Platform);C:\opencv\build\x64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world341.lib;opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\glfw-3.3.2\$(Platform);$(SolutionDir)lib\glew-2.1.0\lib\Release\$(Platform);C:\Users\wessel\Desktop\Avans\Periode-2.4\Computer-vision\opencv\build\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world341d.lib;opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -165,10 +165,12 @@
     <ClCompile Include="BunHeelModelComponent.cpp" />
     <ClCompile Include="Burger.cpp" />
     <ClCompile Include="BurgerIngredient.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CheeseModelComponent.cpp" />
     <ClCompile Include="CubeModelComponent.cpp" />
     <ClCompile Include="CucumberModelComponent.cpp" />
     <ClCompile Include="EggModelComponent.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -193,12 +195,14 @@
     <ClInclude Include="BunHeelModelComponent.h" />
     <ClInclude Include="Burger.h" />
     <ClInclude Include="BurgerIngredient.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="CheeseModelComponent.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="CubeModelComponent.h" />
     <ClInclude Include="CucumberModelComponent.h" />
     <ClInclude Include="EggModelComponent.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LettuceModelComponent.h" />
     <ClInclude Include="ModelComponent.h" />
