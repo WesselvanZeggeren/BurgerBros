@@ -34,7 +34,7 @@ void Burger::clearBurger()
 double Burger::getBurgerModelHeight()
 {
 	
-	double height = ingredients.front()->position.y;
+	double height = 0;
 	
 	for (GameObject* go : ingredients) 
 	{

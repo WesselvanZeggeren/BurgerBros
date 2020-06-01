@@ -177,16 +177,17 @@
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="PattyModelComponent.cpp" />
     <ClCompile Include="PickleModelComponent.cpp" />
-    <ClCompile Include="RecepeDisplayWrapper.cpp" />
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="SauceBottle.cpp" />
     <ClCompile Include="SauceModelComponent.cpp" />
     <ClCompile Include="ScreenMOdelComponent.cpp" />
+    <ClCompile Include="SimpleTrashBin.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
     <ClCompile Include="tigl.cpp" />
     <ClCompile Include="ShapeMaker.cpp" />
     <ClCompile Include="TomatoModelComponent.cpp" />
     <ClCompile Include="OnionModelComponent.cpp" />
+    <ClCompile Include="TrashBin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaconModelComponent.h" />
@@ -207,15 +208,16 @@
     <ClInclude Include="PickleModelComponent.h" />
     <ClInclude Include="RecepeDisplayWrapper.h" />
     <ClInclude Include="Recipe.h" />
-    <ClInclude Include="RotateItemComponent.h" />
     <ClInclude Include="SauceModelComponent.h" />
     <ClInclude Include="SauceBottle.h" />
     <ClInclude Include="ScreenMOdelComponent.h" />
+    <ClInclude Include="SimpleTrashBin.h" />
     <ClInclude Include="SpinComponent.h" />
     <ClInclude Include="tigl.h" />
     <ClInclude Include="ShapeMaker.h" />
     <ClInclude Include="TomatoModelComponent.h" />
     <ClInclude Include="OnionModelComponent.h" />
+    <ClInclude Include="TrashBin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
