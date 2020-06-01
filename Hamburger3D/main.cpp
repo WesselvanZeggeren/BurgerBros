@@ -12,6 +12,8 @@
 #include "Recipe.h"
 #include "SauceBottle.h"
 
+#include "SimpleTrashBin.h"
+
 #include "CubeModelComponent.h"
 #include "SpinComponent.h"
 #include "BunCrownModelComponent.h"
@@ -92,7 +94,7 @@ void init()
 {
 	glEnable(GL_DEPTH_TEST);
 
-    tigl::shader->enableLighting(true);
+    //tigl::shader->enableLighting(true);
     tigl::shader->setLightCount(1);
 
     tigl::shader->setLightDirectional(0, false);
@@ -114,6 +116,15 @@ void init()
     bottle->addComponent(new SauceBottle(2));
     bottle->addComponent(new SpinComponent(1));
     //objects.push_back(bottle);
+
+
+    GameObject* bin = new GameObject();
+    bin->position = glm::vec3(0, 0, 0);
+    bin->rotation.y = 3 * .25f;
+    bin->addComponent(new SimpleTrashBin());
+    bin->addComponent(new SpinComponent(1));
+    objects.push_back(bin);
+
 
     recipe.generateRecipe(10);
     burger = recipe.convertToBurger();
@@ -217,7 +228,7 @@ void draw()
 	for (auto& o : objects)
 		o->draw();
 
-    burger.draw();
+    //burger.draw();
 }
 
 
