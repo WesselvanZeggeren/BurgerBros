@@ -93,6 +93,12 @@ void Game::update()
 	MenuCam->update(window);
 }
 
+
+/*
+ *	MainMenu draw function
+ *	Needs use of objects
+ *	TODO: Component use + lightning fix
+ */
 void Game::drawMainMenu()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
