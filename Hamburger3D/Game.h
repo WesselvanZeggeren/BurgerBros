@@ -20,6 +20,8 @@
 #include "BunCrownModelComponent.h"
 #include "ScreenMOdelComponent.h"
 
+#include "Camera.h"
+
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
 #pragma comment(lib, "opengl32.lib")
@@ -51,7 +53,7 @@ public:
 
 	double lastFrameTime;
 
-	void startGame(double height, double width, void (*frameCallback)(void));
+	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);
 
 	BurgerIngredient getIngredient(Point point);

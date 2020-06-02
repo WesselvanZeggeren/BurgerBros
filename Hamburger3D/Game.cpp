@@ -1,11 +1,13 @@
 #include "Game.h"
 #include "Camera.h"
-Mat frameCap;
+
 Camera cam;
+GLuint textureId = 0;
+
 /**
  * Start game
  */
-void Game::startGame(double height, double width, void (*frameCallback)(void))
+void Game::startGame(double height, double width, Camera cam)
 {
 
 	if (!glfwInit())
@@ -27,9 +29,6 @@ void Game::startGame(double height, double width, void (*frameCallback)(void))
 
 	while (!glfwWindowShouldClose(window))
 	{
-
-		frameCallback();
-
 		update();
 		draw();
 		cam.GetCenter(75, 130);
@@ -45,7 +44,6 @@ void Game::startGame(double height, double width, void (*frameCallback)(void))
  */
 void Game::init()
 {
-
 	glEnable(GL_DEPTH_TEST);
 
 	setScreen();
@@ -64,7 +62,9 @@ void Game::init()
 
 void Game::update()
 {
-
+	Mat frame = cam.SnapShot();
+	setFrame(frame);
+	
 	double currentFrameTime = glfwGetTime();
 	double deltaTime = currentFrameTime - lastFrameTime;
 	lastFrameTime = currentFrameTime;
@@ -80,7 +80,7 @@ void Game::update()
 
 void Game::draw()
 {
-
+	
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -92,6 +92,8 @@ void Game::draw()
 	tigl::shader->setProjectionMatrix(projection);
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
 	tigl::shader->setViewMatrix(view);
+
+	screen->draw();
 
 	for (auto& o : objects)
 		o->draw();
@@ -105,11 +107,8 @@ void Game::draw()
  */
 void Game::setScreen()
 {
-
-	GameObject* screen = new GameObject();
+	screen = new GameObject();
 	screen->addComponent(new ScreenMOdelComponent());
-	screen->position = glm::vec3(0, 0, 0);
-	objects.push_back(screen);
 }
 
 /**
@@ -162,12 +161,12 @@ BurgerIngredient Game::getIngredient(Point point)
 /**
  * Frame functions
  */
+
 void Game::setFrame(Mat& frame)
 {
-
 	glGenTextures(1, &textureId);
 	glBindTexture(GL_TEXTURE_2D, textureId);
-	frameCap = frame;
+
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

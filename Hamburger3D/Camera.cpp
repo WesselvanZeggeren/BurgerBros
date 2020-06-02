@@ -7,22 +7,20 @@
 #include "Camera.h"
 #include "GameObject.h"
 #include "Game.h"
+
 Point point;
 
 VideoCapture cap;
 
-Mat frame, src_gray, imgThresholded;
+Mat image, frame, src_gray, imgThresholded;
+
+RNG rng[123456];
 
 int maxThresh = 255;
-
-RNG rng(12345);
-
-char filename[100];
 
 int Camera::SetUpCamera(int cameraNumber)
 {
 	cap.open(cameraNumber);
-
 
 	if (!cap.isOpened())
 	{
@@ -30,38 +28,27 @@ int Camera::SetUpCamera(int cameraNumber)
 		return -1;
 	}
 
-	double width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
-	double height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
+	width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
+	height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
 	cout << "Frame size : " << width << " x " << height << endl;
 
-
-	while (1)
-	{
-
-		bool bSuccess = cap.read(frame);
-
-		if (!bSuccess)
-		{
-			cout << "Cannot read a frame from video stream" << endl;
-			break;
-		}
-
-		//GetContour(60, 0);
-
-		//SnapShot();
-		cout << GetCenter(75, 130) << endl;
-
-		if (waitKey(1) == 27)
-		{
-			cout << "esc key is pressed by user" << endl;
-			break;
-		}
-	}
 	return 0;
 }
 
 Mat Camera::SnapShot()
 {
+	bool bSuccess = cap.read(image);
+
+	if (!bSuccess)
+	{
+		cout << "Cannot read a frame from video stream" << endl;
+	}
+	else
+	{
+		flip(image, image, 3);
+		cvtColor(image, frame, CV_BGR2RGB);
+	}
+	
 	return frame;
 }
 
@@ -175,32 +162,3 @@ void Camera::isAttached()
 	}
 }
 
-
-void Camera::GetContour(int threshold, void*)
-{
-	Mat contourOutput;
-	vector <vector<Point>> contours;
-	vector <Vec4i> hierarchy;
-	cvtColor(frame, src_gray, CV_BGR2GRAY);
-	Canny(src_gray, contourOutput, threshold, threshold * 2, 3);
-	findContours(contourOutput, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-	Mat drawing = Mat::zeros(contourOutput.size(), CV_8UC3);
-	for (int i = 0; i < contours.size(); i++)
-	{
-		Scalar color = Scalar(rng.uniform(255, 255), rng.uniform(255, 255), rng.uniform(255, 255));
-		drawContours(drawing, contours, i, color, 2, 8, hierarchy, 0, Point());
-	}
-	namedWindow("Contours", CV_WINDOW_AUTOSIZE);
-	imshow("Contours", drawing);
-	vector<Point> cnt;
-	for (int i = 0; i < contours.size(); i++)
-	{
-		for (int j = 0; j < contours[i].size();j++) // run until j < contours[i].size();
-		{
-			Point point = contours[i][j];
-			cnt.push_back(point);
-		}
-	}
-	GetExtreme(cnt, contourOutput);
-}

@@ -1,4 +1,5 @@
 #include "ScreenMOdelComponent.h"
+#include <iostream>
 
 ScreenMOdelComponent::ScreenMOdelComponent()
 {
@@ -22,15 +23,13 @@ ScreenMOdelComponent::~ScreenMOdelComponent()
 
 void ScreenMOdelComponent::draw()
 {
-
     tigl::shader->enableTexture(true);
     tigl::shader->enableColor(true);
     tigl::shader->enableAlphaTest(true);
 
     tigl::drawVertices(GL_QUADS, verts);
 
-    glDisable(GL_TEXTURE_2D);
-
     tigl::shader->enableTexture(false);
     tigl::shader->enableAlphaTest(false);
+
 }
