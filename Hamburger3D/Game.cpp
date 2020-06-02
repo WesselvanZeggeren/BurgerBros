@@ -1,5 +1,7 @@
 #include "Game.h"
-
+#include "Camera.h"
+Mat frameCap;
+Camera cam;
 /**
  * Start game
  */
@@ -30,7 +32,7 @@ void Game::startGame(double height, double width, void (*frameCallback)(void))
 
 		update();
 		draw();
-
+		cam.GetCenter(75, 130);
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -165,7 +167,7 @@ void Game::setFrame(Mat& frame)
 
 	glGenTextures(1, &textureId);
 	glBindTexture(GL_TEXTURE_2D, textureId);
-
+	frameCap = frame;
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

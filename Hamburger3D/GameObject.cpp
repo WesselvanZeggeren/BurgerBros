@@ -51,3 +51,8 @@ void GameObject::update(float elapsedTime)
 	for (auto& c : components)
 		c->update(elapsedTime);
 }
+
+void GameObject::setAttached(bool attach)
+{
+	attached = attach;
+}

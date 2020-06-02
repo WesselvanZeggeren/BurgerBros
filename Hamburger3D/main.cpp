@@ -12,11 +12,11 @@ void frameCallback();
 int main(void)
 {
 
-	if (!camera.setUpCamera(0))
+	if (!camera.SetUpCamera(0))
 		return 1;
 
-	double height = camera.cap.get(CV_CAP_PROP_FRAME_HEIGHT);
-	double width = camera.cap.get(CV_CAP_PROP_FRAME_WIDTH);
+	double height = camera.height;
+	double width = camera.width;
 
 	game.startGame(height, width, frameCallback);
 
@@ -26,7 +26,7 @@ int main(void)
 void frameCallback()
 {
 
-	Mat frame = camera.getFrame();
+	Mat frame = camera.SnapShot();
 
 	/*Mat mask = camera.getColorMask(frame, Scalar(0, 150, 150), Scalar(5, 255, 255), Scalar(175, 150, 150), Scalar(180, 255, 255));
 

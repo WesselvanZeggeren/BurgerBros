@@ -20,11 +20,13 @@ public:
 	glm::vec3 position;
 	glm::vec3 rotation;
 	glm::vec3 scale = glm::vec3(1, 1, 1);
+	bool attached = false;
 
 	void addComponent(Component* component);
 	std::list<Component*> getComponents();
 	void update(float elapsedTime);
 	void draw(const glm::mat4 & = glm::mat4(1.0f));
+	void setAttached(bool attach);
 
 	template<class T>
 	T* getComponent()
