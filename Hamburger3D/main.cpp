@@ -9,9 +9,15 @@ Camera camera;
 
 int main(void)
 {
-	camera.SetUpCamera(0);
+	if (camera.SetUpCamera(0) == 0)
+	{
+		game.startGame(camera.height, camera.width, camera);
+		return 0;
 
-	game.startGame(camera.height, camera.width, camera);
+	}
+	else 
+	{
+		return 0;
+	}
 
-	return 0;
 }
