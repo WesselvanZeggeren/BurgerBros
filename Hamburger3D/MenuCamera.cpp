@@ -1,9 +1,6 @@
-#include "FpCamera.h"
+#include "MenuCamera.h"
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
-
-using namespace std;
 
 FpCam::FpCam(GLFWwindow* window)
 {
@@ -27,9 +24,9 @@ void FpCam::update(GLFWwindow* window)
 	double x, y;
 	glfwGetCursorPos(window, &x, &y);
 
-	cout << x << y << "\n";
-	if (x < 290) { glfwSetCursorPos(window, 290.0, y); x = 290; }
-	if (x > 460) { glfwSetCursorPos(window, 460.0, y); x = 460; }
+	if (x < 300) { glfwSetCursorPos(window, 300, y); x = 300; }
+	if (x > 450) { glfwSetCursorPos(window, 450, y); x = 450; }
+
 
 	static double lastX = x;
 	static double lastY = y;

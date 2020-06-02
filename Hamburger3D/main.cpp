@@ -17,7 +17,7 @@ using tigl::Vertex;
 #include <opencv2/opencv.hpp>
 #include "opencv2/imgproc/imgproc.hpp" 
 #include "opencv2/highgui/highgui.hpp"
-#include "Camera.h"
+#include "MenuCamera.h"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")

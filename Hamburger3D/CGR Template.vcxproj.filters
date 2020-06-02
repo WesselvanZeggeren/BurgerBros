@@ -126,7 +126,7 @@
     <ClCompile Include="Recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="MenuCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -206,7 +206,7 @@
     <ClInclude Include="RotateItemComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="MenuCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
