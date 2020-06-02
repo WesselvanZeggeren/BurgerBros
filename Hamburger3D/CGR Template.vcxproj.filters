@@ -148,7 +148,7 @@
       <Filter>Source Files\Vision</Filter>
     </ClCompile>
     <ClCompile Include="MenuCamera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Vision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +237,7 @@
       <Filter>Header Files\Vision</Filter>
     </ClInclude>
     <ClInclude Include="MenuCamera.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Vision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

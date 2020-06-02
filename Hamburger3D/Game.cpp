@@ -1,8 +1,11 @@
 #include "Game.h"
 #include "Camera.h"
+#include "MenuCamera.h"
 
+FpCam* MenuCam;
 Camera cam;
 GLuint textureId = 0;
+bool gameState = false;
 
 /**
  * Start game
@@ -30,8 +33,8 @@ void Game::startGame(double height, double width, Camera cam)
 	while (!glfwWindowShouldClose(window))
 	{
 		update();
-		draw();
-		cam.GetCenter(75, 130);
+		if (gameState) { drawGame(); cam.GetCenter(75, 130); }
+		else { drawMainMenu(); }
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -51,20 +54,31 @@ void Game::init()
 
 	recipe.generateRecipe(10);
 	burger = recipe.convertToBurger();
+	burger.setPosition(glm::vec3(0, 10, -4));
+
+	tigl::shader->enableColor(true);
+	tigl::shader->enableTexture(true);
+	tigl::shader->enableAlphaTest(true);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
-
-		if (key == GLFW_KEY_ESCAPE)
-			glfwSetWindowShouldClose(window, true);
+		if (key == GLFW_KEY_ESCAPE) {
+				glfwSetWindowShouldClose(window, true);
+			}
+		if (key == GLFW_KEY_SPACE) {
+			gameState = true;
+		}
 	});
+
+	MenuCam = new FpCam(window);
+
 }
 
 void Game::update()
 {
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
-	
+
 	double currentFrameTime = glfwGetTime();
 	double deltaTime = currentFrameTime - lastFrameTime;
 	lastFrameTime = currentFrameTime;
@@ -76,9 +90,49 @@ void Game::update()
 		i->update(deltaTime);
 
 	burger.update(deltaTime);
+	MenuCam->update(window);
 }
 
-void Game::draw()
+void Game::drawMainMenu()
+{
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	int viewport[4];
+	glGetIntegerv(GL_VIEWPORT, viewport);
+	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 100.0f);
+
+	tigl::shader->setProjectionMatrix(projection);
+	tigl::shader->setViewMatrix(MenuCam->getMatrix());
+	tigl::shader->setModelMatrix(glm::mat4(1.0f));
+
+	double y = 0;
+	int n = -1;
+
+	tigl::begin(GL_QUADS);
+	tigl::addVertex(Vertex::PT(glm::vec3(0, 0, -5), glm::vec2(1, 0)));
+	tigl::addVertex(Vertex::PT(glm::vec3(0, 8, -5), glm::vec2(1, -1)));
+	tigl::addVertex(Vertex::PT(glm::vec3(8, 8, 0), glm::vec2(0, -1)));
+	tigl::addVertex(Vertex::PT(glm::vec3(8, 0, 0), glm::vec2(0, 0)));
+
+	glDisable(GL_TEXTURE_2D);
+
+	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, -8), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, 8), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(-8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
+
+	tigl::addVertex(Vertex::PN(glm::vec3(0, 0, -5), glm::vec3(-1, 0, 0)));
+	tigl::addVertex(Vertex::PN(glm::vec3(0, 8, -5), glm::vec3(-1, 0, 0)));
+	tigl::addVertex(Vertex::PN(glm::vec3(-8, 8, 0), glm::vec3(-1, 0, 0)));
+	tigl::addVertex(Vertex::PN(glm::vec3(-8, 0, 0), glm::vec3(-1, 0, 0)));
+
+	tigl::end();
+	
+	burger.draw();
+}
+
+void Game::drawGame()
 {
 	
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);

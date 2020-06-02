@@ -37,7 +37,8 @@ private:
 	GLuint textureId = 0;
 
 	void init();
-	void draw();
+	void drawGame();
+	void drawMainMenu();
 	void update();
 
 	void setScreen();
