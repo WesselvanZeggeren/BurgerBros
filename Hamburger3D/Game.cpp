@@ -89,6 +89,7 @@ void Game::init()
 		if (key == GLFW_KEY_SPACE) {
 			gameState = true;
 		}
+		//This is a temperary testing hotkey
 		if (key == GLFW_KEY_N) {
 			if (buildingBurger->isfinnished()) {
 				buildingBurger->clearBurger();
