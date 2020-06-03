@@ -33,6 +33,7 @@ void Game::startGame(double height, double width, Camera cam)
 	while (!glfwWindowShouldClose(window))
 	{
 		update();
+		if (burger.factor == 1) { burger.startAnimation(); }
 		if (gameState) { drawGame(); cam.GetCenter(75, 130); }
 		else { drawMainMenu(); }
 		glfwSwapBuffers(window);
