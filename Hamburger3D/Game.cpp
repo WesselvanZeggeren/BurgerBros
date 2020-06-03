@@ -33,7 +33,7 @@ void Game::startGame(double height, double width, Camera cam)
 	while (!glfwWindowShouldClose(window))
 	{
 		update();
-		if (burger.factor == 1) { burger.startAnimation(); }
+		if (animatedBurger.factor == 1) { animatedBurger.startAnimation(); }
 		if (gameState) { drawGame(); cam.GetCenter(75, 130); }
 		else { drawMainMenu(); }
 		glfwSwapBuffers(window);
@@ -54,12 +54,24 @@ void Game::init()
 	setIngredients();
 
 	recipe.generateRecipe(10);
-	burger = recipe.convertToBurger();
-	burger.setPosition(glm::vec3(0, 10, -4));
+	animatedBurger = recipe.convertToBurger();
+	animatedBurger.setPosition(glm::vec3(0, 10, -4));
+
 
 	tigl::shader->enableColor(true);
 	tigl::shader->enableTexture(true);
 	tigl::shader->enableAlphaTest(true);
+
+	tigl::shader->enableLighting(true);
+	tigl::shader->setLightCount(1);
+
+	tigl::shader->setLightDirectional(0, false);
+	tigl::shader->setLightPosition(0, glm::vec3(0, 0, 5));
+	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
+	tigl::shader->setLightDiffuse(0, glm::vec3(0.9f, 0.9f, 0.9f));
+	tigl::shader->setLightSpecular(0, glm::vec3(0, 0, 0));
+	tigl::shader->setShinyness(32.0f);
+
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
@@ -90,7 +102,7 @@ void Game::update()
 	for (auto& i : ingredients)
 		i->update(deltaTime);
 
-	burger.update(deltaTime);
+	animatedBurger.update(deltaTime);
 	MenuCam->update(window);
 }
 
@@ -136,7 +148,7 @@ void Game::drawMainMenu()
 
 	tigl::end();
 	
-	burger.draw();
+	animatedBurger.draw();
 }
 
 void Game::drawGame()
@@ -161,6 +173,8 @@ void Game::drawGame()
 
 	for (auto& i : ingredients)
 		i->draw();
+
+	buildingBurger->draw();
 }
 
 /**
@@ -177,9 +191,8 @@ void Game::setScreen()
  */
 void Game::setIngredients()
 {
-
 	double x = -12.0;
-	double y = 6.0;
+	double y = 8.0;
 	double z = -15.0; 
 	double offset = 0;
 
@@ -208,7 +221,15 @@ void Game::setIngredients()
 	crown->position = glm::vec3(x, y * -1, z);
 	crown->rotation.y = 3 * .25f;
 
+	buildingBurger = new Burger();
+	buildingBurger->setPosition(glm::vec3(0, y * -1, z));
+
+	GameObject* trash = new GameObject();
+	trash->addComponent(new SimpleTrashBin());
+	trash->position = glm::vec3(-x, y * -1, z);
+
 	ingredients.push_back(crown);
+	ingredients.push_back(trash);
 }
 
 BurgerIngredient Game::getIngredient(Point point)

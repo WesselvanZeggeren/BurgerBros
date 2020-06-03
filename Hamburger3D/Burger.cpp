@@ -87,6 +87,7 @@ void Burger::setPosition(glm::vec3 position)
 		o->position = position;
 }
 
+
 void Burger::rebuildBurgerYPos()
 {
 	double burgerheight = 0;

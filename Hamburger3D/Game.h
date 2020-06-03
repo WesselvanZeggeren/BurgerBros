@@ -20,6 +20,8 @@
 #include "BunCrownModelComponent.h"
 #include "ScreenMOdelComponent.h"
 
+#include "SimpleTrashBin.h"
+
 #include "Camera.h"
 
 #pragma comment(lib, "glfw3.lib")
@@ -50,7 +52,8 @@ public:
 	
 	GameObject* screen;
 	Recipe recipe;
-	Burger burger;
+	Burger animatedBurger;
+	Burger* buildingBurger;
 
 	double lastFrameTime;
 
