@@ -51,9 +51,9 @@ public:
 	std::list<GameObject*> ingredients;
 	
 	GameObject* screen;
-	Recipe recipe;
+	Recipe animatedRecipe;
 	Burger animatedBurger;
-	Burger* buildingBurger;
+
 
 	double lastFrameTime;
 

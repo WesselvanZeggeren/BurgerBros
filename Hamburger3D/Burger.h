@@ -18,11 +18,13 @@
 class Burger 
 {
 public:
-	double factor = 1;
+	double distanceIngredients = 1;
+	bool animate = false;
 
 private:
 
 	std::list<GameObject*> ingredients;
+	glm::vec3 position = glm::vec3(0, 0, 0);;
 
 public:
 	Burger();
@@ -32,6 +34,9 @@ public:
 	void addIngriedient(BurgerIngredient* ingredient);
 	void clearBurger();
 	double getBurgerModelHeight();
+	bool isfinnished();
+	BurgerIngredient* getIngredientByIndex(int index);
+	int burgerIngredientCount();
 
 	void update(float elapsedTime);
 	void draw();

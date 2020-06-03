@@ -8,6 +8,7 @@
 Burger::Burger()
 {
 	addIngriedient(new BunHeelModelComponent());
+
 }
 
 
@@ -25,6 +26,7 @@ void Burger::addIngriedient(BurgerIngredient* ingredient)
 	ingredientObject->addComponent(new SpinComponent(1));
 	ingredientObject->position.y += getBurgerModelHeight();
 	ingredients.push_back(ingredientObject);
+	
 }
 
 void Burger::clearBurger()
@@ -47,16 +49,47 @@ double Burger::getBurgerModelHeight()
 	return height;
 }
 
+bool Burger::isfinnished()
+{
+	for (GameObject* go : ingredients) {
+		if (dynamic_cast<BunCrownModelComponent*>  (go->getComponent<BurgerIngredient>()) != NULL) {
+			return true;
+		}
+	}
+	return false;
+}
+
+BurgerIngredient* Burger::getIngredientByIndex(int index)
+{ 
+	int i = 0;
+	for(GameObject* go: ingredients) {
+		if (i == index) {
+			return go->getComponent<BurgerIngredient>();
+		}
+		i++;
+	}
+	return NULL;
+}
+
+int Burger::burgerIngredientCount()
+{
+	return static_cast<int>(ingredients.size());
+}
+
 void Burger::update(float elapsedTime)
 {
-	if (factor > 1) {
-		factor -= elapsedTime;
+	if (animate) {
+		if (distanceIngredients > 1) {
+			distanceIngredients -= elapsedTime;
+		}
+		else {
+			distanceIngredients = 1;
+			
+		}
 		rebuildBurgerYPos();
 	}
-	else {
-		factor = 1;
-		rebuildBurgerYPos();
-	}
+
+
 
 	for (auto& o : ingredients)
 		o->update(elapsedTime);
@@ -64,8 +97,7 @@ void Burger::update(float elapsedTime)
 
 void Burger::draw()
 {
-	for (auto& o : ingredients)
-		o->draw();
+	for (auto& o : ingredients)	o->draw();
 }
 
 glm::vec3 Burger::getRotation()
@@ -94,11 +126,11 @@ void Burger::rebuildBurgerYPos()
 	for (auto& ingredient : ingredients) {
 		double ingredientHeight = ingredient->getComponent<BurgerIngredient>()->getIngredientHeight();
 		ingredient->position.y = burgerheight;
-		burgerheight += ingredientHeight * factor;
+		burgerheight += ingredientHeight + distanceIngredients/10 - 0.1;
 	}
 }
 
 void Burger::startAnimation()
 {
-	factor = 7;
+	distanceIngredients = 7;
 }
