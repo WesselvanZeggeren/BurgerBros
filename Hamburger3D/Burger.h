@@ -17,6 +17,8 @@
 
 class Burger 
 {
+public:
+	double factor = 1;
 
 private:
 
@@ -35,5 +37,7 @@ public:
 	void draw();
 	glm::vec3 getRotation();
 	void setRotation(glm::vec3 rotation);
+	void rebuildBurgerYPos();
+	void startAnimation();
 	void setPosition(glm::vec3 position);
 };

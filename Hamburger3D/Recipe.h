@@ -5,7 +5,9 @@
 #include <time.h>
 #include <stdio.h> 
 #include <stdlib.h>
+
 #include "Burger.h"
+#include "SauceBottle.h"
 #include "BurgerIngredient.h"
 
 class Recipe
@@ -13,7 +15,6 @@ class Recipe
 
 protected:
 	std::vector<BurgerIngredient*> ingredients;
-	std::vector<BurgerIngredient*> getBaseIngredientList();
 
 public:
 	Recipe();
@@ -23,4 +24,6 @@ public:
 	virtual void print();
 	
 	Burger convertToBurger();
+
+	static std::vector<BurgerIngredient*> getBaseIngredientList(bool isBottle = false);
 };
