@@ -83,8 +83,8 @@ void Camera::GetExtreme(vector<Point> cnt, Mat image)
 
 Point Camera::GetCenter(int lowHue, int highHue)
 {
-	int iLastX = -1;
-	int iLastY = -1;
+	int iLastX = 1;
+	int iLastY = 1;
 
 	int lowSat = 150;
 	int highSat = 255;
@@ -110,7 +110,6 @@ Point Camera::GetCenter(int lowHue, int highHue)
 	double dM10 = oMoments.m10;
 	double dArea = oMoments.m00;
 	Point center;
-
 	if (dArea > 10000)
 	{
 		int posX = dM10 / dArea;
@@ -127,7 +126,6 @@ Point Camera::GetCenter(int lowHue, int highHue)
 		iLastX = posX;
 		iLastY = posY;
 	}
-
 	imshow("Thresholded Image", imgThresholded);
 	imshow("Original", frame);
 
