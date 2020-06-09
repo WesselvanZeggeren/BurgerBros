@@ -55,7 +55,7 @@ void Game::init()
 
 	animatedRecipe.generateRecipe(10);
 	animatedBurger = animatedRecipe.convertToBurger();
-	animatedBurger.setPosition(glm::vec3(0, 10, -4));
+	animatedBurger.setPosition(glm::vec3(0, 0, -4));
 	animatedBurger.animate = true;
 
 	buildingRecipe = new Recipe();
@@ -92,12 +92,14 @@ void Game::init()
 		//This is a temperary testing hotkey
 		if (key == GLFW_KEY_N) {
 			if (buildingBurger->isfinnished()) {
+				glm::vec3 rotation = buildingRecipeBurger.getRotation();
 				buildingBurger->clearBurger();
 				buildingRecipe->generateRecipe(8);
 				buildingRecipeBurger = buildingRecipe->convertToBurger();
-				buildingRecipeBurger.setPosition(glm::vec3(12, 0, -15));
+				buildingRecipeBurger.setPosition(glm::vec3(12, -1.5, -15));
 				buildingRecipeBurger.distanceIngredients = 3;
 				buildingRecipeBurger.rebuildBurgerYPos();
+				buildingRecipeBurger.setRotation(rotation);
 			}
 			else {
 				BurgerIngredient* ingredient = buildingRecipeBurger.getIngredientByIndex(buildingBurger->burgerIngredientCount());

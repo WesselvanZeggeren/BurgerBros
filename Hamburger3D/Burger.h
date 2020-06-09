@@ -15,7 +15,7 @@
 #include "TomatoModelComponent.h"
 #include "LettuceModelComponent.h"
 
-class Burger 
+class Burger
 {
 public:
 	double distanceIngredients = 1;
@@ -24,7 +24,9 @@ public:
 private:
 
 	std::list<GameObject*> ingredients;
-	glm::vec3 position = glm::vec3(0, 0, 0);;
+	glm::vec3 position = glm::vec3(0, 0, 0);
+	glm::vec3 rotation = glm::vec3(0, 0, 0);
+	glm::vec3 scale = glm::vec3(1, 1, 1);
 
 public:
 	Burger();
@@ -39,10 +41,12 @@ public:
 	int burgerIngredientCount();
 
 	void update(float elapsedTime);
-	void draw();
-	glm::vec3 getRotation();
-	void setRotation(glm::vec3 rotation);
+	void draw(const glm::mat4 & = glm::mat4(1.0f));
+
 	void rebuildBurgerYPos();
 	void startAnimation();
+
 	void setPosition(glm::vec3 position);
+	glm::vec3 getRotation();
+	void setRotation(glm::vec3 rotation);
 };

@@ -95,28 +95,32 @@ void Burger::update(float elapsedTime)
 		o->update(elapsedTime);
 }
 
-void Burger::draw()
+void Burger::draw(const glm::mat4& parentMatrix)
 {
-	for (auto& o : ingredients)	o->draw();
+	glm::mat4 modelMatrix = parentMatrix;
+	modelMatrix = glm::translate(modelMatrix, position);
+	modelMatrix = glm::rotate(modelMatrix, rotation.x, glm::vec3(1, 0, 0));
+	modelMatrix = glm::rotate(modelMatrix, rotation.y, glm::vec3(0, 1, 0));
+	modelMatrix = glm::rotate(modelMatrix, rotation.z, glm::vec3(0, 0, 1));
+	modelMatrix = glm::scale(modelMatrix, scale);
+
+	for (auto& o : ingredients)	o->draw(modelMatrix);
 }
+
 
 glm::vec3 Burger::getRotation()
 {
-	for (auto& heel : ingredients) {
-		return heel->rotation;
-	}
+	return this->rotation;
 }
 
 void Burger::setRotation(glm::vec3 rotation)
 {
-	for (auto& o : ingredients)
-		o->rotation = rotation;
+	this->rotation = rotation;
 }
 
 void Burger::setPosition(glm::vec3 position)
 {
-	for (auto& o : ingredients)
-		o->position = position;
+	this->position = position;
 }
 
 
