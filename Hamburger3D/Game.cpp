@@ -67,19 +67,14 @@ void Game::init()
 	setScreen();
 	setIngredients();
 
+	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
+
 	tigl::shader->enableColor(true);
 	tigl::shader->enableTexture(true);
 	tigl::shader->enableAlphaTest(true);
 
 	tigl::shader->enableLighting(true);
 	tigl::shader->setLightCount(2);
-
-	tigl::shader->setLightDirectional(0, false);
-	tigl::shader->setLightPosition(0, glm::vec3(0, 8, 5));
-	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
-	tigl::shader->setLightDiffuse(0, glm::vec3(0.9f, 0.9f, 0.9f));
-	tigl::shader->setLightSpecular(0, glm::vec3(0, 0, 0));
-	tigl::shader->setShinyness(100.0f);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
@@ -116,6 +111,7 @@ void Game::init()
 
 void Game::update()
 {
+
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
 
@@ -145,6 +141,13 @@ void Game::drawMainMenu()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	tigl::shader->setLightDirectional(0, true);
+	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
+	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
+	tigl::shader->setLightDiffuse(0, glm::vec3(2.0f, 2.0f, 2.0f));
+	tigl::shader->setLightSpecular(0, glm::vec3(1, 1, 1));
+	tigl::shader->setShinyness(80.0f);
+
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 100.0f);
@@ -164,10 +167,10 @@ void Game::drawMainMenu()
 
 	glDisable(GL_TEXTURE_2D);
 
-	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, -8), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
-	tigl::addVertex(Vertex::PCN(glm::vec3(8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
-	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, 8), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
-	tigl::addVertex(Vertex::PCN(glm::vec3(-8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, -8), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, 8), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(-8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
 
 	tigl::addVertex(Vertex::PN(glm::vec3(0, 0, -5), glm::vec3(-1, 0, 0)));
 	tigl::addVertex(Vertex::PN(glm::vec3(0, 8, -5), glm::vec3(-1, 0, 0)));
@@ -177,6 +180,10 @@ void Game::drawMainMenu()
 	tigl::end();
 	
 	animatedBurger.draw();
+
+	textWriter->setScale(10.0f);
+	textWriter->drawText("PRESS SPACE TO START!", -200, 0);
+
 }
 
 void Game::drawGame()

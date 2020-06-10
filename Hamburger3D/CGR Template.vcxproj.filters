@@ -97,6 +97,9 @@
     <ClCompile Include="SpinComponent.cpp">
       <Filter>Components\Other</Filter>
     </ClCompile>
+    <ClCompile Include="TextControl.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tigl.h">
@@ -194,6 +197,12 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_truetype.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="TextControl.h">
+      <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

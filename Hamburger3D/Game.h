@@ -23,6 +23,7 @@
 #include "SimpleTrashBin.h"
 
 #include "Camera.h"
+#include "TextControl.h"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
@@ -51,9 +52,9 @@ public:
 	std::list<GameObject*> ingredients;
 	
 	GameObject* screen;
+	TextControl* textWriter;
 	Recipe animatedRecipe;
 	Burger animatedBurger;
-
 
 	double lastFrameTime;
 
