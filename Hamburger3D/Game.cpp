@@ -67,6 +67,7 @@ void Game::init()
 	setScreen();
 	setIngredients();
 
+
 	tigl::shader->enableColor(true);
 	tigl::shader->enableTexture(true);
 	tigl::shader->enableAlphaTest(true);
@@ -134,6 +135,7 @@ void Game::update()
 	animatedBurger.update(deltaTime);
 	buildingRecipeBurger.update(deltaTime);
 	MenuCam->update(window);
+	revertPixel();
 }
 
 
@@ -266,6 +268,29 @@ void Game::setIngredients()
 
 	ingredients.push_back(crown);
 	ingredients.push_back(trash);
+}
+
+double Game::revertPixel()
+{
+	double maxX = 12.4;
+	double minX = -12.4;
+	double maxY = 10.2;
+	double minY = -10.2;
+	double maxPxWidth = 800;
+	double maxPxHeight = 500;
+	double xPos, yPos;
+
+	double openGLXWidth = maxX-minX;
+	double factorX = maxPxWidth / openGLXWidth;
+	double openGLYWidth = maxY-minY;
+	double factorY = maxPxWidth / openGLYWidth;
+
+	glfwGetCursorPos(window, &xPos, &yPos);
+	double openGLXpoint = (xPos / factorX) + minX;
+	double openGLYpoint = (yPos / factorY) + minY;
+	std::cout << openGLXpoint << std::endl;
+	std::cout << openGLYpoint << std::endl;
+	return openGLXpoint, openGLYpoint;
 }
 
 BurgerIngredient Game::getIngredient(Point point)

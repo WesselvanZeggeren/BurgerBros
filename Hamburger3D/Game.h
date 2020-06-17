@@ -56,6 +56,7 @@ public:
 
 
 	double lastFrameTime;
+	double revertPixel();
 
 	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);
