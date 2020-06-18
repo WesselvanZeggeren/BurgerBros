@@ -7,6 +7,8 @@ Camera cam;
 GLuint textureId = 0;
 bool gameState = false;
 
+bool selectState;
+
 Burger* buildingBurger;
 Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
@@ -71,6 +73,8 @@ void Game::init()
 
 	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
 
+	selectState = true;
+
 	tigl::shader->enableColor(true);
 	tigl::shader->enableTexture(true);
 	tigl::shader->enableAlphaTest(true);
@@ -83,8 +87,23 @@ void Game::init()
 		if (key == GLFW_KEY_ESCAPE) {
 				glfwSetWindowShouldClose(window, true);
 			}
-		if (key == GLFW_KEY_SPACE) {
-			gameState = true;	
+		if (key == GLFW_KEY_ENTER) {
+			if (selectState)
+			{
+				gameState = true;
+			}
+			else
+			{
+				glfwSetWindowShouldClose(window, true);
+			}
+		}
+		if (key == GLFW_KEY_UP && action == GLFW_RELEASE) {
+			if (selectState == true) { selectState = false; return; }
+			if (selectState == false) { selectState = true; return; }
+		}
+		if (key == GLFW_KEY_DOWN && action == GLFW_RELEASE ){
+			if (selectState == true) { selectState = false; return; }
+			if (selectState == false) { selectState = true; return; }
 		}
 		//This is a temperary testing hotkey
 		if (key == GLFW_KEY_N) {
@@ -114,6 +133,7 @@ void Game::update()
 {
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
+	MenuCam->update(window);
 
 	double currentFrameTime = glfwGetTime();
 	double deltaTime = currentFrameTime - lastFrameTime;
@@ -145,6 +165,7 @@ void Game::drawMainMenu()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	tigl::shader->enableLighting(true);
 	tigl::shader->setLightDirectional(0, true);
 	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
 	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
@@ -185,8 +206,17 @@ void Game::drawMainMenu()
 	
 	animatedBurger.draw();
 
-	textWriter->setScale(10.0f);
-	textWriter->drawText("PRESS SPACE TO START!", -200, 0);
+	textWriter->setScale(5.0f);
+	if (selectState == true)
+	{
+		textWriter->drawText("> Start Game", -300, -80);
+		textWriter->drawText("   Exit Game", -300, -50);
+	}
+	else if (selectState == false)
+	{
+		textWriter->drawText("   Start Game", -300, -80);
+		textWriter->drawText("> Exit Game", -300, -50);
+	}
 
 }
 
