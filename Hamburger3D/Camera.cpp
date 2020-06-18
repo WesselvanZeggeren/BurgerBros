@@ -83,8 +83,8 @@ void Camera::GetExtreme(vector<Point> cnt, Mat image)
 
 Point Camera::GetCenter(int lowHue, int highHue)
 {
-	int iLastX = -1;
-	int iLastY = -1;
+	int iLastX = 1;
+	int iLastY = 1;
 
 	int lowSat = 150;
 	int highSat = 255;
@@ -119,7 +119,7 @@ Point Camera::GetCenter(int lowHue, int highHue)
 		if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
 		{
 			center = Point(posX, posY);
-			cout << Point(posX, posY) << endl;
+			cout << "Center" << posX << " - " << posY << endl;
 			circle(frame, center, 10, Scalar(0, 0, 255), 1);
 
 		}

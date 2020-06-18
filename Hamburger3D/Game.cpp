@@ -10,6 +10,8 @@ bool gameState = false;
 Burger* buildingBurger;
 Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
+
+double camHeight, camWidth;
 /**
  * Start game
  */
@@ -20,7 +22,8 @@ void Game::startGame(double height, double width, Camera cam)
 		throw "Could not initialize glwf";
 
 	window = glfwCreateWindow(width * 2, height * 2, "Hello World", NULL, NULL);
-
+	camHeight = height;
+	camWidth = width;
 	if (!window)
 	{
 	
@@ -37,7 +40,10 @@ void Game::startGame(double height, double width, Camera cam)
 	{
 		update();
 		if (animatedBurger.distanceIngredients == 1) { animatedBurger.startAnimation(); }
-		if (gameState) { drawGame(); cam.GetCenter(75, 130); }
+		if (gameState) {
+			drawGame();
+		//cam.GetCenter(75, 130); 
+		}
 		else { drawMainMenu(); }
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -49,6 +55,8 @@ void Game::startGame(double height, double width, Camera cam)
 /**
  * Init, Draw & Update
  */
+GameObject* cursor;
+
 void Game::init()
 {
 	glEnable(GL_DEPTH_TEST);
@@ -63,6 +71,11 @@ void Game::init()
 	buildingRecipeBurger = buildingRecipe->convertToBurger();
 	buildingRecipeBurger.distanceIngredients = 3;
 	buildingRecipeBurger.animate = false;
+
+	cursor = new GameObject();
+	cursor->addComponent(new CubeModelComponent(0.1));
+	cursor->position.z = -4;
+	objects.push_back(cursor);
 
 	setScreen();
 	setIngredients();
@@ -118,7 +131,7 @@ void Game::init()
 }
 
 void Game::update()
-{
+{	
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
 
@@ -126,16 +139,27 @@ void Game::update()
 	double deltaTime = currentFrameTime - lastFrameTime;
 	lastFrameTime = currentFrameTime;
 
+	animatedBurger.update(deltaTime);
+	buildingRecipeBurger.update(deltaTime);
+	MenuCam->update(window);
+	if (gameState) {
+
+
 	for (auto& o : objects)
 		o->update(deltaTime);
 
 	for (auto& i : ingredients)
 		i->update(deltaTime);
 
-	animatedBurger.update(deltaTime);
-	buildingRecipeBurger.update(deltaTime);
-	MenuCam->update(window);
-	revertPixel();
+
+
+	Point centerHand = cam.GetCenter(75, 130);
+	std::cout << centerHand.x << " Stuff " << centerHand.y << std::endl;
+	glm::vec2 transformedPos = revertPixel(glm::vec2(centerHand.x, centerHand.y));
+	cursor->position.x = transformedPos.x;
+	cursor->position.y = -transformedPos.y - 2;
+	}
+
 }
 
 
@@ -270,27 +294,26 @@ void Game::setIngredients()
 	ingredients.push_back(trash);
 }
 
-double Game::revertPixel()
+glm::vec2 Game::revertPixel(glm::vec2 pos)
 {
 	double maxX = 12.4;
 	double minX = -12.4;
 	double maxY = 10.2;
 	double minY = -10.2;
-	double maxPxWidth = 800;
-	double maxPxHeight = 500;
-	double xPos, yPos;
+	double maxPxWidth =  camWidth;
+	double maxPxHeight = camHeight;
 
-	double openGLXWidth = maxX-minX;
+	double openGLXWidth = maxX - minX;
 	double factorX = maxPxWidth / openGLXWidth;
-	double openGLYWidth = maxY-minY;
+	double openGLYWidth = maxY - minY;
 	double factorY = maxPxWidth / openGLYWidth;
 
-	glfwGetCursorPos(window, &xPos, &yPos);
-	double openGLXpoint = (xPos / factorX) + minX;
-	double openGLYpoint = (yPos / factorY) + minY;
-	std::cout << openGLXpoint << std::endl;
-	std::cout << openGLYpoint << std::endl;
-	return openGLXpoint, openGLYpoint;
+	double openGLXpoint = (pos.x / factorX) + minX;
+	double openGLYpoint = (pos.y / factorY) + minY;
+	std::cout << openGLXpoint << " - " << openGLYpoint << std::endl;
+	std::cout << pos.x << " - " << pos.y << std::endl;
+	
+	return glm::vec2(openGLXpoint, openGLYpoint);
 }
 
 BurgerIngredient Game::getIngredient(Point point)

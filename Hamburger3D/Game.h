@@ -56,7 +56,7 @@ public:
 
 
 	double lastFrameTime;
-	double revertPixel();
+	glm::vec2 revertPixel(glm::vec2 pos);
 
 	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);
