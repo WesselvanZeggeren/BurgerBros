@@ -22,7 +22,7 @@
 
 #include "SimpleTrashBin.h"
 
-#include "CountdownTimer.h"
+#include "Stopwatch.h"
 #include "Camera.h"
 #include "TextControl.h"
 
@@ -35,11 +35,10 @@ using namespace cv;
 
 class Game
 {
-
 private:
 	GLFWwindow* window;
 	GLuint textureId = 0;
-	Timer* stopwatch;
+	StopWatch* stopwatch;
 	int totalTime = 60;
 
 	void init();

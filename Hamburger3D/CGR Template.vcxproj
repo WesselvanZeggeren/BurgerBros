@@ -187,6 +187,8 @@
     <ClCompile Include="SimpleConveorBelt.cpp" />
     <ClCompile Include="SimpleTrashBin.cpp" />
     <ClCompile Include="SpinComponent.cpp" />
+    <ClCompile Include="Stopwatch.cpp" />
+    <ClCompile Include="TextControl.cpp" />
     <ClCompile Include="tigl.cpp" />
     <ClCompile Include="ShapeMaker.cpp" />
     <ClCompile Include="TomatoModelComponent.cpp" />
@@ -221,6 +223,9 @@
     <ClInclude Include="SimpleConveorBelt.h" />
     <ClInclude Include="SimpleTrashBin.h" />
     <ClInclude Include="SpinComponent.h" />
+    <ClInclude Include="stb_truetype.h" />
+    <ClInclude Include="Stopwatch.h" />
+    <ClInclude Include="TextControl.h" />
     <ClInclude Include="tigl.h" />
     <ClInclude Include="ShapeMaker.h" />
     <ClInclude Include="TomatoModelComponent.h" />

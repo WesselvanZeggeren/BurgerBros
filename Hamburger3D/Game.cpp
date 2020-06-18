@@ -67,7 +67,7 @@ void Game::init()
 	setScreen();
 	setIngredients();
 
-	stopwatch = new Timer();
+	stopwatch = new StopWatch();
 
 	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
 
@@ -234,7 +234,7 @@ std::string Game::getTimeLeft()
 //Adds 20 seconds to time left and resets timer
 void Game::setNewTotalTime()
 {
-	stopwatch->reset();
+	stopwatch->start();
 	totalTime = totalTime - stopwatch->getElapsedTime() + 20;
 }
 

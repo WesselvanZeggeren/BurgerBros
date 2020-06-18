@@ -97,10 +97,10 @@
     <ClCompile Include="SpinComponent.cpp">
       <Filter>Components\Other</Filter>
     </ClCompile>
-    <ClCompile Include="TextControl.cpp">
+    <ClCompile Include="Stopwatch.cpp">
       <Filter>Util</Filter>
     </ClCompile>
-    <ClCompile Include="CountdownTimer.cpp">
+    <ClCompile Include="TextControl.cpp">
       <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>
@@ -201,13 +201,13 @@
     <ClInclude Include="Game.h">
       <Filter>H_Files</Filter>
     </ClInclude>
-    <ClInclude Include="stb_truetype.h">
+    <ClInclude Include="Stopwatch.h">
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="TextControl.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="CountdownTimer.h">
+    <ClInclude Include="stb_truetype.h">
       <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
