@@ -67,6 +67,8 @@ void Game::init()
 	setScreen();
 	setIngredients();
 
+	stopwatch = new Timer();
+
 	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
 
 	tigl::shader->enableColor(true);
@@ -82,7 +84,7 @@ void Game::init()
 				glfwSetWindowShouldClose(window, true);
 			}
 		if (key == GLFW_KEY_SPACE) {
-			gameState = true;
+			gameState = true;	
 		}
 		//This is a temperary testing hotkey
 		if (key == GLFW_KEY_N) {
@@ -106,12 +108,10 @@ void Game::init()
 	});
 
 	MenuCam = new FpCam(window);
-
 }
 
 void Game::update()
 {
-
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
 
@@ -127,9 +127,13 @@ void Game::update()
 
 	animatedBurger.update(deltaTime);
 	buildingRecipeBurger.update(deltaTime);
-	MenuCam->update(window);
-}
 
+	//until press start is added to meu
+	if (!gameState)
+	{
+		stopwatch->start();
+	}
+}
 
 /*
  *	MainMenu draw function
@@ -188,7 +192,6 @@ void Game::drawMainMenu()
 
 void Game::drawGame()
 {
-	
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -211,6 +214,28 @@ void Game::drawGame()
 
 	buildingBurger->draw();
 	buildingRecipeBurger.draw();
+
+	textWriter->setScale(5.0f);
+	std::string time = getTimeLeft();
+	textWriter->drawText( time , 180, 230);
+}
+
+std::string Game::getTimeLeft()
+{
+	long timeLeft = totalTime - stopwatch->getElapsedTime();
+
+	long minutes = timeLeft / 60;
+	long seconds = timeLeft % 60;
+
+	return "0" + std::to_string(minutes) + ":" + std::to_string(seconds);
+
+}
+
+//Adds 20 seconds to time left and resets timer
+void Game::setNewTotalTime()
+{
+	stopwatch->reset();
+	totalTime = totalTime - stopwatch->getElapsedTime() + 20;
 }
 
 /**

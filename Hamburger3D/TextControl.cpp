@@ -91,7 +91,6 @@ void TextControl::drawText(const std::string text, float xPos, float yPos)
 
 	tigl::shader->enableColor(true);
 	tigl::shader->enableLighting(true);
-	tigl::shader->enableTexture(true);
 	tigl::shader->enableColorMult(true);
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
@@ -105,3 +104,4 @@ void TextControl::setScale(float scaling)
 {
 	this->orthoScaler = scaling;
 }
+

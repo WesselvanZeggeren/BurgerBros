@@ -22,6 +22,7 @@
 
 #include "SimpleTrashBin.h"
 
+#include "CountdownTimer.h"
 #include "Camera.h"
 #include "TextControl.h"
 
@@ -38,14 +39,19 @@ class Game
 private:
 	GLFWwindow* window;
 	GLuint textureId = 0;
+	Timer* stopwatch;
+	int totalTime = 60;
 
 	void init();
+
 	void drawGame();
 	void drawMainMenu();
 	void update();
 
 	void setScreen();
 	void setIngredients();
+	std::string getTimeLeft();
+	void setNewTotalTime();
 
 public:
 	std::list<GameObject*> objects;
