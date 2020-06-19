@@ -9,8 +9,6 @@ bool gameState = false;
 
 bool gameOver = false;
 
-bool screenState = false;
-
 bool selectState;
 
 Burger* buildingBurger;
@@ -148,9 +146,7 @@ void Game::init()
 				buildingBurger->addIngriedient(ingredient);
 				buildingBurger->setPosition(glm::vec3(0, -8, -15));
 				buildingBurger->rebuildBurgerYPos();
-
 			}
-			
 		}
 	});
 
@@ -211,8 +207,6 @@ void Game::drawMainMenu()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	
-
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 100.0f);
@@ -257,7 +251,6 @@ void Game::drawMainMenu()
 		textWriter->drawText("   Start Game", -300, -80);
 		textWriter->drawText("> Exit Game", -300, -50);
 	}
-
 }
 
 void Game::drawGame()
@@ -318,7 +311,6 @@ std::string Game::getTimeLeft()
 	}
 
 	return "0" + std::to_string(minutes) + ":" + zero + std::to_string(seconds);
-
 }
 
 //Adds 20 seconds to time left and resets timer
@@ -411,7 +403,6 @@ glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 {
 
 	double maxX = 12.4, minX = -12.4, maxY = -10.2, minY = 10.2; // dimentions of our OpenGL world
-
 	double factorX = camWidth / (maxX - minX);
 	double factorY = camHeight / (maxY - minY);
 
@@ -420,7 +411,6 @@ glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 
 void Game::bindIngredientToHand(glm::vec2 p)
 {
-
 	for (GameObject* o : ingredients)
 		if (!cursor->attached || !o->grabbable) // filters out grabbable ingredients if attached.
 			if (inDistanceOf(p, o->position, radius))
@@ -432,14 +422,13 @@ void Game::bindIngredientToHand(glm::vec2 p)
 
 void Game::bindIngredientToBurger(glm::vec2 p)
 {
-
 	if (cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
 	{
 		BurgerIngredient* ingredient = cursor->getComponent<BurgerIngredient>();
 		
-		std::cout << "BURGER DEBUG : RECIPE INGREDIENT" << buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() << "\n";
+		/*std::cout << "BURGER DEBUG : RECIPE INGREDIENT" << buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() << "\n";
 		std::cout << "BURGER DEBUG : USER INGREDIENT" << ingredient->getName() << "\n";
-		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";
+		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";*/
 
 		SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
 		if (bottle) {
@@ -449,20 +438,14 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() == ingredient->getName()) 
 		{
 			std::cout << "Ingredient correct, adding to burger" << "\n";
-
 			buildingBurger->addComponent(ingredient);
-
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
-
 			buildingBurgerIndex++;
 		}
 		else
 		{
-			screenState = true;
 			std::cout << "Ingredient incorrect" << "\n";
-			tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f));
-
-			
+			tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f)); //sets light to the color red
 		}
 	}
 }
