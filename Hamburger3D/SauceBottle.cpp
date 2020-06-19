@@ -42,6 +42,8 @@ void SauceBottle::setSauseType(int type)
     Color mustard = { 255, 219, 88, 1.0 };
     Color mayo = { 255,255,238 ,1 };
 
+	this->type = type;
+
     switch (type) {
     case 0:
         model.setColor(ketchup);
@@ -53,4 +55,9 @@ void SauceBottle::setSauseType(int type)
         model.setColor(mayo);
         break;
     }
+}
+
+int SauceBottle::getSauseType()
+{
+	return this->type;
 }

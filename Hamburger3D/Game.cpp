@@ -424,10 +424,18 @@ void Game::bindIngredientToHand(glm::vec2 p)
 void Game::bindIngredientToBurger(glm::vec2 p)
 {
 
-	if (!cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
+	if (cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
 	{
+		BurgerIngredient* ingredient = cursor->getComponent<BurgerIngredient>();
 
-		buildingBurger->addComponent(cursor->getComponents().front());
+		SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
+		if (bottle) {
+			buildingBurger->addComponent(new SauceModelComponent(bottle->getSauseType()));
+		}
+		else {
+			buildingBurger->addComponent(ingredient);
+		}
+
 		cursor->replaceComponent(new CubeModelComponent(0.1), false);
 	}
 }

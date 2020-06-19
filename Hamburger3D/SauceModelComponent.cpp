@@ -51,5 +51,10 @@ void SauceModelComponent::setSauseType(int type)
     case 2:
         model.setColor(mayo);
         break;
+    case -1:
+        model.setColor({ 255, 255, 255, 1 });
+        break;
     }
+    
+
 }
