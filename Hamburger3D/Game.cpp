@@ -45,6 +45,7 @@ void Game::startGame(double height, double width, Camera cam)
 		//cam.GetCenter(75, 130); 
 		}
 		else { drawMainMenu(); }
+		if (gameState && glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) { endGame(); }
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -97,12 +98,6 @@ void Game::init()
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
-		if (key == GLFW_KEY_ESCAPE) {
-				glfwSetWindowShouldClose(window, true);
-			}
-		if (key == GLFW_KEY_SPACE) {
-			gameState = true;
-		}
 		//This is a temperary testing hotkey
 		if (key == GLFW_KEY_N) {
 			if (buildingBurger->isfinnished()) {
@@ -170,6 +165,9 @@ void Game::update()
  */
 void Game::drawMainMenu()
 {
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		gameState = true;
+	}
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -209,7 +207,10 @@ void Game::drawMainMenu()
 
 void Game::drawGame()
 {
-	
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+		gameState = false;
+		drawMainMenu();
+	}
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -345,4 +346,10 @@ void Game::setFrame(Mat& frame)
 		GL_RGB,
 		GL_UNSIGNED_BYTE,
 		frame.data);
+}
+
+void Game::endGame()
+{
+	gameState = false;
+	drawMainMenu();
 }

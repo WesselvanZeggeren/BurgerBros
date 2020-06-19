@@ -60,6 +60,7 @@ public:
 
 	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);
+	void endGame();
 
 	BurgerIngredient getIngredient(Point point);
 };
