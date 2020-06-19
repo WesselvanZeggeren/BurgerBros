@@ -27,3 +27,8 @@ double TomatoModelComponent::getIngredientHeight()
 {
     return 0.16;
 }
+
+std::string TomatoModelComponent::getName()
+{
+    return "tomato";
+}

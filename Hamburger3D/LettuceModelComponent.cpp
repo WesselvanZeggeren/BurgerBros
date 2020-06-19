@@ -25,5 +25,5 @@ double LettuceModelComponent::getIngredientHeight()
 
 std::string LettuceModelComponent::getName()
 {
-	return std::string();
+	return "Lettuce";
 }

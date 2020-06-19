@@ -14,5 +14,5 @@ public:
 
 	virtual void draw() override;
 	double getIngredientHeight() override;
-	
+	virtual std::string getName();
 };
