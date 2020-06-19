@@ -401,7 +401,7 @@ void Game::manageHandToIngredientPosition()
 	cursor->position.x = position.x;
 	cursor->position.y = position.y;
 
-	std::cout << "Ingredient correct, adding to burger" << "\n";
+	tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
 
 	bindIngredientToHand(position);
 	bindIngredientToBurger(position);
@@ -452,16 +452,6 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 
 			buildingBurger->addComponent(ingredient);
 
-			screenState = true;
-			long screenTime = stopwatch->getElapsedTime();
-			std::cout << screenTime << "\n";
-			if (screenTime % 2 == 0 && screenState == true) {
-				tigl::shader->setLightAmbient(0, glm::vec3(0.0f, 0.9f, 0.0f));
-			}
-			else if (screenTime % 2 == 1) {
-				tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
-			}
-
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 
 			buildingBurgerIndex++;
@@ -470,14 +460,9 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 		{
 			screenState = true;
 			std::cout << "Ingredient incorrect" << "\n";
-			long screenTime = stopwatch->getElapsedTime();
-			std::cout << screenTime << "\n";
-			if (screenTime % 2 == 0 && screenState == true) {
-				tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f));
-			}
-			else if (screenTime % 2 == 1) {
-				tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
-			}
+			tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f));
+
+			
 		}
 	}
 }
