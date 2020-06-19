@@ -18,6 +18,7 @@ public:
 	~ModelMaker();
 	void drawRectangle(double x, double y, double z);
 	void setColor(Color color);
+	Color getColor();
 	void moveBrush(double x, double y, double z);
 	void clearPosition();
 	void clearShapes();

@@ -17,5 +17,6 @@ public:
 
 	virtual void draw() override;
 	void setSauseType(int type);
+	int getSauseType();
 
 };
