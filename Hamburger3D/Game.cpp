@@ -9,13 +9,15 @@ bool gameState = false;
 
 bool gameOver = false;
 
+bool screenState = false;
+
 bool selectState;
 
 Burger* buildingBurger;
 Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
 
-int buildingBurgerIndex;
+int buildingBurgerIndex = 0;
 
 double camHeight, camWidth;
 
@@ -101,6 +103,13 @@ void Game::init()
 
 	tigl::shader->enableLighting(true);
 	tigl::shader->setLightCount(2);
+
+	tigl::shader->setLightDirectional(0, true);
+	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
+	tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
+	tigl::shader->setLightDiffuse(0, glm::vec3(0.9f, 0.9f, 0.9f));
+	tigl::shader->setLightSpecular(0, glm::vec3(1, 1, 1));
+	tigl::shader->setShinyness(100.0f);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
@@ -202,13 +211,7 @@ void Game::drawMainMenu()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	tigl::shader->enableLighting(true);
-	tigl::shader->setLightDirectional(0, true);
-	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
-	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
-	tigl::shader->setLightDiffuse(0, glm::vec3(2.0f, 2.0f, 2.0f));
-	tigl::shader->setLightSpecular(0, glm::vec3(1, 1, 1));
-	tigl::shader->setShinyness(80.0f);
+	
 
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
@@ -437,7 +440,7 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";
 
 		//Compare recipe ingredient to user ingredient
-		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex) == ingredient) 
+		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() == ingredient->getName()) 
 		{
 			std::cout << "Ingredient correct, adding to burger" << "\n";
 
@@ -449,13 +452,34 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 				buildingBurger->addComponent(ingredient);
 			}
 
+			screenState = true;
+
+			long screenTime = stopwatch->getElapsedTime();
+			std::cout << screenTime << "\n";
+			if (screenTime % 2 == 0 && screenState == true) {
+				tigl::shader->setLightAmbient(0, glm::vec3(0.0f, 0.9f, 0.0f));
+			}
+			else if (screenTime % 2 == 1) {
+				 tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
+			}
+
+			screenState == false;
+
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 
 			buildingBurgerIndex++;
 		}
 		else
 		{
+			screenState = true;
 			std::cout << "Ingredient incorrect" << "\n";
+			long screenTime = stopwatch->getElapsedTime();
+			if (screenTime % 2 == 0 && screenState == true) {
+				tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f));
+			}
+			else if (screenTime % 2 == 1) {
+				tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
+			}
 		}
 	}
 }
