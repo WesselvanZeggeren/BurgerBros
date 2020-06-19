@@ -12,6 +12,7 @@ Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
 
 double camHeight, camWidth;
+
 /**
  * Start game
  */
@@ -42,7 +43,6 @@ void Game::startGame(double height, double width, Camera cam)
 		if (animatedBurger.distanceIngredients == 1) { animatedBurger.startAnimation(); }
 		if (gameState) {
 			drawGame();
-		//cam.GetCenter(75, 130); 
 		}
 		else { drawMainMenu(); }
 		glfwSwapBuffers(window);
@@ -79,7 +79,6 @@ void Game::init()
 
 	setScreen();
 	setIngredients();
-
 
 	tigl::shader->enableColor(true);
 	tigl::shader->enableTexture(true);
@@ -127,7 +126,6 @@ void Game::init()
 	});
 
 	MenuCam = new FpCam(window);
-
 }
 
 void Game::update()
@@ -142,24 +140,17 @@ void Game::update()
 	animatedBurger.update(deltaTime);
 	buildingRecipeBurger.update(deltaTime);
 	MenuCam->update(window);
+
 	if (gameState) {
 
+		for (auto& o : objects)
+			o->update(deltaTime);
 
-	for (auto& o : objects)
-		o->update(deltaTime);
+		for (auto& i : ingredients)
+			i->update(deltaTime);
 
-	for (auto& i : ingredients)
-		i->update(deltaTime);
-
-
-
-	Point centerHand = cam.GetCenter(75, 130);
-	std::cout << centerHand.x << " Stuff " << centerHand.y << std::endl;
-	glm::vec2 transformedPos = revertPixel(glm::vec2(centerHand.x, centerHand.y));
-	cursor->position.x = transformedPos.x;
-	cursor->position.y = -transformedPos.y - 2;
+		manageHandToIngredientPosition();
 	}
-
 }
 
 
@@ -286,6 +277,7 @@ void Game::setIngredients()
 	trash->addComponent(new SimpleTrashBin());
 	trash->position = glm::vec3(-x, y * -1, z);
 	trash->scale = glm::vec3(1.5, 1.5, 1.5);
+	trash->grabbable = false;
 
 	buildingRecipeBurger.setPosition(glm::vec3(-x, 0 , z));
 	buildingRecipeBurger.rebuildBurgerYPos();
@@ -294,34 +286,53 @@ void Game::setIngredients()
 	ingredients.push_back(trash);
 }
 
-glm::vec2 Game::revertPixel(glm::vec2 pos)
+/**
+ * All function based on hand and ingredient management
+ */
+void Game::manageHandToIngredientPosition()
 {
-	double maxX = 12.4;
-	double minX = -12.4;
-	double maxY = 10.2;
-	double minY = -10.2;
-	double maxPxWidth =  camWidth;
-	double maxPxHeight = camHeight;
 
-	double openGLXWidth = maxX - minX;
-	double factorX = maxPxWidth / openGLXWidth;
-	double openGLYWidth = maxY - minY;
-	double factorY = maxPxWidth / openGLYWidth;
+	Point pixelPosition = cam.GetCenter(75, 130);
+	glm::vec2 position = pixelToOpenGL(glm::vec2(pixelPosition.x, pixelPosition.y));
 
-	double openGLXpoint = (pos.x / factorX) + minX;
-	double openGLYpoint = (pos.y / factorY) + minY;
-	std::cout << openGLXpoint << " - " << openGLYpoint << std::endl;
-	std::cout << pos.x << " - " << pos.y << std::endl;
-	
-	return glm::vec2(openGLXpoint, openGLYpoint);
+	cursor->position.x = position.x;
+	cursor->position.y = position.y;
+
+	bindIngredient(position);
+	bindToBurger(position);
 }
 
-BurgerIngredient Game::getIngredient(Point point)
+glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 {
 
-	BurgerIngredient ingredient;
+	double maxX = 12.4, minX = -12.4, maxY = 10.2, minY = -10.2; // dimentions of our OpenGL world
 
-	return ingredient;
+	double factorX = camWidth / (maxX - minX);
+	double factorY = camHeight / (maxY - minY);
+
+	return glm::vec2((pixel.x / factorX) + minX, (pixel.y / factorY) + minY);
+}
+
+void Game::bindIngredient(glm::vec2 position)
+{
+
+	double radius = 0.5;
+
+	for (GameObject* o : ingredients)
+		if (!cursor->attached || !o->grabbable) // filters out grabbable ingredients if attached.
+			if ((pow((position.x - o->position.x), 2) + pow((position.y - o->position.y), 2)) < pow(radius, 2))
+				if (o->grabbable)
+					cursor->replaceComponent(o->getComponents().front(), true);
+				else
+					cursor->replaceComponent(new CubeModelComponent(0.1), false);
+}
+
+void Game::bindToBurger(glm::vec2 position)
+{
+
+	// program here the funcionality that connectes the 
+	// ingredient set in the cursor with the buildBurgerModel 
+	// when hovered over
 }
 
 /**

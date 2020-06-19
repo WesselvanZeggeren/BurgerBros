@@ -54,12 +54,15 @@ public:
 	Recipe animatedRecipe;
 	Burger animatedBurger;
 
-
 	double lastFrameTime;
-	glm::vec2 revertPixel(glm::vec2 pos);
+	glm::vec2 pixelToOpenGL(glm::vec2 pos);
+
+	void manageHandToIngredientPosition();
+
+	void bindIngredient(glm::vec2 position);
+	void bindToBurger(glm::vec2 position);
 
 	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);
 
-	BurgerIngredient getIngredient(Point point);
 };

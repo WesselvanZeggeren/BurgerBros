@@ -18,5 +18,4 @@ public:
 	void isAttached();
 	void GetExtreme(std::vector<Point> cnt, Mat image);
 	Point GetCenter(int lowHue, int highHue);
-	void AttachIngredient();
 };
