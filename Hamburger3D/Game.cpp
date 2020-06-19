@@ -299,8 +299,8 @@ std::string Game::getTimeLeft()
 //Adds 20 seconds to time left and resets timer
 void Game::setNewTotalTime()
 {
-	totalTime = totalTime - stopwatch->getElapsedTime() + 20;
 	stopwatch->start();
+	totalTime = totalTime - stopwatch->getElapsedTime() + 20;	
 }
 
 /**
