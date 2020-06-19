@@ -174,11 +174,13 @@ void Game::update()
 		buildingRecipeBurger.update(deltaTime);
 
 		//until press start is added to meu
-		if (!gameState)
-		{
-			stopwatch->start();
-		}
+		
 		manageHandToIngredientPosition();
+	}
+
+	if (!gameState)
+	{
+		stopwatch->start();
 	}
 }
 

@@ -49,7 +49,10 @@ double Burger::getBurgerModelHeight()
 	
 	for (GameObject* go : ingredients) 
 	{
-		height += go->getComponent<BurgerIngredient>()->getIngredientHeight();
+		BurgerIngredient* ingredient = go->getComponent<BurgerIngredient>();
+		if (ingredient != nullptr) {
+			height += ingredient->getIngredientHeight();
+		}
 	}
 
 	return height;
