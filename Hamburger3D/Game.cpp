@@ -432,12 +432,12 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 	{
 		BurgerIngredient* ingredient = cursor->getComponent<BurgerIngredient>();
 		
-		std::cout << "BURGER DEBUG : RECIPE INGREDIENT" << buildingRecipeBurger.getIngredients()[buildingBurgerIndex] << "\n";
+		std::cout << "BURGER DEBUG : RECIPE INGREDIENT" << buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex) << "\n";
 		std::cout << "BURGER DEBUG : USER INGREDIENT" << ingredient << "\n";
 		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";
 
 		//Compare recipe ingredient to user ingredient
-		if (buildingRecipeBurger.getIngredients()[buildingBurgerIndex] == ingredient) 
+		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex) == ingredient) 
 		{
 			std::cout << "Ingredient correct, adding to burger" << "\n";
 
