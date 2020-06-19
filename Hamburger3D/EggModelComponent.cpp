@@ -28,3 +28,8 @@ double EggModelComponent::getIngredientHeight()
 {
     return 0.3;
 }
+
+std::string EggModelComponent::getName()
+{
+	return std::string();
+}

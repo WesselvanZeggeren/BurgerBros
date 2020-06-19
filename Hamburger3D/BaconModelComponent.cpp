@@ -47,3 +47,8 @@ double BaconModelComponent::getIngredientHeight()
 {
     return 0.05;
 }
+
+std::string BaconModelComponent::getName()
+{
+    return "Bacon";
+}

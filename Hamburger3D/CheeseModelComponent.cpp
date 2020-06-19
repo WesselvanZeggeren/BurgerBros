@@ -42,4 +42,9 @@ void CheeseModelComponent::setCheeseType(int type)
     }
 }
 
+std::string CheeseModelComponent::getName()
+{
+    return "Cheese";
+}
+
 

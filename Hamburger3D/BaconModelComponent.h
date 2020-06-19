@@ -2,6 +2,7 @@
 
 #include "BurgerIngredient.h"
 #include "tigl.h"
+
 using tigl::Vertex;
 
 #include <vector>
@@ -15,4 +16,5 @@ public:
 
 	virtual void draw() override;
 	double getIngredientHeight() override;
+	virtual std::string getName();
 };
