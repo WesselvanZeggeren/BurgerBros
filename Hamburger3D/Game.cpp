@@ -401,6 +401,8 @@ void Game::manageHandToIngredientPosition()
 	cursor->position.x = position.x;
 	cursor->position.y = position.y;
 
+	std::cout << "Ingredient correct, adding to burger" << "\n";
+
 	bindIngredientToHand(position);
 	bindIngredientToBurger(position);
 }
@@ -439,31 +441,26 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 		std::cout << "BURGER DEBUG : USER INGREDIENT" << ingredient->getName() << "\n";
 		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";
 
+		SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
+		if (bottle) {
+			ingredient = (new SauceModelComponent(bottle->getSauseType()));
+		}
 		//Compare recipe ingredient to user ingredient
 		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() == ingredient->getName()) 
 		{
 			std::cout << "Ingredient correct, adding to burger" << "\n";
 
-			SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
-			if (bottle) {
-				buildingBurger->addComponent(new SauceModelComponent(bottle->getSauseType()));
-			}
-			else {
-				buildingBurger->addComponent(ingredient);
-			}
+			buildingBurger->addComponent(ingredient);
 
 			screenState = true;
-
 			long screenTime = stopwatch->getElapsedTime();
 			std::cout << screenTime << "\n";
 			if (screenTime % 2 == 0 && screenState == true) {
 				tigl::shader->setLightAmbient(0, glm::vec3(0.0f, 0.9f, 0.0f));
 			}
 			else if (screenTime % 2 == 1) {
-				 tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
+				tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
 			}
-
-			screenState == false;
 
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 
@@ -474,6 +471,7 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 			screenState = true;
 			std::cout << "Ingredient incorrect" << "\n";
 			long screenTime = stopwatch->getElapsedTime();
+			std::cout << screenTime << "\n";
 			if (screenTime % 2 == 0 && screenState == true) {
 				tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f));
 			}

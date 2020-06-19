@@ -1,9 +1,10 @@
 #include "SauceModelComponent.h"
+#include <iostream>
 
 
-SauceModelComponent::SauceModelComponent() {
+/*SauceModelComponent::SauceModelComponent() {
     SauceModelComponent(0);
-}
+}*/
 
 SauceModelComponent::SauceModelComponent(int type)
 {

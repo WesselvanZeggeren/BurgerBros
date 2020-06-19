@@ -11,7 +11,7 @@ class SauceModelComponent : public BurgerIngredient
 private:
 	std::string name;
 public:
-	SauceModelComponent();
+	//SauceModelComponent();
 	SauceModelComponent(int type);
 	~SauceModelComponent();
 
