@@ -54,4 +54,6 @@ public:
 	void setPosition(glm::vec3 position);
 	glm::vec3 getRotation();
 	void setRotation(glm::vec3 rotation);
+
+	std::vector<GameObject*> getIngredients();
 };

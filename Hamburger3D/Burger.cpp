@@ -147,6 +147,11 @@ void Burger::setRotation(glm::vec3 rotation)
 	this->rotation = rotation;
 }
 
+std::vector<GameObject*> Burger::getIngredients()
+{
+	return this->ingredients;
+}
+
 glm::vec3 Burger::getPosition()
 {
 

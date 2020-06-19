@@ -15,6 +15,8 @@ Burger* buildingBurger;
 Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
 
+int buildingBurgerIndex;
+
 double camHeight, camWidth;
 
 /**
@@ -88,6 +90,8 @@ void Game::init()
 	stopwatch = new StopWatch();
 
 	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
+
+	buildingBurgerIndex = 1;
 
 	selectState = true;
 
@@ -427,16 +431,32 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 	if (cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
 	{
 		BurgerIngredient* ingredient = cursor->getComponent<BurgerIngredient>();
+		
+		std::cout << "BURGER DEBUG : RECIPE INGREDIENT" << buildingRecipeBurger.getIngredients[buildingBurgerIndex] << "\n";
+		std::cout << "BURGER DEBUG : USER INGREDIENT" << ingredient << "\n";
+		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";
 
-		SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
-		if (bottle) {
-			buildingBurger->addComponent(new SauceModelComponent(bottle->getSauseType()));
-		}
-		else {
-			buildingBurger->addComponent(ingredient);
-		}
+		//Compare recipe ingredient to user ingredient
+		if (buildingRecipeBurger.getIngredients[buildingBurgerIndex] == ingredient) 
+		{
+			std::cout << "Ingredient correct, adding to burger" << "\n";
 
-		cursor->replaceComponent(new CubeModelComponent(0.1), false);
+			SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
+			if (bottle) {
+				buildingBurger->addComponent(new SauceModelComponent(bottle->getSauseType()));
+			}
+			else {
+				buildingBurger->addComponent(ingredient);
+			}
+
+			cursor->replaceComponent(new CubeModelComponent(0.1), false);
+
+			buildingBurgerIndex++;
+		}
+		else
+		{
+			std::cout << "Ingredient incorrect" << "\n";
+		}
 	}
 }
 
