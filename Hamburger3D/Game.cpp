@@ -146,7 +146,7 @@ void Game::init()
 }
 
 void Game::update()
-{	
+{
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
 	MenuCam->update(window);
@@ -161,21 +161,23 @@ void Game::update()
 	if (gameState) {
 
 
-	for (auto& o : objects)
-		o->update(deltaTime);
+		for (auto& o : objects)
+			o->update(deltaTime);
 
-	for (auto& i : ingredients)
-		i->update(deltaTime);
+		for (auto& i : ingredients)
+			i->update(deltaTime);
 
-	animatedBurger.update(deltaTime);
-	buildingRecipeBurger.update(deltaTime);
+		animatedBurger.update(deltaTime);
+		buildingRecipeBurger.update(deltaTime);
 
-	//until press start is added to meu
-	if (!gameState)
-	{
-		stopwatch->start();
+		//until press start is added to meu
+		if (!gameState)
+		{
+			stopwatch->start();
+		}
 	}
 }
+
 
 /*
  *	MainMenu draw function
@@ -293,8 +295,8 @@ std::string Game::getTimeLeft()
 //Adds 20 seconds to time left and resets timer
 void Game::setNewTotalTime()
 {
-	stopwatch->start();
 	totalTime = totalTime - stopwatch->getElapsedTime() + 20;
+	stopwatch->start();
 }
 
 /**
