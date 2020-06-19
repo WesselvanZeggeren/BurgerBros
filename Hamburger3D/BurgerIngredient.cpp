@@ -13,5 +13,5 @@ double BurgerIngredient::getIngredientHeight()
 
 std::string BurgerIngredient::getName()
 {
-	return std::string();
+	return this->name;
 }

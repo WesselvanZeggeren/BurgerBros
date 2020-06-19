@@ -4,6 +4,8 @@
 #include <string>
 
 class BurgerIngredient : public ModelComponent {
+private:
+	 std::string name;
 public:
 	virtual void draw() override;
 	virtual double getIngredientHeight();

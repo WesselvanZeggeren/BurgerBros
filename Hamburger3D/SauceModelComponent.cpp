@@ -64,5 +64,5 @@ void SauceModelComponent::setSauseType(int type)
 
 std::string SauceModelComponent::getName()
 {
-    return "Sauce";
+    return this->name;
 }
