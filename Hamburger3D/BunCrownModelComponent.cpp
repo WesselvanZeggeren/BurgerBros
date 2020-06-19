@@ -2,6 +2,8 @@
 
 BunCrownModelComponent::BunCrownModelComponent()
 {
+    this->name = "BunCrown";
+
     Color bread = { 198.0, 137.0, 88.0, 1.0 };
 
     model.setColor(bread);
@@ -25,4 +27,9 @@ void BunCrownModelComponent::draw()
 double BunCrownModelComponent::getIngredientHeight()
 {
     return 1.225;
+}
+
+std::string BunCrownModelComponent::getName()
+{
+	return this->name;
 }

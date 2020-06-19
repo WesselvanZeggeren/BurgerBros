@@ -8,6 +8,8 @@ using tigl::Vertex;
 
 class CheeseModelComponent : public BurgerIngredient
 {
+private:
+	std::string name;
 public:
 	CheeseModelComponent();
 	CheeseModelComponent(int type);
@@ -16,4 +18,5 @@ public:
 	virtual void draw() override;
 	double getIngredientHeight() override;
 	void setCheeseType(int type);
+	virtual std::string getName();
 };
