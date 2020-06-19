@@ -103,6 +103,8 @@ void Game::init()
 		if (key == GLFW_KEY_ENTER) {
 			if (selectState)
 			{
+				buildingBurger->clearBurger();
+				buildingBurger->addComponent(new BunHeelModelComponent());
 				gameState = true;
 			}
 			else
@@ -148,28 +150,19 @@ void Game::update()
 {
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
-	MenuCam->update(window);
 
 	double currentFrameTime = glfwGetTime();
 	double deltaTime = currentFrameTime - lastFrameTime;
 	lastFrameTime = currentFrameTime;
-
-	animatedBurger.update(deltaTime);
-	buildingRecipeBurger.update(deltaTime);
-	MenuCam->update(window);
 
 	if (gameState) {
 
 		for (auto& o : objects)
 			o->update(deltaTime);
 
-	for (auto& o : objects)
-		o->update(deltaTime);
-
 		for (auto& i : ingredients)
 			i->update(deltaTime);
 
-		animatedBurger.update(deltaTime);
 		buildingRecipeBurger.update(deltaTime);
 		
 		if (!gameOver)
@@ -180,6 +173,9 @@ void Game::update()
 
 	if (!gameState)
 	{
+
+		animatedBurger.update(deltaTime);
+		MenuCam->update(window);
 		stopwatch->start();
 	}
 }
