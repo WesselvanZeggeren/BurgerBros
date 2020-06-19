@@ -8,10 +8,13 @@ using tigl::Vertex;
 
 class LettuceModelComponent : public BurgerIngredient
 {
+private:
+	std::string name;
 public:
 	LettuceModelComponent();
 	~LettuceModelComponent();
 
 	virtual void draw() override;
 	double getIngredientHeight() override;
+	virtual std::string getName();
 };

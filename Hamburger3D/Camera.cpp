@@ -119,7 +119,7 @@ Point Camera::GetCenter(int lowHue, int highHue)
 		if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
 		{
 			center = Point(posX, posY);
-			cout << "Center" << posX << " - " << posY << endl;
+			//cout << "Center" << posX << " - " << posY << endl;
 			circle(frame, center, 10, Scalar(0, 0, 255), 1);
 
 		}
