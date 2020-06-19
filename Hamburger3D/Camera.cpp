@@ -77,7 +77,7 @@ void Camera::GetExtreme(vector<Point> cnt, Mat image)
 	Point bottom = Point(val.second->x, val.second->y);
 	circle(image, top, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
 	circle(image, bottom, 50, Scalar(255, 0, 0), CV_FILLED, 8, 0);
-	imshow("Points", image);
+	//imshow("Points", image);
 
 }
 
@@ -128,8 +128,8 @@ Point Camera::GetCenter(int lowHue, int highHue)
 		iLastY = posY;
 	}
 
-	imshow("Thresholded Image", imgThresholded);
-	imshow("Original", frame);
+	//imshow("Thresholded Image", imgThresholded);
+	//imshow("Original", frame);
 
 	return center;
 }

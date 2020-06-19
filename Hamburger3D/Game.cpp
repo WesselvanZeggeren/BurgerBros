@@ -7,6 +7,8 @@ Camera cam;
 GLuint textureId = 0;
 bool gameState = false;
 
+bool gameOver = false;
+
 bool selectState;
 
 Burger* buildingBurger;
@@ -98,9 +100,6 @@ void Game::init()
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
-		if (key == GLFW_KEY_ESCAPE) {
-				glfwSetWindowShouldClose(window, true);
-			}
 		if (key == GLFW_KEY_ENTER) {
 			if (selectState)
 			{
@@ -172,10 +171,11 @@ void Game::update()
 
 		animatedBurger.update(deltaTime);
 		buildingRecipeBurger.update(deltaTime);
-
-		//until press start is added to meu
 		
-		manageHandToIngredientPosition();
+		if (!gameOver)
+		{
+			manageHandToIngredientPosition();
+		}
 	}
 
 	if (!gameState)
@@ -285,16 +285,32 @@ void Game::drawGame()
 	textWriter->setScale(5.0f);
 	std::string time = getTimeLeft();
 	textWriter->drawText( time , 180, 230);
+
+	if (gameOver) 
+	{
+		textWriter->setScale(15.0f);
+		textWriter->drawText("GAME OVER", -95, 0);
+		textWriter->setScale(8.0f);
+		textWriter->drawText("PRESS ESC TO RETURN TO MENU", -270, 50);
+	}
 }
 
 std::string Game::getTimeLeft()
 {
 	long timeLeft = totalTime - stopwatch->getElapsedTime();
 
-	long minutes = timeLeft / 60;
+	int minutes = timeLeft / 60;
 	long seconds = timeLeft % 60;
+	std::string zero;
+	seconds < 10 ? zero = "0" : zero = "";
 
-	return "0" + std::to_string(minutes) + ":" + std::to_string(seconds);
+	if (timeLeft <= 0)
+	{
+		gameOver = true;
+		return "00:00";
+	}
+
+	return "0" + std::to_string(minutes) + ":" + zero + std::to_string(seconds);
 
 }
 
