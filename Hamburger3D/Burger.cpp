@@ -3,6 +3,7 @@
 #include "SpinComponent.h"
 #include <typeinfo>
 #include <iostream>
+#include <vector>
 
 
 Burger::Burger()
@@ -66,6 +67,25 @@ bool Burger::isfinnished()
 		}
 	}
 	return false;
+}
+
+bool Burger::compareTo(Burger other)
+{
+	if (this->ingredients.size() != other.ingredients.size()) 
+	{
+		std::cout << "Size incorrect, false" << "\n";
+		return false;
+	}
+	
+	for (int i = 0; i < this->ingredients.size(); i++)
+	{
+		if (this->ingredients[i] != other.ingredients[i]) 
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 BurgerIngredient* Burger::getIngredientByIndex(int index)

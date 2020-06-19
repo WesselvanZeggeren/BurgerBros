@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <list>
 #include "BaconModelComponent.h"
 #include "BunCrownModelComponent.h"
@@ -23,7 +24,7 @@ public:
 
 private:
 
-	std::list<GameObject*> ingredients;
+	std::vector<GameObject*> ingredients;
 	glm::vec3 position = glm::vec3(0, 0, 0);
 	glm::vec3 rotation = glm::vec3(0, 0, 0);
 	glm::vec3 scale = glm::vec3(1, 1, 1);
@@ -39,6 +40,7 @@ public:
 
 	double getBurgerModelHeight();
 	bool isfinnished();
+	bool compareTo(Burger);
 	BurgerIngredient* getIngredientByIndex(int index);
 	int burgerIngredientCount();
 
