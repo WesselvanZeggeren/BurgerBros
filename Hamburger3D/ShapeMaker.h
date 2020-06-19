@@ -18,7 +18,7 @@ public:
 	~ModelMaker();
 	void drawRectangle(double x, double y, double z);
 	void setColor(Color color);
-	Color getColor();
+	glm::vec4 getColor();
 	void moveBrush(double x, double y, double z);
 	void clearPosition();
 	void clearShapes();

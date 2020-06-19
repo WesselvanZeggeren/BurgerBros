@@ -82,9 +82,9 @@ void ModelMaker::setColor(Color activeColor)
 	this->activeColor = activeColor.getVec4();
 }
 
-Color ModelMaker::getColor()
+glm::vec4 ModelMaker::getColor()
 {
-	return Color(this->activeColor.r, this->activeColor.g, this->activeColor.b);
+	return this->activeColor;
 }
 
 void ModelMaker::moveBrush(double x, double y, double z)

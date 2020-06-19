@@ -42,6 +42,8 @@ void SauceBottle::setSauseType(int type)
     Color mustard = { 255, 219, 88, 1.0 };
     Color mayo = { 255,255,238 ,1 };
 
+	this->type = type;
+
     switch (type) {
     case 0:
         model.setColor(ketchup);
@@ -57,14 +59,5 @@ void SauceBottle::setSauseType(int type)
 
 int SauceBottle::getSauseType()
 {
-	if (model.getColor().getVec4() == glm::vec4(204.0, 0, 0, 1.0)) {
-		return 0;
-	}
-	if (model.getColor().getVec4() == glm::vec4(255, 219, 88, 1.0 )) {
-		return 1;
-	}
-	if (model.getColor().getVec4() == glm::vec4(255, 255, 238, 1 )) {
-		return 2;
-	}
-	return -1;
+	return this->type;
 }
