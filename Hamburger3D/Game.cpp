@@ -7,6 +7,8 @@ Camera cam;
 GLuint textureId = 0;
 bool gameState = false;
 
+bool selectState;
+
 Burger* buildingBurger;
 Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
@@ -81,6 +83,11 @@ void Game::init()
 	setScreen();
 	setIngredients();
 
+	stopwatch = new StopWatch();
+
+	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
+
+	selectState = true;
 
 	tigl::shader->enableColor(true);
 	tigl::shader->enableTexture(true);
@@ -89,15 +96,29 @@ void Game::init()
 	tigl::shader->enableLighting(true);
 	tigl::shader->setLightCount(2);
 
-	tigl::shader->setLightDirectional(0, false);
-	tigl::shader->setLightPosition(0, glm::vec3(0, 8, 5));
-	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
-	tigl::shader->setLightDiffuse(0, glm::vec3(0.9f, 0.9f, 0.9f));
-	tigl::shader->setLightSpecular(0, glm::vec3(0, 0, 0));
-	tigl::shader->setShinyness(100.0f);
-
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
+		if (key == GLFW_KEY_ESCAPE) {
+				glfwSetWindowShouldClose(window, true);
+			}
+		if (key == GLFW_KEY_ENTER) {
+			if (selectState)
+			{
+				gameState = true;
+			}
+			else
+			{
+				glfwSetWindowShouldClose(window, true);
+			}
+		}
+		if (key == GLFW_KEY_UP && action == GLFW_RELEASE) {
+			if (selectState == true) { selectState = false; return; }
+			if (selectState == false) { selectState = true; return; }
+		}
+		if (key == GLFW_KEY_DOWN && action == GLFW_RELEASE ){
+			if (selectState == true) { selectState = false; return; }
+			if (selectState == false) { selectState = true; return; }
+		}
 		//This is a temperary testing hotkey
 		if (key == GLFW_KEY_N) {
 			if (buildingBurger->isfinnished()) {
@@ -122,13 +143,13 @@ void Game::init()
 	});
 
 	MenuCam = new FpCam(window);
-
 }
 
 void Game::update()
 {	
 	Mat frame = cam.SnapShot();
 	setFrame(frame);
+	MenuCam->update(window);
 
 	double currentFrameTime = glfwGetTime();
 	double deltaTime = currentFrameTime - lastFrameTime;
@@ -146,17 +167,15 @@ void Game::update()
 	for (auto& i : ingredients)
 		i->update(deltaTime);
 
+	animatedBurger.update(deltaTime);
+	buildingRecipeBurger.update(deltaTime);
 
-
-	Point centerHand = cam.GetCenter(75, 130);
-	std::cout << centerHand.x << " Stuff " << centerHand.y << std::endl;
-	glm::vec2 transformedPos = revertPixel(glm::vec2(centerHand.x, centerHand.y));
-	cursor->position.x = transformedPos.x;
-	cursor->position.y = -transformedPos.y - 2;
+	//until press start is added to meu
+	if (!gameState)
+	{
+		stopwatch->start();
 	}
-
 }
-
 
 /*
  *	MainMenu draw function
@@ -170,6 +189,14 @@ void Game::drawMainMenu()
 	}
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	tigl::shader->enableLighting(true);
+	tigl::shader->setLightDirectional(0, true);
+	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
+	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
+	tigl::shader->setLightDiffuse(0, glm::vec3(2.0f, 2.0f, 2.0f));
+	tigl::shader->setLightSpecular(0, glm::vec3(1, 1, 1));
+	tigl::shader->setShinyness(80.0f);
 
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
@@ -190,10 +217,10 @@ void Game::drawMainMenu()
 
 	glDisable(GL_TEXTURE_2D);
 
-	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, -8), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
-	tigl::addVertex(Vertex::PCN(glm::vec3(8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
-	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, 8), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
-	tigl::addVertex(Vertex::PCN(glm::vec3(-8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, 1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, -8), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(0, y, 8), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
+	tigl::addVertex(Vertex::PCN(glm::vec3(-8, y, 0), glm::vec4(1, 1, 1, 1), glm::vec3(0, -1, 0)));
 
 	tigl::addVertex(Vertex::PN(glm::vec3(0, 0, -5), glm::vec3(-1, 0, 0)));
 	tigl::addVertex(Vertex::PN(glm::vec3(0, 8, -5), glm::vec3(-1, 0, 0)));
@@ -203,6 +230,19 @@ void Game::drawMainMenu()
 	tigl::end();
 	
 	animatedBurger.draw();
+
+	textWriter->setScale(5.0f);
+	if (selectState == true)
+	{
+		textWriter->drawText("> Start Game", -300, -80);
+		textWriter->drawText("   Exit Game", -300, -50);
+	}
+	else if (selectState == false)
+	{
+		textWriter->drawText("   Start Game", -300, -80);
+		textWriter->drawText("> Exit Game", -300, -50);
+	}
+
 }
 
 void Game::drawGame()
@@ -233,6 +273,28 @@ void Game::drawGame()
 
 	buildingBurger->draw();
 	buildingRecipeBurger.draw();
+
+	textWriter->setScale(5.0f);
+	std::string time = getTimeLeft();
+	textWriter->drawText( time , 180, 230);
+}
+
+std::string Game::getTimeLeft()
+{
+	long timeLeft = totalTime - stopwatch->getElapsedTime();
+
+	long minutes = timeLeft / 60;
+	long seconds = timeLeft % 60;
+
+	return "0" + std::to_string(minutes) + ":" + std::to_string(seconds);
+
+}
+
+//Adds 20 seconds to time left and resets timer
+void Game::setNewTotalTime()
+{
+	stopwatch->start();
+	totalTime = totalTime - stopwatch->getElapsedTime() + 20;
 }
 
 /**

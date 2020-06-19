@@ -22,7 +22,9 @@
 
 #include "SimpleTrashBin.h"
 
+#include "Stopwatch.h"
 #include "Camera.h"
+#include "TextControl.h"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
@@ -33,27 +35,31 @@ using namespace cv;
 
 class Game
 {
-
 private:
 	GLFWwindow* window;
 	GLuint textureId = 0;
+	StopWatch* stopwatch;
+	int totalTime = 60;
 
 	void init();
+
 	void drawGame();
 	void drawMainMenu();
 	void update();
 
 	void setScreen();
 	void setIngredients();
+	std::string getTimeLeft();
+	void setNewTotalTime();
 
 public:
 	std::list<GameObject*> objects;
 	std::list<GameObject*> ingredients;
 	
 	GameObject* screen;
+	TextControl* textWriter;
 	Recipe animatedRecipe;
 	Burger animatedBurger;
-
 
 	double lastFrameTime;
 	glm::vec2 revertPixel(glm::vec2 pos);
