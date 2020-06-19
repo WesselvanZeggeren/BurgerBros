@@ -37,7 +37,9 @@ class Game
 {
 private:
 	GLFWwindow* window;
+
 	GLuint textureId = 0;
+	double radius = 0.5;
 	StopWatch* stopwatch;
 	int totalTime = 60;
 
@@ -52,6 +54,8 @@ private:
 	std::string getTimeLeft();
 	void setNewTotalTime();
 
+	bool inDistanceOf(glm::vec2 position, glm::vec3 object, double radius);
+
 public:
 	std::list<GameObject*> objects;
 	std::list<GameObject*> ingredients;
@@ -62,11 +66,15 @@ public:
 	Burger animatedBurger;
 
 	double lastFrameTime;
-	glm::vec2 revertPixel(glm::vec2 pos);
+	glm::vec2 pixelToOpenGL(glm::vec2 pos);
+
+	void manageHandToIngredientPosition();
+
+	void bindIngredientToHand(glm::vec2 position);
+	void bindIngredientToBurger(glm::vec2 position);
 
 	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);
 	void endGame();
 
-	BurgerIngredient getIngredient(Point point);
 };

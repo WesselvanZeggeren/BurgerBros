@@ -134,30 +134,19 @@ Point Camera::GetCenter(int lowHue, int highHue)
 	return center;
 }
 
-void Camera::AttachIngredient()
-{
-	double radius = 20;
-	point = GetCenter(75, 130);
-	Game game;
-	for (GameObject *object : game.ingredients)
-	{
-		if ((pow((point.x - object->position.x), 2) + pow((point.y - object->position.y), 2)) < pow(radius, 2))
-		{
-			object->setAttached(true);
-		}
-	}
-}
-
 void Camera::isAttached()
 {
+
 	Game game;
+	
 	for (GameObject* object : game.ingredients)
 	{
+		
 		if (object->attached)
 		{
+
 			object->position.x = point.x;
 			object->position.y = point.y;
-
 		}
 	}
 }

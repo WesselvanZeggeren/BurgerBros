@@ -14,6 +14,7 @@ Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
 
 double camHeight, camWidth;
+
 /**
  * Start game
  */
@@ -44,7 +45,6 @@ void Game::startGame(double height, double width, Camera cam)
 		if (animatedBurger.distanceIngredients == 1) { animatedBurger.startAnimation(); }
 		if (gameState) {
 			drawGame();
-		//cam.GetCenter(75, 130); 
 		}
 		else { drawMainMenu(); }
 		if (gameState && glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) { endGame(); }
@@ -77,7 +77,7 @@ void Game::init()
 
 	cursor = new GameObject();
 	cursor->addComponent(new CubeModelComponent(0.1));
-	cursor->position.z = -4;
+	cursor->position.z = -14;
 	objects.push_back(cursor);
 
 	setScreen();
@@ -158,11 +158,14 @@ void Game::update()
 	animatedBurger.update(deltaTime);
 	buildingRecipeBurger.update(deltaTime);
 	MenuCam->update(window);
-	if (gameState) {
 
+	if (gameState) {
 
 		for (auto& o : objects)
 			o->update(deltaTime);
+
+	for (auto& o : objects)
+		o->update(deltaTime);
 
 		for (auto& i : ingredients)
 			i->update(deltaTime);
@@ -175,6 +178,7 @@ void Game::update()
 		{
 			stopwatch->start();
 		}
+		manageHandToIngredientPosition();
 	}
 }
 
@@ -351,6 +355,7 @@ void Game::setIngredients()
 	trash->addComponent(new SimpleTrashBin());
 	trash->position = glm::vec3(-x, y * -1, z);
 	trash->scale = glm::vec3(1.5, 1.5, 1.5);
+	trash->grabbable = false;
 
 	buildingRecipeBurger.setPosition(glm::vec3(-x, 0 , z));
 	buildingRecipeBurger.rebuildBurgerYPos();
@@ -359,40 +364,60 @@ void Game::setIngredients()
 	ingredients.push_back(trash);
 }
 
-glm::vec2 Game::revertPixel(glm::vec2 pos)
-{
-	double maxX = 12.4;
-	double minX = -12.4;
-	double maxY = 10.2;
-	double minY = -10.2;
-	double maxPxWidth =  camWidth;
-	double maxPxHeight = camHeight;
-
-	double openGLXWidth = maxX - minX;
-	double factorX = maxPxWidth / openGLXWidth;
-	double openGLYWidth = maxY - minY;
-	double factorY = maxPxWidth / openGLYWidth;
-
-	double openGLXpoint = (pos.x / factorX) + minX;
-	double openGLYpoint = (pos.y / factorY) + minY;
-	std::cout << openGLXpoint << " - " << openGLYpoint << std::endl;
-	std::cout << pos.x << " - " << pos.y << std::endl;
-	
-	return glm::vec2(openGLXpoint, openGLYpoint);
-}
-
-BurgerIngredient Game::getIngredient(Point point)
+/**
+ * All functions based on hand, ingredient and burger management
+ */
+void Game::manageHandToIngredientPosition()
 {
 
-	BurgerIngredient ingredient;
+	Point pixelPosition = cam.GetCenter(75, 130);
+	glm::vec2 position = pixelToOpenGL(glm::vec2(pixelPosition.x, pixelPosition.y));
 
-	return ingredient;
+	cursor->position.x = position.x;
+	cursor->position.y = position.y;
+
+	bindIngredientToHand(position);
+	bindIngredientToBurger(position);
 }
+
+glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
+{
+
+	double maxX = 12.4, minX = -12.4, maxY = -10.2, minY = 10.2; // dimentions of our OpenGL world
+
+	double factorX = camWidth / (maxX - minX);
+	double factorY = camHeight / (maxY - minY);
+
+	return glm::vec2((pixel.x / factorX) + minX, (pixel.y / factorY) + minY);
+}
+
+void Game::bindIngredientToHand(glm::vec2 p)
+{
+
+	for (GameObject* o : ingredients)
+		if (!cursor->attached || !o->grabbable) // filters out grabbable ingredients if attached.
+			if (inDistanceOf(p, o->position, radius))
+				if (o->grabbable)
+					cursor->replaceComponent(o->getComponents().front(), true);
+				else
+					cursor->replaceComponent(new CubeModelComponent(0.1), false);
+}
+
+void Game::bindIngredientToBurger(glm::vec2 p)
+{
+
+	if (!cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
+	{
+
+		buildingBurger->addComponent(cursor->getComponents().front());
+		cursor->replaceComponent(new CubeModelComponent(0.1), false);
+	}
+}
+
 
 /**
  * Frame functions
  */
-
 void Game::setFrame(Mat& frame)
 {
 	glGenTextures(1, &textureId);
@@ -410,6 +435,16 @@ void Game::setFrame(Mat& frame)
 		GL_RGB,
 		GL_UNSIGNED_BYTE,
 		frame.data);
+}
+
+bool Game::inDistanceOf(glm::vec2 position, glm::vec3 object, double radius)
+{
+
+	return (
+		pow((position.x - object.x), 2) +
+		pow((position.y - object.y), 2) <
+		pow(radius, 2)
+	);
 }
 
 void Game::endGame()

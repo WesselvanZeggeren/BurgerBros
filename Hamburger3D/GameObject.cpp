@@ -21,6 +21,17 @@ void GameObject::addComponent(Component* component)
 		modelComponent = dynamic_cast<ModelComponent*>(component);
 }
 
+void GameObject::replaceComponent(Component* component, bool attach)
+{
+
+	attached = attach;
+
+	components.clear();
+	modelComponent = dynamic_cast<ModelComponent*>(component);
+
+	addComponent(component);
+}
+
 std::list<Component*> GameObject::getComponents()
 {
 	

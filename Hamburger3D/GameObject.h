@@ -20,10 +20,15 @@ public:
 	glm::vec3 position;
 	glm::vec3 rotation;
 	glm::vec3 scale = glm::vec3(1, 1, 1);
+
 	bool attached = false;
+	bool grabbable = true;
 
 	void addComponent(Component* component);
+	void replaceComponent(Component* component, bool attach);
+
 	std::list<Component*> getComponents();
+
 	void update(float elapsedTime);
 	void draw(const glm::mat4 & = glm::mat4(1.0f));
 	void setAttached(bool attach);
