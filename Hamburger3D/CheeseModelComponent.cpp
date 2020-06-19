@@ -36,15 +36,10 @@ void CheeseModelComponent::setCheeseType(int type)
 
     switch (type) {
 
-        case 0: model.setColor(chedar); this->name = "Cheddar"; break;
-        case 1: model.setColor(emmet); this->name = "Emmet"; break;
-        case 2: model.setColor(mat_chedar); this->name = "Mat_Cheddar";  break;
+        case 0: model.setColor(chedar); break;
+        case 1: model.setColor(emmet); break;
+        case 2: model.setColor(mat_chedar); break;
     }
-}
-
-std::string CheeseModelComponent::getName()
-{
-    return this->name;
 }
 
 

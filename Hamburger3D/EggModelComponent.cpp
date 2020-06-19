@@ -2,8 +2,6 @@
 
 EggModelComponent::EggModelComponent()
 {
-    this->name = "Egg";
-
     Color egg_white = { 255, 245, 195 , 1 };
     Color egg_yelow = { 255, 220, 81 , 1 };
     
@@ -29,9 +27,4 @@ void EggModelComponent::draw()
 double EggModelComponent::getIngredientHeight()
 {
     return 0.3;
-}
-
-std::string EggModelComponent::getName()
-{
-	return this->name;
 }

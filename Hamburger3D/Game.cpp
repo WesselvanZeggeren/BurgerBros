@@ -15,8 +15,6 @@ Burger* buildingBurger;
 Burger buildingRecipeBurger;
 Recipe* buildingRecipe;
 
-int buildingBurgerIndex = 0;
-
 double camHeight, camWidth;
 
 /**
@@ -91,8 +89,6 @@ void Game::init()
 
 	textWriter = new TextControl("C:/Windows/Fonts/times.ttf", 20, 1920.0f, 1080.0f);
 
-	buildingBurgerIndex = 1;
-
 	selectState = true;
 
 	tigl::shader->enableColor(true);
@@ -101,13 +97,6 @@ void Game::init()
 
 	tigl::shader->enableLighting(true);
 	tigl::shader->setLightCount(2);
-
-	tigl::shader->setLightDirectional(0, true);
-	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
-	tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
-	tigl::shader->setLightDiffuse(0, glm::vec3(0.9f, 0.9f, 0.9f));
-	tigl::shader->setLightSpecular(0, glm::vec3(1, 1, 1));
-	tigl::shader->setShinyness(100.0f);
 
 	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
 	{
@@ -148,7 +137,9 @@ void Game::init()
 				buildingBurger->addIngriedient(ingredient);
 				buildingBurger->setPosition(glm::vec3(0, -8, -15));
 				buildingBurger->rebuildBurgerYPos();
+
 			}
+			
 		}
 	});
 
@@ -203,6 +194,14 @@ void Game::drawMainMenu()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	tigl::shader->enableLighting(true);
+	tigl::shader->setLightDirectional(0, true);
+	tigl::shader->setLightPosition(0, glm::vec3(10, 5, 10));
+	tigl::shader->setLightAmbient(0, glm::vec3(0.1f, 0.1f, 0.15f));
+	tigl::shader->setLightDiffuse(0, glm::vec3(2.0f, 2.0f, 2.0f));
+	tigl::shader->setLightSpecular(0, glm::vec3(1, 1, 1));
+	tigl::shader->setShinyness(80.0f);
+
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 	glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 100.0f);
@@ -247,6 +246,7 @@ void Game::drawMainMenu()
 		textWriter->drawText("   Start Game", -300, -80);
 		textWriter->drawText("> Exit Game", -300, -50);
 	}
+
 }
 
 void Game::drawGame()
@@ -307,6 +307,7 @@ std::string Game::getTimeLeft()
 	}
 
 	return "0" + std::to_string(minutes) + ":" + zero + std::to_string(seconds);
+
 }
 
 //Adds 20 seconds to time left and resets timer
@@ -389,8 +390,6 @@ void Game::manageHandToIngredientPosition()
 	cursor->position.x = position.x;
 	cursor->position.y = position.y;
 
-	tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
-
 	bindIngredientToHand(position);
 	bindIngredientToBurger(position);
 }
@@ -399,6 +398,7 @@ glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 {
 
 	double maxX = 12.4, minX = -12.4, maxY = -10.2, minY = 10.2; // dimentions of our OpenGL world
+
 	double factorX = camWidth / (maxX - minX);
 	double factorY = camHeight / (maxY - minY);
 
@@ -407,6 +407,7 @@ glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 
 void Game::bindIngredientToHand(glm::vec2 p)
 {
+
 	for (GameObject* o : ingredients)
 		if (!cursor->attached || !o->grabbable) // filters out grabbable ingredients if attached.
 			if (inDistanceOf(p, o->position, radius))
@@ -418,31 +419,20 @@ void Game::bindIngredientToHand(glm::vec2 p)
 
 void Game::bindIngredientToBurger(glm::vec2 p)
 {
+
 	if (cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
 	{
 		BurgerIngredient* ingredient = cursor->getComponent<BurgerIngredient>();
-		
-		/*std::cout << "BURGER DEBUG : RECIPE INGREDIENT" << buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() << "\n";
-		std::cout << "BURGER DEBUG : USER INGREDIENT" << ingredient->getName() << "\n";
-		std::cout << "BURGER DEBUG : BURGER INDEX" << buildingBurgerIndex << "\n";*/
 
 		SauceBottle* bottle = dynamic_cast<SauceBottle*>(ingredient);
 		if (bottle) {
-			ingredient = (new SauceModelComponent(bottle->getSauseType()));
+			buildingBurger->addComponent(new SauceModelComponent(bottle->getSauseType()));
 		}
-		//Compare recipe ingredient to user ingredient
-		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() == ingredient->getName()) 
-		{
-			std::cout << "Ingredient correct, adding to burger" << "\n";
+		else {
 			buildingBurger->addComponent(ingredient);
-			cursor->replaceComponent(new CubeModelComponent(0.1), false);
-			buildingBurgerIndex++;
 		}
-		else
-		{
-			std::cout << "Ingredient incorrect" << "\n";
-			tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f)); //sets light to the color red
-		}
+
+		cursor->replaceComponent(new CubeModelComponent(0.1), false);
 	}
 }
 

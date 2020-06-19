@@ -2,8 +2,6 @@
 
 TomatoModelComponent::TomatoModelComponent()
 {
-    this->name = "Tomato";
-
     Color tomato_red = { 232.0,24.0,2.0, 1.0 };
     Color tomato_red_light = { 253, 60, 39, 1.0 };
 
@@ -28,9 +26,4 @@ void TomatoModelComponent::draw()
 double TomatoModelComponent::getIngredientHeight()
 {
     return 0.16;
-}
-
-std::string TomatoModelComponent::getName()
-{
-    return this->name;
 }

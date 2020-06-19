@@ -8,8 +8,6 @@ using tigl::Vertex;
 
 class BunCrownModelComponent : public BurgerIngredient
 {
-private:
-	std::string name;
 public:
 	BunCrownModelComponent();
 	~BunCrownModelComponent();
@@ -17,5 +15,4 @@ public:
 
 	virtual void draw() override;
 	double getIngredientHeight() override;
-	virtual std::string getName();
 };

@@ -1,10 +1,9 @@
 #include "SauceModelComponent.h"
-#include <iostream>
 
 
-/*SauceModelComponent::SauceModelComponent() {
+SauceModelComponent::SauceModelComponent() {
     SauceModelComponent(0);
-}*/
+}
 
 SauceModelComponent::SauceModelComponent(int type)
 {
@@ -45,15 +44,12 @@ void SauceModelComponent::setSauseType(int type)
     switch (type) {
     case 0:
         model.setColor(ketchup);
-        this->name = "Ketchup";
         break;
     case 1:
         model.setColor(mustard);
-        this->name = "mustard";
         break;
     case 2:
         model.setColor(mayo);
-        this->name = "mayo";
         break;
     case -1:
         model.setColor({ 255, 255, 255, 1 });
@@ -61,9 +57,4 @@ void SauceModelComponent::setSauseType(int type)
     }
     
 
-}
-
-std::string SauceModelComponent::getName()
-{
-    return this->name;
 }
