@@ -136,14 +136,17 @@ Point Camera::GetCenter(int lowHue, int highHue)
 
 void Camera::isAttached()
 {
+
 	Game game;
+	
 	for (GameObject* object : game.ingredients)
 	{
+		
 		if (object->attached)
 		{
+
 			object->position.x = point.x;
 			object->position.y = point.y;
-
 		}
 	}
 }

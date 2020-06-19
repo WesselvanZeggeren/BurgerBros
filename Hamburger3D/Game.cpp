@@ -74,7 +74,7 @@ void Game::init()
 
 	cursor = new GameObject();
 	cursor->addComponent(new CubeModelComponent(0.1));
-	cursor->position.z = -4;
+	cursor->position.z = -14;
 	objects.push_back(cursor);
 
 	setScreen();
@@ -287,7 +287,7 @@ void Game::setIngredients()
 }
 
 /**
- * All function based on hand and ingredient management
+ * All functions based on hand, ingredient and burger management
  */
 void Game::manageHandToIngredientPosition()
 {
@@ -298,14 +298,14 @@ void Game::manageHandToIngredientPosition()
 	cursor->position.x = position.x;
 	cursor->position.y = position.y;
 
-	bindIngredient(position);
-	bindToBurger(position);
+	bindIngredientToHand(position);
+	bindIngredientToBurger(position);
 }
 
 glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 {
 
-	double maxX = 12.4, minX = -12.4, maxY = 10.2, minY = -10.2; // dimentions of our OpenGL world
+	double maxX = 12.4, minX = -12.4, maxY = -10.2, minY = 10.2; // dimentions of our OpenGL world
 
 	double factorX = camWidth / (maxX - minX);
 	double factorY = camHeight / (maxY - minY);
@@ -313,32 +313,33 @@ glm::vec2 Game::pixelToOpenGL(glm::vec2 pixel)
 	return glm::vec2((pixel.x / factorX) + minX, (pixel.y / factorY) + minY);
 }
 
-void Game::bindIngredient(glm::vec2 position)
+void Game::bindIngredientToHand(glm::vec2 p)
 {
-
-	double radius = 0.5;
 
 	for (GameObject* o : ingredients)
 		if (!cursor->attached || !o->grabbable) // filters out grabbable ingredients if attached.
-			if ((pow((position.x - o->position.x), 2) + pow((position.y - o->position.y), 2)) < pow(radius, 2))
+			if (inDistanceOf(p, o->position, radius))
 				if (o->grabbable)
 					cursor->replaceComponent(o->getComponents().front(), true);
 				else
 					cursor->replaceComponent(new CubeModelComponent(0.1), false);
 }
 
-void Game::bindToBurger(glm::vec2 position)
+void Game::bindIngredientToBurger(glm::vec2 p)
 {
 
-	// program here the funcionality that connectes the 
-	// ingredient set in the cursor with the buildBurgerModel 
-	// when hovered over
+	if (!cursor->attached && inDistanceOf(p, buildingBurger->getPosition(), radius))
+	{
+
+		buildingBurger->addComponent(cursor->getComponents().front());
+		cursor->replaceComponent(new CubeModelComponent(0.1), false);
+	}
 }
+
 
 /**
  * Frame functions
  */
-
 void Game::setFrame(Mat& frame)
 {
 	glGenTextures(1, &textureId);
@@ -356,4 +357,14 @@ void Game::setFrame(Mat& frame)
 		GL_RGB,
 		GL_UNSIGNED_BYTE,
 		frame.data);
+}
+
+bool Game::inDistanceOf(glm::vec2 position, glm::vec3 object, double radius)
+{
+
+	return (
+		pow((position.x - object.x), 2) +
+		pow((position.y - object.y), 2) <
+		pow(radius, 2)
+	);
 }

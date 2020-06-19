@@ -34,7 +34,9 @@ public:
 
 
 	void addIngriedient(BurgerIngredient* ingredient);
+	void addComponent(Component* component);
 	void clearBurger();
+
 	double getBurgerModelHeight();
 	bool isfinnished();
 	BurgerIngredient* getIngredientByIndex(int index);
@@ -46,6 +48,7 @@ public:
 	void rebuildBurgerYPos();
 	void startAnimation();
 
+	glm::vec3 getPosition();
 	void setPosition(glm::vec3 position);
 	glm::vec3 getRotation();
 	void setRotation(glm::vec3 rotation);

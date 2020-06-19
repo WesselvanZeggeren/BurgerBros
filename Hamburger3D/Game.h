@@ -36,7 +36,9 @@ class Game
 
 private:
 	GLFWwindow* window;
+
 	GLuint textureId = 0;
+	double radius = 0.5;
 
 	void init();
 	void drawGame();
@@ -45,6 +47,8 @@ private:
 
 	void setScreen();
 	void setIngredients();
+
+	bool inDistanceOf(glm::vec2 position, glm::vec3 object, double radius);
 
 public:
 	std::list<GameObject*> objects;
@@ -59,8 +63,8 @@ public:
 
 	void manageHandToIngredientPosition();
 
-	void bindIngredient(glm::vec2 position);
-	void bindToBurger(glm::vec2 position);
+	void bindIngredientToHand(glm::vec2 position);
+	void bindIngredientToBurger(glm::vec2 position);
 
 	void startGame(double height, double width, Camera cam);
 	void setFrame(Mat& frame);

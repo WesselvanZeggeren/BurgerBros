@@ -21,16 +21,22 @@ Burger::~Burger()
 void Burger::addIngriedient(BurgerIngredient* ingredient)
 {
 
+	addComponent(ingredient);
+}
+
+void Burger::addComponent(Component* component)
+{
+
 	GameObject* ingredientObject = new GameObject();
-	ingredientObject->addComponent(ingredient);
+	ingredientObject->addComponent(component);
 	ingredientObject->addComponent(new SpinComponent(1));
 	ingredientObject->position.y += getBurgerModelHeight();
 	ingredients.push_back(ingredientObject);
-	
 }
 
 void Burger::clearBurger()
 {
+
 	ingredients.clear();
 	GameObject* bottomBunn = new GameObject();
 	bottomBunn->addComponent(new BunHeelModelComponent());
@@ -116,6 +122,12 @@ glm::vec3 Burger::getRotation()
 void Burger::setRotation(glm::vec3 rotation)
 {
 	this->rotation = rotation;
+}
+
+glm::vec3 Burger::getPosition()
+{
+
+	return this->position;
 }
 
 void Burger::setPosition(glm::vec3 position)
