@@ -8,6 +8,8 @@ using tigl::Vertex;
 
 class SauceModelComponent : public BurgerIngredient
 {
+private:
+	std::string name;
 public:
 	SauceModelComponent();
 	SauceModelComponent(int type);

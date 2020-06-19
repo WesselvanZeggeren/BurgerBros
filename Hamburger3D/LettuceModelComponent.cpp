@@ -2,6 +2,8 @@
 
 LettuceModelComponent::LettuceModelComponent()
 {
+    this->name = "Lettuce";
+
     Color letace_light = { 49, 199, 4, 1 };
 
     model.setColor(letace_light);
@@ -25,5 +27,5 @@ double LettuceModelComponent::getIngredientHeight()
 
 std::string LettuceModelComponent::getName()
 {
-	return "Lettuce";
+	return this->name;
 }

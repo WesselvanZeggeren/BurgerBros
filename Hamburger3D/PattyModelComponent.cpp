@@ -3,6 +3,8 @@
 
 PattyModelComponent::PattyModelComponent()
 {
+    this->name = "Patty";
+
     Color patty = { 163.0,56.0,21.0, 1.0 };
     model.setColor(patty);
     model.moveBrush(0, 0.25, 0);
@@ -26,5 +28,5 @@ double PattyModelComponent::getIngredientHeight()
 
 std::string PattyModelComponent::getName()
 {
-	return "Patty";
+	return this->name;
 }

@@ -2,6 +2,8 @@
 
 BunHeelModelComponent::BunHeelModelComponent()
 {
+	this->name = "Bun heel";
+
 	Color bread = { 198.0, 137.0, 88.0, 1.0 };
 	model.moveBrush(0, 0.25, 0);
 	model.setColor(bread);
@@ -24,5 +26,5 @@ double BunHeelModelComponent::getIngredientHeight()
 
 std::string BunHeelModelComponent::getName()
 {
-	return std::string();
+	return this->name;
 }

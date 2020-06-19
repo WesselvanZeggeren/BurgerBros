@@ -2,6 +2,8 @@
 
 BaconModelComponent::BaconModelComponent()
 {
+    this->name = "Bacon";
+
     Color bacon_dark = { 157,59,33 , 1 };
     Color bacon_light = { 137,0,0 , 1 };
 
@@ -50,5 +52,5 @@ double BaconModelComponent::getIngredientHeight()
 
 std::string BaconModelComponent::getName()
 {
-    return "Bacon";
+    return this->name;
 }

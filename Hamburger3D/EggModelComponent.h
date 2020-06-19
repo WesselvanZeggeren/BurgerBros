@@ -8,6 +8,8 @@ using tigl::Vertex;
 
 class EggModelComponent : public BurgerIngredient
 {
+private:
+	std::string name;
 public:
 	EggModelComponent();
 	~EggModelComponent();

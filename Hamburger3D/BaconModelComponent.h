@@ -9,6 +9,8 @@ using tigl::Vertex;
 
 class BaconModelComponent : public BurgerIngredient
 {
+private:
+	std::string name;
 public:
 	BaconModelComponent();
 	~BaconModelComponent();

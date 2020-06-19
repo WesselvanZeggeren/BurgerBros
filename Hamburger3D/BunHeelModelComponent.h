@@ -8,6 +8,9 @@ using tigl::Vertex;
 
 class BunHeelModelComponent : public BurgerIngredient
 {
+private:
+	std::string name;
+
 public:
 	BunHeelModelComponent();
 	~BunHeelModelComponent();
