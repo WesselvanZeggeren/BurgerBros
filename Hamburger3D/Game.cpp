@@ -302,6 +302,20 @@ void Game::drawGame()
 		textWriter->drawText("PRESS ESC TO RETURN TO MENU", -270, 50);
 		tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f)); //sets light to the color red
 	}
+
+	if (buildingBurger->isfinnished()) {
+		glm::vec3 rotation = buildingRecipeBurger.getRotation();
+		buildingBurger->clearBurger();
+		buildingRecipe->generateRecipe(8);
+		buildingRecipeBurger = buildingRecipe->convertToBurger();
+		buildingRecipeBurger.setPosition(glm::vec3(12, -1.5, -15));
+		buildingRecipeBurger.distanceIngredients = 3;
+		buildingRecipeBurger.rebuildBurgerYPos();
+		buildingRecipeBurger.setRotation(rotation);
+		buildingBurger->addComponent(new BunHeelModelComponent());
+		buildingBurgerIndex = 1;
+		totalTime += 20;
+	}
 }
 
 std::string Game::getTimeLeft()
@@ -326,7 +340,7 @@ std::string Game::getTimeLeft()
 void Game::setNewTotalTime()
 {
 	stopwatch->start();
-	totalTime = totalTime - stopwatch->getElapsedTime() + 20;	
+	totalTime + 20 > 120 ? totalTime = 120 : totalTime += 20;
 }
 
 /**
@@ -451,7 +465,7 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 			buildingBurgerIndex++;
 			score+=15;
-			totalTime+=10;
+			totalTime+=5;
 		}
 		else
 		{
