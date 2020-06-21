@@ -17,6 +17,8 @@ Recipe* buildingRecipe;
 
 int buildingBurgerIndex = 0;
 
+int score = 0;
+
 double camHeight, camWidth;
 
 /**
@@ -117,6 +119,7 @@ void Game::init()
 				buildingBurger->clearBurger();
 				buildingBurger->addComponent(new BunHeelModelComponent());
 				gameState = true;
+				gameOver = false;
 			}
 			else
 			{
@@ -149,6 +152,11 @@ void Game::init()
 				buildingBurger->setPosition(glm::vec3(0, -8, -15));
 				buildingBurger->rebuildBurgerYPos();
 			}
+		}
+		if (key == GLFW_KEY_ESCAPE) {
+			gameState = false;
+			gameOver = false;
+			tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
 		}
 	});
 
@@ -200,6 +208,7 @@ void Game::drawMainMenu()
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
 		gameState = true;
 	}
+
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -252,7 +261,6 @@ void Game::drawMainMenu()
 void Game::drawGame()
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-		gameState = false;
 		drawMainMenu();
 	}
 	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
@@ -282,12 +290,17 @@ void Game::drawGame()
 	std::string time = getTimeLeft();
 	textWriter->drawText( time , 180, 230);
 
+	textWriter->setScale(5.0f);
+	std::string score2 = std::to_string(score);
+	textWriter->drawText(score2, 100, 150);
+
 	if (gameOver) 
 	{
 		textWriter->setScale(15.0f);
 		textWriter->drawText("GAME OVER", -95, 0);
 		textWriter->setScale(8.0f);
 		textWriter->drawText("PRESS ESC TO RETURN TO MENU", -270, 50);
+		tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f)); //sets light to the color red
 	}
 }
 
@@ -433,15 +446,18 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 		//Compare recipe ingredient to user ingredient
 		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() == ingredient->getName()) 
 		{
-			std::cout << "Ingredient correct, adding to burger" << "\n";
+			//std::cout << "Ingredient correct, adding to burger" << "\n";
 			buildingBurger->addComponent(ingredient);
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 			buildingBurgerIndex++;
+			score+=15;
+			totalTime+=10;
 		}
 		else
 		{
-			std::cout << "Ingredient incorrect" << "\n";
+			//std::cout << "Ingredient incorrect" << "\n";
 			tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f)); //sets light to the color red
+			score--;
 		}
 	}
 }
