@@ -35,7 +35,6 @@ void Game::startGame(double height, double width, Camera cam)
 	camWidth = width;
 	if (!window)
 	{
-	
 		glfwTerminate();
 		throw "Could not initialize glwf";
 	}
@@ -341,7 +340,7 @@ void Game::setNewTotalTime(int time)
 {
 	long timeLeft = totalTime - stopwatch->getElapsedTime();
 	
-	//stopwatch->start();
+	stopwatch->start();
 	timeLeft + time > 120 ? totalTime = 120 : totalTime = timeLeft + time;	
 }
 
