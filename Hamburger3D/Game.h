@@ -41,7 +41,7 @@ private:
 	GLuint textureId = 0;
 	double radius = 0.5;
 	StopWatch* stopwatch;
-	int totalTime = 10;
+	int totalTime = 60;
 
 	void init();
 

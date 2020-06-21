@@ -446,15 +446,16 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 		//Compare recipe ingredient to user ingredient
 		if (buildingRecipeBurger.getIngredientByIndex(buildingBurgerIndex)->getName() == ingredient->getName()) 
 		{
-			std::cout << "Ingredient correct, adding to burger" << "\n";
+			//std::cout << "Ingredient correct, adding to burger" << "\n";
 			buildingBurger->addComponent(ingredient);
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 			buildingBurgerIndex++;
-			score++;
+			score+=15;
+			totalTime+=10;
 		}
 		else
 		{
-			std::cout << "Ingredient incorrect" << "\n";
+			//std::cout << "Ingredient incorrect" << "\n";
 			tigl::shader->setLightAmbient(0, glm::vec3(0.8f, 0.0f, 0.1f)); //sets light to the color red
 			score--;
 		}
