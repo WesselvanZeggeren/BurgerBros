@@ -313,7 +313,7 @@ std::string Game::getTimeLeft()
 void Game::setNewTotalTime()
 {
 	stopwatch->start();
-	totalTime = totalTime - stopwatch->getElapsedTime() + 20;	
+	totalTime + 20 > 120 ? totalTime = 120 : totalTime += 20;	
 }
 
 /**
