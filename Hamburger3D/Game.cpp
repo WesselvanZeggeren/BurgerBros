@@ -135,7 +135,7 @@ void Game::init()
 			if (selectState == false) { selectState = true; return; }
 		}
 		//This is a temperary testing hotkey
-		if (key == GLFW_KEY_N) {
+		/*if (key == GLFW_KEY_N) {
 			if (buildingBurger->isfinnished()) {
 				glm::vec3 rotation = buildingRecipeBurger.getRotation();
 				buildingBurger->clearBurger();
@@ -152,11 +152,12 @@ void Game::init()
 				buildingBurger->setPosition(glm::vec3(0, -8, -15));
 				buildingBurger->rebuildBurgerYPos();
 			}
-		}
+		}*/
 		if (key == GLFW_KEY_ESCAPE) {
 			gameState = false;
 			gameOver = false;
 			tigl::shader->setLightAmbient(0, glm::vec3(1.0f, 1.0f, 1.0f));
+			score = 0;
 		}
 	});
 
@@ -190,7 +191,6 @@ void Game::update()
 
 	if (!gameState)
 	{
-
 		animatedBurger.update(deltaTime);
 		MenuCam->update(window);
 		stopwatch->start();
@@ -341,7 +341,7 @@ void Game::setNewTotalTime(int time)
 {
 	long timeLeft = totalTime - stopwatch->getElapsedTime();
 	
-	stopwatch->start();
+	//stopwatch->start();
 	timeLeft + time > 120 ? totalTime = 120 : totalTime = timeLeft + time;	
 }
 

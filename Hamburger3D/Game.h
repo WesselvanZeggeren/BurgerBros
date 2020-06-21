@@ -52,7 +52,7 @@ private:
 	void setScreen();
 	void setIngredients();
 	std::string getTimeLeft();
-	void setNewTotalTime();
+	void setNewTotalTime(int time);
 
 	bool inDistanceOf(glm::vec2 position, glm::vec3 object, double radius);
 
