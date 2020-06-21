@@ -314,7 +314,7 @@ void Game::drawGame()
 		buildingRecipeBurger.setRotation(rotation);
 		buildingBurger->addComponent(new BunHeelModelComponent());
 		buildingBurgerIndex = 1;
-		totalTime += 20;
+		setNewTotalTime(20);
 	}
 }
 
@@ -337,10 +337,12 @@ std::string Game::getTimeLeft()
 }
 
 //Adds 20 seconds to time left and resets timer
-void Game::setNewTotalTime()
+void Game::setNewTotalTime(int time)
 {
+	long timeLeft = totalTime - stopwatch->getElapsedTime();
+	
 	stopwatch->start();
-	totalTime + 20 > 120 ? totalTime = 120 : totalTime += 20;	
+	timeLeft + time > 120 ? totalTime = 120 : totalTime = timeLeft + time;	
 }
 
 /**
@@ -465,7 +467,7 @@ void Game::bindIngredientToBurger(glm::vec2 p)
 			cursor->replaceComponent(new CubeModelComponent(0.1), false);
 			buildingBurgerIndex++;
 			score+=15;
-			totalTime+=5;
+			setNewTotalTime(5);
 		}
 		else
 		{
