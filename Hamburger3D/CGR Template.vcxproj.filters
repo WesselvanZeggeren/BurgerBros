@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="tigl.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMaker.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="color.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Recipe.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BaconModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="BunCrownModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="BunHeelModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="BurgerIngredient.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="CheeseModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="CucumberModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="EggModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="LettuceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="OnionModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="PattyModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="PickleModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="SauceModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenMOdelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="TomatoModelComponent.cpp">
+      <Filter>Components\Model\Burger</Filter>
+    </ClCompile>
+    <ClCompile Include="Burger.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuCamera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelComponent.cpp">
+      <Filter>Components\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="SauceBottle.cpp">
+      <Filter>Components\Model\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleConveorBelt.cpp">
+      <Filter>Components\Model\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleTrashBin.cpp">
+      <Filter>Components\Model\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="TrashBin.cpp">
+      <Filter>Components\Model\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinComponent.cpp">
+      <Filter>Components\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Stopwatch.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="TextControl.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tigl.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMaker.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="TrashBin.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaconModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BunCrownModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BunHeelModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Burger.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BurgerIngredient.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CheeseModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CucumberModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EggModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LettuceModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuCamera.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OnionModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PattyModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PickleModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RecepeDisplayWrapper.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Recipe.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SauceBottle.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SauceModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenMOdelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleConveorBelt.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleTrashBin.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TomatoModelComponent.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>H_Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stopwatch.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="TextControl.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_truetype.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{c721720d-32d6-4127-8f13-b21ef9a37bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="H_Files">
+      <UniqueIdentifier>{0d8b04a2-5430-4df1-b2ec-105f4717f68a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{354d416a-0ec4-4fc3-957f-629301dd8b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{c45ca625-be6d-449d-acfa-e5a4dc666c72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Model">
+      <UniqueIdentifier>{ca420032-d797-4f45-8661-44c1fa24c6b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Model\Burger">
+      <UniqueIdentifier>{23391cf7-9f4a-485d-8b78-6010074eab03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Model\Other">
+      <UniqueIdentifier>{bb0901c4-5bd4-47b4-8db1-49af95b9aea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Other">
+      <UniqueIdentifier>{cf2ffbd5-f99c-4de6-bd1c-54fbb95f4a81}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
